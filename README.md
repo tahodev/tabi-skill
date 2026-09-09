@@ -32,6 +32,7 @@ Claude Code、Codex、OpenCode など、`npx skills add` に対応したコー�
 | KTXの時刻・運賃を調べる | `kr-train` | 国土交通部TAGO列車APIで列車の発着時刻・大人運賃を照会 | APIキー(無料)が必要 | [kr-train ガイド](docs/features/kr-train.md) |
 | 高速バスの時刻・運賃を調べる | `kr-bus` | TAGO高速バスAPIでターミナル間の便を照会 | APIキー(無料)が必要 | [kr-bus ガイド](docs/features/kr-bus.md) |
 | 韓国各地の天気予報を調べる | `korea-weather` | 気象庁(KMA)公共データ短期予報APIで格子座標ごとの予報を取得 | APIキー(無料)が必要 | [korea-weather ガイド](docs/features/korea-weather.md) |
+| 気象特報(注意報・警報)を調べる | `korea-weather-warning` | 気象庁の気象特報APIで発表中の特報と通報文を照会。豪雨・台風シーズンの移動前チェックに | APIキー(無料)が必要 | [korea-weather-warning ガイド](docs/features/korea-weather-warning.md) |
 | 観光地・祭りを日本語で検索する | `kto-tour` | 韓国観光公社 TourAPI 4.0 の日本語サービス(JpnService2)。名前も説明も日本語 | APIキー(無料)が必要 | [kto-tour ガイド](docs/features/kto-tour.md) |
 | 仁川空港の便情報を調べる | `incheon-airport` | 仁川国際空港公社APIで到着・出発便の遅延・ゲートを照会。空港鉄道データつき | APIキー(無料)が必要 | [incheon-airport ガイド](docs/features/incheon-airport.md) |
 | 緊急連絡先を調べる | `korea-emergency` | 112/119/1330(日本語可)・在韓日本国大使館などの静的データ。オフラインでも使える | 不要 | [korea-emergency ガイド](docs/features/korea-emergency.md) |
@@ -75,6 +76,7 @@ Sibling repos: [kurashi-skill](https://github.com/tahodev/kurashi-skill) (daily 
 | Check KTX times and fares | `kr-train` | TAGO train API: schedules and adult fares | Free API key required | [kr-train guide](docs/features/kr-train.md) |
 | Check express bus times | `kr-bus` | TAGO express bus API: terminal-to-terminal schedules | Free API key required | [kr-bus guide](docs/features/kr-bus.md) |
 | Check weather in Korea | `korea-weather` | KMA public-data short-term forecast API | Free API key required | [korea-weather guide](docs/features/korea-weather.md) |
+| Check weather warnings | `korea-weather-warning` | KMA weather-warning API: active advisories/warnings and bulletins | Free API key required | [korea-weather-warning guide](docs/features/korea-weather-warning.md) |
 | Search sights and festivals in Japanese | `kto-tour` | TourAPI 4.0 Japanese service (JpnService2): names and descriptions in Japanese | Free API key required | [kto-tour guide](docs/features/kto-tour.md) |
 | Check Incheon Airport flights | `incheon-airport` | Arrival/departure status, delays, gates; airport-railroad data | Free API key required | [incheon-airport guide](docs/features/incheon-airport.md) |
 | Look up emergency contacts | `korea-emergency` | 112/119/1330 (Japanese OK), Embassy of Japan; works offline | Not required | [korea-emergency guide](docs/features/korea-emergency.md) |
