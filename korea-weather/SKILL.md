@@ -68,4 +68,4 @@ curl -s "http://apis.data.go.kr/1360000/VilageFcstInfoService_2.0/getVilageFcst?
 
 ## English summary
 
-Fetches Korean weather forecasts from the KMA public-data short-term forecast API (2 operations verified live on 2026-09-09). Free data.go.kr serviceKey required. Forecasts are on a 5km grid (Seoul 60/127, Busan 98/76, Jeju 52/38); base times are 8x/day and data appears ~10 minutes after issue. Read categories TMP/POP/SKY/PTY per forecast time. Never invent values.
+Fetches Korean weather forecasts from the KMA public-data short-term forecast API (endpoint existence verified on 2026-09-09; not yet exercised with a real key). Free data.go.kr serviceKey required. Forecasts are on a 5km grid (Seoul 60/127, Busan 98/76, Jeju 52/38); base times are 8x/day and data appears ~10 minutes after issue. Read categories TMP/POP/SKY/PTY per forecast time. Never invent values.

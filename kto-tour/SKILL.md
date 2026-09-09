@@ -67,4 +67,4 @@ curl -s "http://apis.data.go.kr/B551011/JpnService2/detailIntro2?serviceKey={KEY
 
 ## English summary
 
-Searches Korean tourism data (attractions, festivals, lodging, restaurants) in Japanese via the Korea Tourism Organization TourAPI 4.0 Japanese service, JpnService2 - 6 operations verified live on 2026-09-09. Free data.go.kr serviceKey required. Key codes: areaCode 1=Seoul, 2=Incheon, 6=Busan, 39=Jeju; contentTypeId 12=attraction, 14=culture, 15=festival, 32=lodging, 38=shopping, 39=restaurant. Names and descriptions come back in Japanese. Read-only lookup.
+Searches Korean tourism data (attractions, festivals, lodging, restaurants) in Japanese via the Korea Tourism Organization TourAPI 4.0 Japanese service, JpnService2 - endpoint existence verified on 2026-09-09; not yet exercised with a real key. Free data.go.kr serviceKey required. Key codes: areaCode 1=Seoul, 2=Incheon, 6=Busan, 39=Jeju; contentTypeId 12=attraction, 14=culture, 15=festival, 32=lodging, 38=shopping, 39=restaurant. Names and descriptions come back in Japanese. Read-only lookup.

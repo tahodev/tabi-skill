@@ -9,7 +9,7 @@ metadata:
 
 # kr-train
 
-韓国の国土交通部 国家大衆交通情報センター(TAGO)の列車情報オープンAPIで、KTXなどの列車時刻・運賃を照会するスキル。2026-09-09 に3オペレーションの実在を確認済み(キーなしで叩いて認証エラーが返ることを確認)。
+韓国の国土交通部 国家大衆交通情報センター(TAGO)の列車情報オープンAPIで、KTXなどの列車時刻・運賃を照会するスキル。2026-09-09 に3オペレーションの**エンドポイント実在**を確認済み(キーなしで叩き、404ではなく認証エラーが返ることを確認。実キーでのデータ応答はまだ未検証)。
 
 ## キーの取得
 
@@ -59,4 +59,4 @@ curl -s "http://openapi.tago.go.kr/openapi/service/TrainInfoService/getStrtpntAl
 
 ## English summary
 
-Queries KTX and other Korean train times and fares via the Ministry of Land TAGO train API (3 operations verified live on 2026-09-09). Needs a free data.go.kr serviceKey. Look up station IDs by city code first, then query schedules between station IDs with an optional train-grade filter (00 = KTX). Read-only: no booking. The API host is openapi.tago.go.kr, not apis.data.go.kr.
+Queries KTX and other Korean train times and fares via the Ministry of Land TAGO train API (endpoint existence verified on 2026-09-09: unauthenticated probes return auth errors, not 404; not yet exercised with a real key). Needs a free data.go.kr serviceKey. Look up station IDs by city code first, then query schedules between station IDs with an optional train-grade filter (00 = KTX). Read-only: no booking. The API host is openapi.tago.go.kr, not apis.data.go.kr.
