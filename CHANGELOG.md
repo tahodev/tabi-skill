@@ -10,6 +10,18 @@
 
 ## [Unreleased]
 
+### Added
+- `korea-weather-warning` - 気象庁(KMA)気象特報APIで発表中の注意報・警報と通報文を照会(無料APIキー。2026-09-10 エンドポイント実在確認)
+- 全API系スキルに `examples/` のレスポンス例を追加。krw-jpy-rate のECOS例は実測取得、他は「記述例」と明記した構造再現
+- `seoul-subway`: 主要観光駅44件の日本語→韓国語対応CSV(`data/stations-ja-ko.csv`)を同梱
+- `korea-weather`: 格子座標表を12都市に拡張(仁川・水原・大田・大邱・慶州・全州・光州・江陵・西帰浦を追加)
+
+### Fixed
+- `check-urls.sh`: apis.data.go.kr などオープンAPIゲートウェイの 400/401/403 を「エンドポイント実在」として扱うように。ベースURL無パラメータ呼び出しでの誤検知(issue #1)を解消
+- `lint-skills.sh`: CONTRIBUTING.md が必須とする metadata(category, locale) のチェックを追加
+- `kr-train` 他: 「verified live」表記を「エンドポイント実在の確認」に修正(実キーでの応答検証は未実施と明記)
+- `seoul-subway`: curl例の生の韓国語駅名をパーセントエンコード化し、エンコード方法を追記
+
 ## [0.1.0] - 2026-09-09
 
 初回リリース。日本から韓国への旅行者を助ける照会系スキル9件を収録。全エンドポイントは公開当日に実測検証済み(キー必要なAPIは認証エラーでの実在確認、ECOS・ソウル地下鉄は実データ取得)。

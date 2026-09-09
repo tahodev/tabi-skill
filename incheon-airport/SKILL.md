@@ -42,7 +42,8 @@ curl -s "http://apis.data.go.kr/B551177/StatusOfPassengerFlightsDSOdp/getPasseng
 
 ## 空港鉄道(AREX)のデータ
 
-空港鉄道の運行データも公共データポータルにある(仁川国際空港公社「인천공항 공항철도 운행 정보」、data.go.kr 15098226、要serviceKey): https://www.data.go.kr/data/15098226/openapi.do
+空港鉄道の運行データ(열차 운행 일정 + 실제 발착 시각)も公共データポータルにある(仁川国際空港公社「인천공항 공항철도 운행 정보」、data.go.kr 15098226、要serviceKey、オペレーション `getAirportRailroad`、実行ホスト `odp.airport.kr`): https://www.data.go.kr/data/15098226/openapi.do
+  - 2026-09-10: データセットページは確認できたが、実行ホスト `odp.airport.kr` が検証環境(海外IP)から接続不能でオペレーションの実在は未確認。独立スキル化は実測できてから。
 
 旅行者向けの基本(2026-09-09時点、公式案内ベース):
 
