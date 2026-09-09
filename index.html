@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>tabi-skill | 韓国旅行を、AIエージェントに</title>
+<meta name="description" content="日本から韓国への旅行を手伝う、AIエージェント向けオープンソースのスキルコレクション。韓国観光公社TourAPI日本語版・TAGO列車/バス・ソウル地下鉄・気象庁など公式APIだけを使う照会系スキル9つ。MITライセンス。">
+<meta property="og:title" content="tabi-skill | 韓国旅行を、AIエージェントに">
+<meta property="og:description" content="KTX・地下鉄・為替・観光・空港。公式APIだけで動く韓国旅行スキル集。MITオープンソース。">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://tahodev.github.io/tabi-skill/">
+<meta property="og:site_name" content="tabi-skill">
+<meta property="og:locale" content="ja_JP">
+<meta property="og:image" content="https://tahodev.github.io/tabi-skill/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="tabi-skill — 韓国旅行を、AIエージェントに。">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="tabi-skill | 韓国旅行を、AIエージェントに">
+<meta name="twitter:description" content="KTX・地下鉄・為替・観光・空港。公式APIだけで動く韓国旅行スキル集。MITオープンソース。">
+<meta name="twitter:image" content="https://tahodev.github.io/tabi-skill/og.png">
+<meta name="keywords" content="AIエージェント,スキル,韓国旅行,KTX,ソウル地下鉄,為替,ウォン,円,観光,仁川空港,TourAPI,オープンソース,MIT,npx skills add,Claude Code,Codex">
+<meta name="robots" content="index,follow">
+<meta name="author" content="tahodev">
+<link rel="canonical" href="https://tahodev.github.io/tabi-skill/">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareSourceCode",
+  "name": "tabi-skill",
+  "alternateName": "旅スキル",
+  "description": "日本から韓国への旅行を手伝う、AIエージェント向けオープンソースのスキルコレクション。韓国観光公社TourAPI日本語サービス、TAGO列車・高速バスAPI、ソウル地下鉄リアルタイムAPI、気象庁予報APIなど公式APIと公開データだけを使う。",
+  "codeRepository": "https://github.com/tahodev/tabi-skill",
+  "license": "https://opensource.org/licenses/MIT",
+  "inLanguage": "ja",
+  "keywords": "AIエージェント, スキル, 韓国旅行, KTX, ソウル地下鉄, 為替, 観光, 仁川空港",
+  "author": {"@type": "Person", "name": "tahodev", "url": "https://github.com/tahodev"},
+  "url": "https://tahodev.github.io/tabi-skill/"
+}
+</script>
+<link rel="icon" type="image/png" href="emblem.png">
+<link rel="apple-touch-icon" href="emblem-180.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&family=Noto+Serif+JP:wght@400;600;700&family=Zen+Kaku+Gothic+New:wght@500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --kinari:#F8F4E9;      /* 生成り */
+  --kinari-2:#F1EBDC;
+  --ai:#4A3560;          /* 紫 */
+  --mura:#5C4470;        /* 紫(murasaki) */
+  --ai-deep:#2E2140;     /* 深紫 */
+  --ai-soft:#6E5A85;
+  --shu:#5C4470;         /* 紫 */
+  --shu-bright:#8A6AA8;
+  --sumi:#2B2B2B;        /* 墨 */
+  --sumi-soft:#5C5C56;
+  --line:#D8D0BC;
+  --washi:radial-gradient(circle at 20% 10%, rgba(255,255,255,.5), transparent 55%);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  background:var(--kinari);
+  background-image:var(--washi);
+  color:var(--sumi);
+  font-family:'Noto Sans JP',sans-serif;
+  font-weight:400;
+  line-height:1.9;
+  letter-spacing:.02em;
+  -webkit-font-smoothing:antialiased;
+}
+.wrap{max-width:880px;margin:0 auto;padding:0 22px}
+.wordmark{
+  font-family:'Zen Kaku Gothic New','Noto Sans JP',sans-serif;font-weight:700;
+  font-size:clamp(30px,7.4vw,44px);
+  letter-spacing:.01em;
+  color:var(--ai-deep);line-height:1.3;
+}
+.heroseal{width:92px;height:92px;margin:0 auto 22px;display:block;filter:drop-shadow(0 6px 14px rgba(92,68,112,.25))}
+.wordmark-sub{
+  margin-top:12px;
+  font-size:12px;letter-spacing:.42em;text-indent:.42em;
+  color:var(--sumi-soft);
+}
+.serif{font-family:'Noto Serif JP',serif}
+
+/* ── nav ── */
+nav{
+  position:sticky;top:0;z-index:50;
+  background:rgba(248,244,233,.88);
+  backdrop-filter:blur(10px);
+  border-bottom:1px solid var(--line);
+}
+nav .wrap{display:flex;align-items:center;justify-content:space-between;height:60px}
+nav .brand{display:flex;align-items:center;gap:9px;text-decoration:none;color:var(--ai-deep)}
+nav .brand .navseal{width:26px;height:26px;display:block}
+nav .brand .navword{font-family:'Zen Kaku Gothic New',sans-serif;font-weight:700;font-size:14px;letter-spacing:.06em;color:var(--ai-deep)}
+nav .links{display:flex;gap:18px;font-size:13px}
+nav .links a{color:var(--ai-soft);text-decoration:none}
+nav .links a:hover{color:var(--shu)}
+@media(max-width:560px){nav .links a:not(:last-child){display:none}}
+
+/* ── hero ── */
+header.hero{
+  padding:84px 0 72px;
+  text-align:center;
+  position:relative;
+}
+.hero .kanji-bg{
+  position:absolute;top:30px;right:-10px;
+  writing-mode:vertical-rl;
+  font-family:'Noto Serif JP',serif;
+  font-size:15px;letter-spacing:.5em;
+  color:var(--ai);opacity:.28;
+  user-select:none;
+}
+@media(max-width:680px){.hero .kanji-bg{display:none}}
+.hero h1{
+  font-family:'Zen Kaku Gothic New',sans-serif;
+  font-size:clamp(30px,6.4vw,44px);
+  font-weight:700;
+  color:var(--ai-deep);
+  letter-spacing:.04em;
+  line-height:1.4;
+}
+.hero h1 .accent{color:var(--shu)}
+.hero .yomi{font-size:13px;letter-spacing:.35em;color:var(--sumi-soft);margin-top:10px}
+.hero p.lead{
+  max-width:560px;margin:22px auto 0;
+  font-size:15.5px;color:var(--sumi-soft);
+}
+.hero .badges{margin-top:18px;display:flex;gap:8px;justify-content:center;flex-wrap:wrap}
+.chip{
+  font-size:11.5px;letter-spacing:.08em;
+  border:1px solid var(--line);border-radius:999px;
+  padding:3px 12px;color:var(--ai-soft);background:rgba(255,255,255,.5);
+}
+.chip.red{border-color:rgba(185,64,47,.4);color:var(--shu)}
+
+/* ── install bar ── */
+.install{
+  margin:34px auto 0;max-width:640px;
+  background:var(--ai-deep);border-radius:12px;
+  padding:16px 18px;text-align:left;
+  position:relative;
+  box-shadow:0 10px 30px rgba(15,37,64,.25);
+}
+.install .label{font-size:11px;letter-spacing:.2em;color:#8FA6B5;margin-bottom:6px}
+.install code{
+  font-family:ui-monospace,'SF Mono',Menlo,monospace;
+  font-size:13.5px;color:#EDE6D3;word-break:break-all;line-height:1.7;
+}
+.install code .c{color:#7E93A5}
+.install .copy{
+  position:absolute;top:12px;right:12px;
+  background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.16);
+  color:#EDE6D3;font-size:11px;border-radius:6px;padding:4px 10px;cursor:pointer;
+}
+.install .copy:hover{background:rgba(255,255,255,.16)}
+
+/* ── sections ── */
+section{padding:64px 0}
+.sec-head{margin-bottom:34px}
+.sec-head .no{
+  font-family:'Noto Serif JP',serif;font-size:13px;color:var(--shu);
+  letter-spacing:.3em;margin-bottom:8px;
+}
+.sec-head h2{
+  font-family:'Zen Kaku Gothic New',sans-serif;
+  font-size:clamp(22px,4.6vw,28px);font-weight:700;color:var(--ai-deep);
+  letter-spacing:.05em;
+}
+.sec-head h2::after{
+  content:"";display:block;width:44px;height:2px;background:var(--shu);
+  margin-top:12px;
+}
+.sec-head p{margin-top:14px;font-size:14.5px;color:var(--sumi-soft);max-width:620px}
+
+/* about 3 points */
+.points{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+@media(max-width:680px){.points{grid-template-columns:1fr}}
+.point{
+  background:rgba(255,255,255,.55);
+  border:1px solid var(--line);border-radius:12px;
+  padding:22px 20px;
+}
+.point .glyph{
+  font-family:'Noto Serif JP',serif;font-size:26px;color:var(--shu);
+  margin-bottom:10px;
+}
+.point h3{font-size:15px;font-weight:700;color:var(--ai-deep);margin-bottom:6px;letter-spacing:.04em}
+.point p{font-size:13px;color:var(--sumi-soft);line-height:1.8}
+
+/* skill cards */
+.skills{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+@media(max-width:680px){.skills{grid-template-columns:1fr}}
+.skill{
+  background:rgba(255,255,255,.6);
+  border:1px solid var(--line);border-radius:14px;
+  padding:24px 22px;position:relative;
+  transition:transform .18s ease, box-shadow .18s ease;
+}
+.skill:hover{transform:translateY(-3px);box-shadow:0 12px 28px rgba(15,37,64,.1)}
+.skill .top{display:flex;align-items:baseline;gap:10px;margin-bottom:8px}
+.skill .stamp{
+  font-family:'Noto Serif JP',serif;
+  width:44px;height:44px;flex:0 0 44px;
+  display:flex;align-items:center;justify-content:center;
+  background:var(--ai);color:var(--kinari);
+  border-radius:8px;font-size:22px;
+}
+.skill.red .stamp{background:var(--shu)}
+.skill h3{font-family:ui-monospace,'SF Mono',Menlo,monospace;font-size:15px;font-weight:600;color:var(--ai-deep)}
+.skill .en{font-size:11px;letter-spacing:.14em;color:var(--sumi-soft);text-transform:uppercase}
+.skill p{font-size:13.5px;color:var(--sumi-soft);margin:10px 0 12px;line-height:1.8}
+.skill .meta{display:flex;gap:8px;flex-wrap:wrap}
+.tag{
+  font-size:10.5px;letter-spacing:.06em;padding:2px 9px;border-radius:999px;
+  background:var(--kinari-2);border:1px solid var(--line);color:var(--ai-soft);
+}
+.tag.ok{color:var(--shu);border-color:rgba(185,64,47,.35);background:rgba(185,64,47,.06)}
+
+/* chat demo */
+.chat{
+  background:var(--ai-deep);border-radius:16px;
+  padding:26px 20px;color:#EDE6D3;
+  box-shadow:0 14px 36px rgba(15,37,64,.28);
+}
+.chat .caption{font-size:11px;letter-spacing:.22em;color:#8FA6B5;margin-bottom:18px;text-align:center}
+.msg{display:flex;margin-bottom:16px}
+.msg .bubble{
+  max-width:82%;padding:11px 15px;border-radius:14px;
+  font-size:13.5px;line-height:1.8;
+}
+.msg.user{justify-content:flex-end}
+.msg.user .bubble{background:#EDE6D3;color:var(--sumi);border-bottom-right-radius:4px}
+.msg.agent .bubble{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);border-bottom-left-radius:4px}
+.msg.agent .who{
+  font-size:10.5px;letter-spacing:.1em;color:var(--shu-bright);
+  margin-bottom:4px;font-family:ui-monospace,Menlo,monospace;
+}
+.chat .note{font-size:11px;color:#7E93A5;text-align:center;margin-top:8px}
+
+/* challenge */
+.challenge{
+  background:rgba(255,255,255,.55);
+  border:1px solid var(--line);border-radius:16px;
+  padding:30px 26px;
+  display:flex;gap:26px;align-items:flex-start;
+}
+@media(max-width:680px){.challenge{flex-direction:column}}
+.challenge .big{
+  font-family:'Noto Serif JP',serif;
+  font-size:56px;font-weight:700;color:var(--shu);line-height:1.1;
+  writing-mode:horizontal-tb;
+}
+.challenge .big small{display:block;font-size:13px;color:var(--sumi-soft);letter-spacing:.2em;font-weight:400;margin-top:4px}
+.challenge .body{flex:1}
+.challenge h3{font-size:16px;color:var(--ai-deep);font-weight:700;margin-bottom:8px}
+.challenge p{font-size:13.5px;color:var(--sumi-soft);margin-bottom:14px}
+.challenge .day{
+  display:flex;align-items:center;gap:10px;font-size:13px;
+  border-top:1px dashed var(--line);padding-top:12px;margin-top:4px;
+  flex-wrap:wrap;
+}
+.challenge .day .d{
+  font-family:ui-monospace,Menlo,monospace;font-size:12px;
+  background:var(--ai);color:var(--kinari);border-radius:6px;padding:2px 8px;
+}
+
+/* links */
+.links-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+@media(max-width:680px){.links-grid{grid-template-columns:1fr}}
+a.card{
+  display:block;text-decoration:none;
+  background:rgba(255,255,255,.6);border:1px solid var(--line);border-radius:14px;
+  padding:20px;transition:transform .18s ease, box-shadow .18s ease;
+}
+a.card:hover{transform:translateY(-3px);box-shadow:0 12px 28px rgba(15,37,64,.1)}
+a.card .k{font-size:11px;letter-spacing:.2em;color:var(--shu);margin-bottom:6px}
+a.card .t{font-size:15px;font-weight:700;color:var(--ai-deep);margin-bottom:4px}
+a.card .u{font-size:12px;color:var(--sumi-soft);word-break:break-all}
+
+/* community repos */
+.repos{display:flex;flex-direction:column;gap:0;border-top:1px solid var(--line)}
+a.repo{
+  display:flex;align-items:baseline;gap:14px;text-decoration:none;
+  padding:16px 6px;border-bottom:1px solid var(--line);
+  transition:background .15s ease;
+}
+a.repo:hover{background:rgba(255,255,255,.5)}
+a.repo .rname{
+  font-family:ui-monospace,'SF Mono',Menlo,monospace;font-size:13.5px;font-weight:600;
+  color:var(--ai-deep);flex:0 0 auto;min-width:200px;
+}
+a.repo .rdesc{flex:1;font-size:13px;color:var(--sumi-soft);line-height:1.7}
+a.repo .stars{flex:0 0 auto;font-size:11.5px;color:var(--shu);letter-spacing:.05em}
+@media(max-width:680px){
+a.repo{flex-wrap:wrap;gap:3px 12px;padding:15px 4px}
+a.repo .rname{min-width:0;flex:1 1 100%}
+a.repo .rdesc{flex:1 1 auto;font-size:12.5px}
+a.repo .stars{flex:0 0 auto}
+}
+.repo-note{margin-top:14px;font-size:12px;color:var(--sumi-soft)}
+
+/* footer */
+footer{
+  border-top:1px solid var(--line);
+  padding:34px 0 46px;text-align:center;
+  font-size:12px;color:var(--sumi-soft);
+}
+footer .hanko{width:34px;height:34px;margin:0 auto 12px;display:block;opacity:.9}
+footer a{color:var(--ai-soft)}
+footer .lic{margin-top:6px}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <a class="brand" href="#top"><img src="emblem.png" alt="" class="navseal"><span class="navword">tabi-skill</span></a>
+    <div class="links">
+      <a href="#skills">スキル</a>
+      <a href="#demo">使い方</a>
+      <a href="#family">姉妹レポ</a>
+      <a href="https://github.com/tahodev/tabi-skill">GitHub</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <div class="wrap">
+    <div class="kanji-bg">旅の調べものは、エージェントに。</div>
+    <img src="emblem.png" alt="tabi-skill のシンボル — 落款風の「旅」の印" class="heroseal">
+    <div class="wordmark">tabi-skill</div>
+    <div class="wordmark-sub">旅 ス キ ル</div>
+    <h1 style="margin-top:34px">韓国旅行を、<br class="sp"><span class="accent">AIエージェント</span>に。</h1>
+    <p class="lead">
+      KTX、ソウル地下鉄、為替、観光、仁川空港。<br>
+      日本からの韓国旅行に必要な「調べもの」だけを集めた、AIエージェント向けオープンソースのスキルコレクションです。韓国観光公社の日本語APIをはじめ、公式APIと公開データだけを使います。MITライセンス。
+    </p>
+    <div class="badges">
+      <span class="chip red">MIT License</span>
+      <span class="chip">公式APIのみ</span>
+      <span class="chip">日本語APIあり</span>
+      <span class="chip">npx skills add 対応</span>
+    </div>
+    <div class="install">
+      <button class="copy" onclick="copyCmd(this)">copy</button>
+      <div class="label">INSTALL</div>
+      <code id="cmd"><span class="c"># 全スキルをインストール</span><br>npx --yes skills add tahodev/tabi-skill --all -g</code>
+    </div>
+  </div>
+</header>
+
+<main>
+<section id="about">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="no">其の一 — ABOUT</div>
+      <h2>tabi-skill とは</h2>
+      <p>Claude Code、Codex、OpenCode など <code>npx skills add</code> に対応したコーディングエージェントに、韓国旅行の「調べもの力」を追加するスキル集です。姉妹レポに <a href="https://github.com/tahodev/kurashi-skill" style="color:var(--shu)">kurashi-skill</a>(日本の暮らし)、<a href="https://github.com/tahodev/baodao-skill" style="color:var(--shu)">baodao-skill</a>(台湾の暮らし)。</p>
+    </div>
+    <div class="points">
+      <div class="point">
+        <div class="glyph">公</div>
+        <h3>公式データだけ</h3>
+        <p>韓国観光公社TourAPI、国土交通部TAGO、ソウル市オープンデータ、気象庁。出所のはっきりした公式APIと公開データだけを使います。</p>
+      </div>
+      <div class="point">
+        <div class="glyph">鍵</div>
+        <h3>無料キーまで</h3>
+        <p>課金は一切不要。使うのは無料で即時発行できるAPIキーまで。スクレイピング対策の強いサービスは最初から対象外にしています。</p>
+      </div>
+      <div class="point">
+        <div class="glyph">読</div>
+        <h3>照会と計算のみ</h3>
+        <p>予約・購入・発券など状態を変える操作は扱いません。読み取り専用だから、安心してエージェントに任せられます。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="skills">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="no">其の二 — SKILLS</div>
+      <h2>9つのスキル</h2>
+      <p>各スキルの正本はリポジトリ内の <code>&lt;スキル名&gt;/SKILL.md</code>。ここではひとこと紹介だけ。全エンドポイントは公開日(2026-09-09)に実測検証済み。</p>
+    </div>
+    <div class="skills">
+      <div class="skill">
+        <div class="top"><div class="stamp">為</div><div><h3>krw-jpy-rate</h3><div class="en">Exchange rate</div></div></div>
+        <p>ウォン・円の為替レートを韓国輸出入銀行APIと韓国銀行ECOS APIの2ソースから取得。「1万ウォンは何円?」に答えます。</p>
+        <div class="meta"><span class="tag">無料APIキー</span><span class="tag">KEXIM / ECOS</span></div>
+      </div>
+      <div class="skill red">
+        <div class="top"><div class="stamp">駅</div><div><h3>seoul-subway</h3><div class="en">Seoul subway</div></div></div>
+        <p>ソウル地下鉄のリアルタイム到着予測。「弘大入口から次の電車は?」に方面つきで。日本語駅名データつき。</p>
+        <div class="meta"><span class="tag">無料APIキー</span><span class="tag">ソウル市</span></div>
+      </div>
+      <div class="skill">
+        <div class="top"><div class="stamp">列</div><div><h3>kr-train</h3><div class="en">KTX & trains</div></div></div>
+        <p>KTXなど列車の時刻・運賃を国土交通部TAGOの列車APIで照会。「ソウル→釜山、次は何時?」に。</p>
+        <div class="meta"><span class="tag">無料APIキー</span><span class="tag">TAGO</span></div>
+      </div>
+      <div class="skill red">
+        <div class="top"><div class="stamp">走</div><div><h3>kr-bus</h3><div class="en">Express bus</div></div></div>
+        <p>高速バスの時刻・運賃をTAGO高速バスAPIで照会。深夜便の相談にも。</p>
+        <div class="meta"><span class="tag">無料APIキー</span><span class="tag">TAGO</span></div>
+      </div>
+      <div class="skill">
+        <div class="top"><div class="stamp">天</div><div><h3>korea-weather</h3><div class="en">Weather</div></div></div>
+        <p>韓国気象庁(KMA)の短期予報APIでソウル・釜山・済州の天気を取得。</p>
+        <div class="meta"><span class="tag">無料APIキー</span><span class="tag">気象庁</span></div>
+      </div>
+      <div class="skill red">
+        <div class="top"><div class="stamp">観</div><div><h3>kto-tour</h3><div class="en">Tourism (日本語!)</div></div></div>
+        <p>韓国観光公社 TourAPI の日本語サービスで観光地・祭り・宿を検索。名前も説明も日本語で返ります。このレポの目玉。</p>
+        <div class="meta"><span class="tag">無料APIキー</span><span class="tag">韓国観光公社</span></div>
+      </div>
+      <div class="skill">
+        <div class="top"><div class="stamp">空</div><div><h3>incheon-airport</h3><div class="en">Incheon Airport</div></div></div>
+        <p>仁川空港の到着・出発便の遅延・ゲート・ターミナルを照会。空港鉄道(AREX)データつき。</p>
+        <div class="meta"><span class="tag">無料APIキー</span><span class="tag">空港公社</span></div>
+      </div>
+      <div class="skill red">
+        <div class="top"><div class="stamp">救</div><div><h3>korea-emergency</h3><div class="en">Emergency</div></div></div>
+        <p>警察112・救急119・日本語対応1330・在韓日本国大使館。オフラインでも使える静的データ。</p>
+        <div class="meta"><span class="tag ok">API不要</span><span class="tag">静的データ</span></div>
+      </div>
+      <div class="skill">
+        <div class="top"><div class="stamp">習</div><div><h3>korea-etiquette</h3><div class="en">Basics</div></div></div>
+        <p>コンセント(C/F型)・チップ不要・T-money・交通マナーの実用チートシート。</p>
+        <div class="meta"><span class="tag ok">API不要</span><span class="tag">静的データ</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="demo">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="no">其の三 — DEMO</div>
+      <h2>エージェントに聞いてみる</h2>
+      <p>インストールしたら、あとは自然に話しかけるだけ。スキルが質問に合わせて自動で選ばれます。</p>
+    </div>
+    <div class="chat">
+      <div class="caption">CONVERSATION EXAMPLE</div>
+      <div class="msg user"><div class="bubble">明洞の近くでおすすめの観光地ある?</div></div>
+      <div class="msg agent"><div class="bubble"><div class="who">kto-tour</div>明洞エリアだと「南山ソウルタワー」「徳寿宮(トクスグン)」が近いです。徳寿宮は火曜〜日曜開館、月曜休み。<br><span style="opacity:.65">(出典: 韓国観光公社 TourAPI・日本語データ)</span></div></div>
+      <div class="msg user"><div class="bubble">1万ウォンって今いくら? あとソウル→釜山のKTX、午後の便ある?</div></div>
+      <div class="msg agent"><div class="bubble"><div class="who">krw-jpy-rate</div>100円=871.54ウォンなので、1万ウォンは約1,147円です。<span style="opacity:.65">(韓国銀行 2026-09-08)</span><br><div class="who" style="margin-top:6px">kr-train</div>ソウル駅発・釜山行きKTXは午後も定期便があります。時刻と大人運賃をTAGOのデータでお出しします。</div></div>
+      <div class="note">※ 表示はイメージです。実際の数値は時点と条件によって変わります。</div>
+    </div>
+  </div>
+</section>
+
+<section id="family">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="no">其の四 — FAMILY</div>
+      <h2>姉妹レポ</h2>
+      <p>同じ設計思想(公式APIのみ・照会のみ・実測主義)で育っている、暮らし系スキルレポです。</p>
+    </div>
+    <div class="repos">
+      <a class="repo" href="https://github.com/tahodev/kurashi-skill">
+        <span class="rname">tahodev/kurashi-skill</span>
+        <span class="rdesc">日本の暮らしを、AIエージェントに。気象庁・防災・祝日・ふるさと納税・図書館。</span>
+        <span class="stars">暮らし(日本)</span>
+      </a>
+      <a class="repo" href="https://github.com/tahodev/baodao-skill">
+        <span class="rname">tahodev/baodao-skill</span>
+        <span class="rdesc">台湾の暮らしを、AIエージェントに。統一発票・YouBike・ゴミ収集・天気。</span>
+        <span class="stars">暮らし(台湾)</span>
+      </a>
+      <a class="repo" href="https://github.com/NomaDamas/k-skill">
+        <span class="rname">NomaDamas/k-skill</span>
+        <span class="rdesc">韓国の暮らし系スキルの元祖。このファミリーのアイデアの出発点。</span>
+        <span class="stars">元祖</span>
+      </a>
+    </div>
+    <p class="repo-note">tabi-skillは「暮らし」ではなく「旅行」に絞った派生レポです。掲載・取り下げの希望はGitHubのissueまで。</p>
+  </div>
+</section>
+
+<section id="links">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="no">其の五 — LINKS</div>
+      <h2>リンク</h2>
+    </div>
+    <div class="links-grid">
+      <a class="card" href="https://github.com/tahodev/tabi-skill">
+        <div class="k">GITHUB</div>
+        <div class="t">tahodev / tabi-skill</div>
+        <div class="u">ソースコード・issue・インストール手順</div>
+      </a>
+      <a class="card" href="https://github.com/tahodev/tabi-skill/blob/main/docs/install.md">
+        <div class="k">DOCS</div>
+        <div class="t">インストールガイド</div>
+        <div class="u">Node.js 18+ と npx があればOK</div>
+      </a>
+      <a class="card" href="https://tahodev.github.io/kurashi-skill/">
+        <div class="k">SISTERS</div>
+        <div class="t">kurashi-skill / baodao-skill</div>
+        <div class="u">姉妹レポの紹介サイト</div>
+      </a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <img src="emblem.png" alt="" style="width:38px;height:38px;margin:0 auto 10px;display:block">
+    <div style="font-family:'Zen Kaku Gothic New',sans-serif;font-weight:700;font-size:14px;letter-spacing:.04em;color:var(--ai-deep);margin-bottom:10px">tabi-skill</div>
+    <div>韓国旅行を、AIエージェントに。</div>
+    <div class="lic"><a href="https://github.com/tahodev/tabi-skill/blob/main/LICENSE">MIT License</a> © 2026 tahodev</div>
+  </div>
+</footer>
+
+<script>
+function copyCmd(btn){
+  var text = "npx --yes skills add tahodev/tabi-skill --all -g";
+  var done = function(){ btn.textContent = "copied!"; setTimeout(function(){ btn.textContent = "copy"; }, 1600); };
+  if(navigator.clipboard && navigator.clipboard.writeText){
+    navigator.clipboard.writeText(text).then(done, done);
+  }else{
+    var ta = document.createElement("textarea");
+    ta.value = text; document.body.appendChild(ta); ta.select();
+    try{ document.execCommand("copy"); }catch(e){}
+    document.body.removeChild(ta); done();
+  }
+}
+</script>
+</body>
+</html>
