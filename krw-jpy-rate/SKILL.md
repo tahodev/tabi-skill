@@ -34,6 +34,8 @@ curl -s "https://www.koreaexim.go.kr/site/program/financial/exchangeJSON?authkey
   - `ttb` / `tts`: 電信買相場/売相場。両替・送金の方向に応じて使い分ける。
 - 計算例: `deal_bas_r` が 871.54 なら 100円 = 871.54ウォン。1万ウォン ≒ 10000 ÷ 871.54 × 100 ≒ 1,147円。
 
+**レスポンス例**: `examples/kexim-exchangejson.sample.json`(KEXIMは海外IPを遮断するため構造を再現した記述例) / `examples/ecos-key-statistic-list.sample.json`(2026-09-10にサンプルキーで実測取得した実データ)。
+
 ## ソースB: ECOS(韓国銀行)
 
 主要統計100の一覧に円レートが含まれる。手軽に検証できるのが利点。

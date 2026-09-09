@@ -43,6 +43,8 @@ curl -s "http://openapi.tago.go.kr/openapi/service/TrainInfoService/getStrtpntAl
 - レスポンス(XMLデフォルト)の各item: `depplandtime`/`arrplandtime`(発着時刻)、`traingradename`(車種名)、`trainno`(列車番号)、`adultcharge`(大人運賃・ウォン)。
 - ソウル駅 `NAT010000`、釜山駅 `NAT050445` は主要例。他は駅一覧で確認する。
 
+**レスポンス例**: `examples/getStrtpntAlocFndTrainInfo.sample.xml`(構造を再現した記述例。実キーでの実測取得ではない)。
+
 ## 注意
 
 - 照会のみ。予約・発券はKORAIL公式(コレイルトークアプリ等)で行う。エージェントが代行しない。

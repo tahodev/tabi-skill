@@ -1,0 +1,78 @@
+{
+    "KeyStatisticList": {
+        "list_total_count": 101,
+        "row_count": 10,
+        "row": [
+            {
+                "CLASS_NAME": "\ud1b5\ud654\ub7c9",
+                "KEYSTAT_NAME": "M1(\ud611\uc758\ud1b5\ud654, \ud3c9\uc794)",
+                "DATA_VALUE": "1407759.5",
+                "CYCLE": "202606",
+                "UNIT_NAME": "\uc2ed\uc5b5\uc6d0"
+            },
+            {
+                "CLASS_NAME": "\ud1b5\ud654\ub7c9",
+                "KEYSTAT_NAME": "M2(\uad11\uc758\ud1b5\ud654, \ud3c9\uc794)",
+                "DATA_VALUE": "4209874",
+                "CYCLE": "202606",
+                "UNIT_NAME": "\uc2ed\uc5b5\uc6d0"
+            },
+            {
+                "CLASS_NAME": "\ud658\uc728",
+                "KEYSTAT_NAME": "\uc6d0/\ub2ec\ub7ec \ud658\uc728(\uc885\uac00)",
+                "DATA_VALUE": "1336.1",
+                "CYCLE": "20260909",
+                "UNIT_NAME": "\uc6d0"
+            },
+            {
+                "CLASS_NAME": "\ud658\uc728",
+                "KEYSTAT_NAME": "\uc6d0/\uc5d4(100\uc5d4) \ud658\uc728(\ub9e4\ub9e4\uae30\uc900\uc728)",
+                "DATA_VALUE": "873.23",
+                "CYCLE": "20260909",
+                "UNIT_NAME": "\uc6d0"
+            },
+            {
+                "CLASS_NAME": "\ud658\uc728",
+                "KEYSTAT_NAME": "\uc6d0/\uc720\ub85c \ud658\uc728(\ub9e4\ub9e4\uae30\uc900\uc728)",
+                "DATA_VALUE": "1559.23",
+                "CYCLE": "20260909",
+                "UNIT_NAME": "\uc6d0"
+            },
+            {
+                "CLASS_NAME": "\ud658\uc728",
+                "KEYSTAT_NAME": "\uc6d0/\uc704\uc548 \ud658\uc728(\uc885\uac00)",
+                "DATA_VALUE": "199.23",
+                "CYCLE": "20260909",
+                "UNIT_NAME": "\uc6d0"
+            },
+            {
+                "CLASS_NAME": "\ucc44\uad8c",
+                "KEYSTAT_NAME": "\uad6d\uace0\ucc44\ubc1c\ud589\uc561",
+                "DATA_VALUE": "20183",
+                "CYCLE": "202606",
+                "UNIT_NAME": "\uc2ed\uc5b5\uc6d0"
+            },
+            {
+                "CLASS_NAME": "\uc18c\ub4dd",
+                "KEYSTAT_NAME": "GDP(\uba85\ubaa9, \uacc4\uc808\uc870\uc815)",
+                "DATA_VALUE": "834925.1",
+                "CYCLE": "2026Q2",
+                "UNIT_NAME": "\uc2ed\uc5b5\uc6d0"
+            },
+            {
+                "CLASS_NAME": "\uc18c\ube44",
+                "KEYSTAT_NAME": "\uac1c\uc778\uc2e0\uc6a9\uce74\ub4dc\uc0ac\uc6a9\uc561",
+                "DATA_VALUE": "78174187",
+                "CYCLE": "202605",
+                "UNIT_NAME": "\ubc31\ub9cc\uc6d0"
+            },
+            {
+                "CLASS_NAME": "\uac00\uacc4",
+                "KEYSTAT_NAME": "\uac00\uad6c\ub2f9\uc6d4\ud3c9\uade0\uc18c\ub4dd",
+                "DATA_VALUE": "6969.4",
+                "CYCLE": "2024Q4",
+                "UNIT_NAME": "\ucc9c\uc6d0"
+            }
+        ]
+    }
+}

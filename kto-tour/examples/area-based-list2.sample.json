@@ -1,0 +1,23 @@
+{
+  "response": {
+    "header": { "resultCode": "0000", "resultMsg": "OK" },
+    "body": {
+      "items": {
+        "item": [
+          {
+            "contentid": "126508",
+            "contenttypeid": "12",
+            "title": "景福宮",
+            "addr1": "ソウル特別市 鍾路区 社稷路 161",
+            "firstimage": "http://tong.visitkorea.or.kr/cms/resource/23/3362023_image2_1.jpg",
+            "mapx": "126.9770414",
+            "mapy": "37.5796170"
+          }
+        ]
+      },
+      "numOfRows": 10,
+      "pageNo": 1,
+      "totalCount": 2000
+    }
+  }
+}

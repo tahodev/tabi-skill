@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 構造を再現した記述例(2026-09-10作成)。実キーでの実測取得ではない。項目名はTAGO公開資料ベース -->
+<response>
+  <header>
+    <resultCode>00</resultCode>
+    <resultMsg>NORMAL SERVICE.</resultMsg>
+  </header>
+  <body>
+    <items>
+      <item>
+        <adultcharge>59800</adultcharge>
+        <arrplandtime>20260910114500</arrplandtime>
+        <depplandtime>20260910083000</depplandtime>
+        <traingradename>KTX</traingradename>
+        <trainno>101</trainno>
+      </item>
+    </items>
+    <numOfRows>10</numOfRows>
+    <pageNo>1</pageNo>
+    <totalCount>25</totalCount>
+  </body>
+</response>
