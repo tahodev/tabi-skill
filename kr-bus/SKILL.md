@@ -31,6 +31,8 @@ curl -s "http://openapi.tago.go.kr/openapi/service/ExpBusInfoService/getStrtpntA
 - レスポンスの各item: `depPlandTime`/`arrPlandTime`(発着)、`charge`(運賃・ウォン)、`gradeNm`(等級名: 一般/優等/プレミアムなど)。
 - 主なターミナル名: ソウルは「서울경부」(江南の高速バスターミナル)と「동서울」(東ソウル)、他に釜山総合、大田複合など。IDは一覧で確認する。
 
+**レスポンス例**: `examples/getStrtpntAlocFndExpbusInfo.sample.xml`(構造を再現した記述例。実キーでの実測取得ではない)。
+
 ## 対象外(2026-09-09時点)
 
 - **市外バス(시외버스)**: TAGOに市外バスサービス自体は存在するが、オペレーションの実在を実測で確認できなかったため未収録。確認でき次第、別スキルとして追加する。

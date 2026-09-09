@@ -62,6 +62,8 @@ curl -s "http://apis.data.go.kr/1360000/VilageFcstInfoService_2.0/getVilageFcst?
   - `REH`: 湿度(%), `WSD`: 風速(m/s)
 - `resultCode` が `00` なら成功。
 
+**レスポンス例**: `examples/getUltraSrtNcst.sample.json`(構造を再現した記述例。実キーでの実測取得ではない)。
+
 ## 注意
 
 - 韓国の気象データの利用は気象庁の提供データそのまま。発表時刻を一緒に伝える。

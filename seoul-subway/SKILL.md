@@ -66,6 +66,8 @@ curl -s "http://swopenapi.seoul.go.kr/api/subway/{SEOUL_KEY}/json/realtimeStatio
 
 同じ駅でも路線・方面ごとに行が分かれる。旅行者には「何番線の、どっち方面か」を必ず添えて答える。
 
+**レスポンス例**: `examples/realtime-station-arrival.sample.json`(構造を再現した記述例。2026-09-10時点ではサンプルキーが `ERROR-336` を返し実測取得できなかった)。
+
 ## 注意
 
 - 到着予測はソウル交通公社の提供データそのまま。遅延で狂うことがある。

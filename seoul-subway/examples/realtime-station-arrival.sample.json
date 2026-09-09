@@ -1,0 +1,30 @@
+{
+  "errorMessage": {
+    "status": 200,
+    "code": "INFO-000",
+    "message": "정상적으로 처리되었습니다.",
+    "link": "",
+    "developerMessage": "",
+    "total": 2
+  },
+  "realtimeStationArrivalList": [
+    {
+      "subwayId": "1002",
+      "updnLine": "상행",
+      "trainLineNm": "성수행 - 신도림방면",
+      "statnNm": "홍대입구",
+      "bstatnNm": "성수",
+      "arvlMsg2": "3분",
+      "recptnDt": "2026-09-10 08:05:11"
+    },
+    {
+      "subwayId": "1065",
+      "updnLine": "하행",
+      "trainLineNm": "인천공항2터미널행 - 공덕방면",
+      "statnNm": "홍대입구",
+      "bstatnNm": "인천공항2터미널",
+      "arvlMsg2": "전역 진입",
+      "recptnDt": "2026-09-10 08:05:11"
+    }
+  ]
+}

@@ -52,6 +52,8 @@ curl -s "http://apis.data.go.kr/B551011/JpnService2/detailIntro2?serviceKey={KEY
 
 `response.body.items.item[]` の各要素に `title`(日本語名), `addr1`(住所), `contentid`, `contenttypeid`, `firstimage`(画像URL)などが入る。検索結果の `contentId` を `detailCommon2` / `detailIntro2` に渡して詳細(概要・営業時間・休みなど)を取る。住所や名称は日本語で返るが、翻訳品質はまちまちなので原文ママと伝える。
 
+**レスポンス例**: `examples/area-based-list2.sample.json`(構造を再現した記述例。実キーでの実測取得ではない)。
+
 ## 注意
 
 - データは韓国観光公社の登録情報そのまま。古い施設情報(閉店・休業)が残っていることがある。営業時間など重要情報は施設の公式案内で再確認するよう旅行者に伝える。

@@ -38,6 +38,8 @@ curl -s "http://apis.data.go.kr/B551177/StatusOfPassengerFlightsDSOdp/getPasseng
 - `gatenumber`: ゲート番号、`terminalid`: ターミナル(T1/T2)
 - `remark`: 状況(到着・遅延・欠航など、韓国語)
 
+**レスポンス例**: `examples/getPassengerArrivalsDSOdp.sample.json`(構造を再現した記述例。実キーでの実測取得ではない)。
+
 ## 空港鉄道(AREX)のデータ
 
 空港鉄道の運行データも公共データポータルにある(仁川国際空港公社「인천공항 공항철도 운행 정보」、data.go.kr 15098226、要serviceKey): https://www.data.go.kr/data/15098226/openapi.do
