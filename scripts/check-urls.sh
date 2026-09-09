@@ -21,17 +21,43 @@ is_openapi_host() {
   esac
 }
 
+# Korean public sites known to geo-block or throttle overseas traffic
+# (observed from GitHub Actions runners). A persistent connection failure
+# to one of these is a WARN, not a dead URL.
+is_geo_restricted_host() {
+  case "$1" in
+    *www.arex.or.kr*|*www.koreaexim.go.kr*) return 0 ;;
+    *) return 1 ;;
+  esac
+}
+
+# curl with up to 3 attempts; prints the last HTTP code (000 = no response).
+fetch_code() {
+  local url="$1" code=000 attempt
+  for attempt in 1 2 3; do
+    code=$(curl -s -o /dev/null -w '%{http_code}' -L --max-time 30 \
+      -A 'tabi-skill-url-check' "$url")
+    [ "$code" != "000" ] && break
+  done
+  printf '%s' "$code"
+}
+
 mapfile -t urls < <(grep -hoE 'https?://[^ )"`<]+' -- */SKILL.md \
   | sed 's/[.,;]*$//' | sort -u)
 for url in "${urls[@]}"; do
   case "$url" in
     *'{'*|*'}'*) echo "SKIP  $url (templated)"; continue ;;
   esac
-  code=$(curl -s -o /dev/null -w '%{http_code}' -L --max-time 20 \
-    -A 'tabi-skill-url-check' "$url")
+  code=$(fetch_code "$url")
   case "$code" in
     2*|3*)
       echo "OK    $code $url" ;;
+    000)
+      if is_geo_restricted_host "$url"; then
+        echo "WARN  $code $url (unreachable from this network; known geo-restricted host)"
+      else
+        echo "FAIL  $code $url"; fail=1
+      fi ;;
     400|401|403)
       if is_openapi_host "$url"; then
         echo "OK    $code $url (endpoint exists; key/params required)"
