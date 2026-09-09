@@ -36,15 +36,24 @@ metadata:
 | 梨泰院 | 이태원 | 6 |
 | 仁川空港1ターミナル | 인천공항1터미널 | 空港鉄道 |
 
-全駅の日本語・中国語・英語対応表はソウル交通公社の公式データ「역명다국어표기」(公共データポータル 15044232、ファイルデータ)にある: https://www.data.go.kr/data/15044232/fileData.do
+主要な観光駅44件の対応表を **`data/stations-ja-ko.csv`** に同梱している(日本語 → API入力用韓国語 → 路線)。表にない駅は、全駅の日本語・中国語・英語対応表であるソウル交通公社の公式データ「역명다국어표기」(公共データポータル 15044232、ファイルデータ)を使う: https://www.data.go.kr/data/15044232/fileData.do
 
 ### 2. リアルタイム到着APIを呼ぶ
 
 ```bash
-curl -s "http://swopenapi.seoul.go.kr/api/subway/{SEOUL_KEY}/json/realtimeStationArrival/0/10/홍대입구"
+# 駅名(홍대입구)はパーセントエンコードして渡す
+curl -s "http://swopenapi.seoul.go.kr/api/subway/{SEOUL_KEY}/json/realtimeStationArrival/0/10/%ED%99%8D%EB%8C%80%EC%9E%85%EA%B5%AC"
 ```
 
-末尾のパス要素が駅名(韓国語・URLエンコードはcurlが面倒を見ないので日本語環境ではそのままUTF-8で通る)。`0/10` は取得範囲(開始/件数)。
+末尾のパス要素が駅名(韓国語)。curlはパスをエンコードしないので、駅名は必ずパーセントエンコードしてからURLに埋め込む。エンコード例:
+
+```bash
+STATION=$(printf '%s' "홍대입구" | jq -sRr @uri)   # jq がある場合
+# または python3 -c 'import urllib.parse,sys; print(urllib.parse.quote(sys.argv[1]))' "홍대입구"
+curl -s "http://swopenapi.seoul.go.kr/api/subway/{SEOUL_KEY}/json/realtimeStationArrival/0/10/${STATION}"
+```
+
+`0/10` は取得範囲(開始/件数)。
 
 ### 3. レスポンスの読み方
 
