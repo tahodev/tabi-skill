@@ -2,6 +2,7 @@
 # Frontmatter lint for every */SKILL.md:
 #   - frontmatter block present
 #   - name, description, license keys present
+#   - metadata block with category and locale (required per CONTRIBUTING.md)
 #   - name matches the directory name
 set -u
 fail=0
@@ -15,6 +16,15 @@ for f in */SKILL.md; do
       echo "FAIL  $f: missing '$key'"; fail=1; ok=0
     fi
   done
+  if ! grep -q '^metadata:' <<<"$fm"; then
+    echo "FAIL  $f: missing 'metadata' block (category/locale required)"; fail=1; ok=0
+  else
+    for mkey in category locale; do
+      if ! grep -qE "^[[:space:]]+${mkey}:" <<<"$fm"; then
+        echo "FAIL  $f: missing 'metadata.${mkey}'"; fail=1; ok=0
+      fi
+    done
+  fi
   name=$(grep '^name:' <<<"$fm" | head -1 | sed 's/^name:[[:space:]]*//')
   if [ -n "$name" ] && [ "$name" != "$dir" ]; then
     echo "FAIL  $f: name '$name' != directory '$dir'"; fail=1; ok=0
