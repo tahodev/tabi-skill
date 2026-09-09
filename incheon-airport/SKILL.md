@@ -63,4 +63,4 @@ curl -s "http://apis.data.go.kr/B551177/StatusOfPassengerFlightsDSOdp/getPasseng
 
 ## English summary
 
-Checks Incheon Airport passenger flight arrivals/departures (delays, gates, terminals) via the Incheon International Airport Corporation API - 2 operations verified live on 2026-09-09. Free data.go.kr serviceKey required. Filter by time window and counterpart airport code (NRT/HND/KIX/...). Also documents the AREX airport-railroad dataset (data.go.kr 15098226) and baseline travel times (direct train Seoul Station to T1 ~43 min, T2 ~51 min). Read-only.
+Checks Incheon Airport passenger flight arrivals/departures (delays, gates, terminals) via the Incheon International Airport Corporation API - endpoint existence verified on 2026-09-09; not yet exercised with a real key. Free data.go.kr serviceKey required. Filter by time window and counterpart airport code (NRT/HND/KIX/...). Also documents the AREX airport-railroad dataset (data.go.kr 15098226) and baseline travel times (direct train Seoul Station to T1 ~43 min, T2 ~51 min). Read-only.

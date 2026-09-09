@@ -50,4 +50,4 @@ curl -s "http://openapi.tago.go.kr/openapi/service/ExpBusInfoService/getStrtpntA
 
 ## English summary
 
-Queries Korean express bus (고속버스) times and fares via the TAGO express bus API (2 operations verified live on 2026-09-09). Free data.go.kr serviceKey required. Look up terminal IDs first, then query schedules between terminals. Intercity (시외버스) buses are documented as out of scope because their TAGO operations could not be verified. Read-only: no booking.
+Queries Korean express bus (고속버스) times and fares via the TAGO express bus API (endpoint existence verified on 2026-09-09; not yet exercised with a real key). Free data.go.kr serviceKey required. Look up terminal IDs first, then query schedules between terminals. Intercity (시외버스) buses are documented as out of scope because their TAGO operations could not be verified. Read-only: no booking.
