@@ -11,10 +11,17 @@
 ## [Unreleased]
 
 ### Added
+- `korea-holidays` - 韓国天文研究院(KASI)特日情報APIで祝日・国慶日・記念日を照会(無料APIキー。2026-09-14 エンドポイント実在確認)
+- `korea-air-quality` - エアコリア(AirKorea)APIで都市別PM2.5/PM10/統合大気環境指数を照会(無料APIキー。2026-09-14 エンドポイント実在確認)
+- `seoul-bike` - タリョンイ(따릉이)リアルタイム貸出台数をソウルオープンデータ広場APIで照会(無料APIキー。2026-09-14 サンプルキーで実データ取得を実測)
+- `seoul-events` - ソウル市の文化イベントを月・ジャンル・タイトルで検索(無料APIキー。2026-09-14 サンプルキーで実データ取得・各フィルタを実測)
 - `korea-weather-warning` - 気象庁(KMA)気象特報APIで発表中の注意報・警報と通報文を照会(無料APIキー。2026-09-10 エンドポイント実在確認)
 - 全API系スキルに `examples/` のレスポンス例を追加。krw-jpy-rate のECOS例は実測取得、他は「記述例」と明記した構造再現
 - `seoul-subway`: 主要観光駅44件の日本語→韓国語対応CSV(`data/stations-ja-ko.csv`)を同梱
 - `korea-weather`: 格子座標表を12都市に拡張(仁川・水原・大田・大邱・慶州・全州・光州・江陵・西帰浦を追加)
+
+### Changed
+- `check-urls.sh`: オープンAPIゲートウェイのホスト一覧に `openapi.seoul.go.kr` を追加(seoul-bike / seoul-events のベースURLがキーなし・パラメータなしで 4xx を返しても「実在」と判定するため)
 
 ### Fixed
 - `check-urls.sh`: apis.data.go.kr などオープンAPIゲートウェイの 400/401/403 を「エンドポイント実在」として扱うように。ベースURL無パラメータ呼び出しでの誤検知(issue #1)を解消

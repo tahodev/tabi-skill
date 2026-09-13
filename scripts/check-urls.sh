@@ -15,7 +15,7 @@ fail=0
 is_openapi_host() {
   case "$1" in
     *apis.data.go.kr*|*openapi.tago.go.kr*|*odp.airport.kr*|\
-*swopenapi.seoul.go.kr*|*ecos.bok.or.kr*|*koreaexim.go.kr*)
+*swopenapi.seoul.go.kr*|*openapi.seoul.go.kr*|*ecos.bok.or.kr*|*koreaexim.go.kr*)
       return 0 ;;
     *) return 1 ;;
   esac
