@@ -41,6 +41,10 @@ Claude Code、Codex、OpenCode など、`npx skills add` に対応したコー�
 | 韓国の空気の状態を調べる | `korea-air-quality` | エアコリア(AirKorea)APIでPM2.5/PM10の等級を照会。「今日ソウルの空気は?」に | APIキー(無料)が必要 | [korea-air-quality ガイド](docs/features/korea-air-quality.md) |
 | ソウルのシェアサイクルを調べる | `seoul-bike` | タリョンイ(따릉이)のリアルタイム貸出台数を照会。サンプルキーで即試せる | APIキー(無料)が必要 | [seoul-bike ガイド](docs/features/seoul-bike.md) |
 | ソウルのイベントを探す | `seoul-events` | ソウル市の文化イベントAPIでコンサート・展示・祭りを月・ジャンルで検索 | APIキー(無料)が必要 | [seoul-events ガイド](docs/features/seoul-events.md) |
+| ソウルの混雑状況を調べる | `seoul-crowd` | ソウル市リアルタイム都市データAPIで主要スポットの混雑度(4段階)を照会。「いま明洞は混んでる?」に | APIキー(無料)が必要 | [seoul-crowd ガイド](docs/features/seoul-crowd.md) |
+| 1週間先の天気の見通しを調べる | `korea-weather-midterm` | 気象庁の中期予報APIで3〜10日先の天気・気温の見通しを照会 | APIキー(無料)が必要 | [korea-weather-midterm ガイド](docs/features/korea-weather-midterm.md) |
+| 市外バスの時刻・運賃を調べる | `kr-intercity-bus` | TAGO市外バスAPIでターミナル間の便を照会。江陵・慶州など地方都市へ | APIキー(無料)が必要 | [kr-intercity-bus ガイド](docs/features/kr-intercity-bus.md) |
+| 釜山など地方都市の地下鉄を調べる | `kr-metro` | TAGO地下鉄情報APIで釜山・大邱・大田・光州の駅検索と時刻表を照会 | APIキー(無料)が必要 | [kr-metro ガイド](docs/features/kr-metro.md) |
 
 各スキルの**正本は `<スキル名>/SKILL.md`** です。`docs/features/` のガイドは概要版なので、詳細な手順・パラメータ・エラー対応は必ず SKILL.md を参照してください。
 
@@ -49,7 +53,7 @@ Claude Code、Codex、OpenCode など、`npx skills add` に対応したコー�
 - 乗換検索アプリや予約サイトのスクレイピングは対象外です。公式API・公開データのみ。
 - 予約・購入・発券など状態を変更する操作は扱いません。照会と計算だけです。
 - 全エンドポイントは公開日(2026-09-09)に実測検証済み。以降の仕様変更は health-check CI と issue で追跡します。
-- 市外バス(시외버스)は TAGO にサービス自体はあるものの、オペレーションを実測確認できなかったため未収録です([kr-bus の注記](kr-bus/SKILL.md)参照)。
+- 市外バス(시외버스)は `kr-intercity-bus` で照会できます(2026-09-14 にオペレーション実在確認)。SRT(수서발 고속철도)は公開APIがないため対象外です。
 
 ## インストール
 
@@ -89,6 +93,10 @@ Sibling repos: [kurashi-skill](https://github.com/tahodev/kurashi-skill) (daily 
 | Check air quality in Korea | `korea-air-quality` | AirKorea API: PM2.5/PM10 grades by city | Free API key required | [korea-air-quality guide](docs/features/korea-air-quality.md) |
 | Check Seoul bike-share availability | `seoul-bike` | Realtime Ttareungyi dock counts; testable with a public sample key | Free API key required | [seoul-bike guide](docs/features/seoul-bike.md) |
 | Find events in Seoul | `seoul-events` | Seoul cultural-event API: concerts, exhibitions, festivals by month/genre | Free API key required | [seoul-events guide](docs/features/seoul-events.md) |
+| Check how crowded a Seoul hotspot is | `seoul-crowd` | Seoul realtime city-data API: 4-level congestion for major hotspots | Free API key required | [seoul-crowd guide](docs/features/seoul-crowd.md) |
+| Check the week-ahead weather outlook | `korea-weather-midterm` | KMA mid-range forecast API: 3-10 day outlook and temperatures | Free API key required | [korea-weather-midterm guide](docs/features/korea-weather-midterm.md) |
+| Check intercity bus times and fares | `kr-intercity-bus` | TAGO intercity bus API: terminal-to-terminal schedules (regional cities) | Free API key required | [kr-intercity-bus guide](docs/features/kr-intercity-bus.md) |
+| Check regional-city subways (Busan, etc.) | `kr-metro` | TAGO subway API: station search and timetables for Busan/Daegu/Daejeon/Gwangju | Free API key required | [kr-metro guide](docs/features/kr-metro.md) |
 
 The canonical source for each skill is its `<skill>/SKILL.md`. The guides under `docs/features/` are summaries only - always refer to SKILL.md for full procedures, parameters, and error handling.
 
