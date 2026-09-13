@@ -26,7 +26,7 @@ is_openapi_host() {
 # to one of these is a WARN, not a dead URL.
 is_geo_restricted_host() {
   case "$1" in
-    *www.arex.or.kr*|*www.koreaexim.go.kr*) return 0 ;;
+    *www.arex.or.kr*|*www.koreaexim.go.kr*|*data.go.kr*|*ecos.bok.or.kr*) return 0 ;;
     *) return 1 ;;
   esac
 }
