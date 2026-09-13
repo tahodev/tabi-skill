@@ -37,6 +37,10 @@ Claude Code、Codex、OpenCode など、`npx skills add` に対応したコー�
 | 仁川空港の便情報を調べる | `incheon-airport` | 仁川国際空港公社APIで到着・出発便の遅延・ゲートを照会。空港鉄道データつき | APIキー(無料)が必要 | [incheon-airport ガイド](docs/features/incheon-airport.md) |
 | 緊急連絡先を調べる | `korea-emergency` | 112/119/1330(日本語可)・在韓日本国大使館などの静的データ。オフラインでも使える | 不要 | [korea-emergency ガイド](docs/features/korea-emergency.md) |
 | 旅の基本を調べる | `korea-etiquette` | コンセント・チップ・T-money・交通マナーのチートシート | 不要 | [korea-etiquette ガイド](docs/features/korea-etiquette.md) |
+| 韓国の祝日・記念日を調べる | `korea-holidays` | 韓国天文研究院(KASI)の特日情報APIで祝日・国慶日を照会。旧暦の連休(설날・추석)の正確な日付が取れる | APIキー(無料)が必要 | [korea-holidays ガイド](docs/features/korea-holidays.md) |
+| 韓国の空気の状態を調べる | `korea-air-quality` | エアコリア(AirKorea)APIでPM2.5/PM10の等級を照会。「今日ソウルの空気は?」に | APIキー(無料)が必要 | [korea-air-quality ガイド](docs/features/korea-air-quality.md) |
+| ソウルのシェアサイクルを調べる | `seoul-bike` | タリョンイ(따릉이)のリアルタイム貸出台数を照会。サンプルキーで即試せる | APIキー(無料)が必要 | [seoul-bike ガイド](docs/features/seoul-bike.md) |
+| ソウルのイベントを探す | `seoul-events` | ソウル市の文化イベントAPIでコンサート・展示・祭りを月・ジャンルで検索 | APIキー(無料)が必要 | [seoul-events ガイド](docs/features/seoul-events.md) |
 
 各スキルの**正本は `<スキル名>/SKILL.md`** です。`docs/features/` のガイドは概要版なので、詳細な手順・パラメータ・エラー対応は必ず SKILL.md を参照してください。
 
@@ -81,6 +85,10 @@ Sibling repos: [kurashi-skill](https://github.com/tahodev/kurashi-skill) (daily 
 | Check Incheon Airport flights | `incheon-airport` | Arrival/departure status, delays, gates; airport-railroad data | Free API key required | [incheon-airport guide](docs/features/incheon-airport.md) |
 | Look up emergency contacts | `korea-emergency` | 112/119/1330 (Japanese OK), Embassy of Japan; works offline | Not required | [korea-emergency guide](docs/features/korea-emergency.md) |
 | Look up travel basics | `korea-etiquette` | Plugs, tipping, T-money, transit manners cheat sheet | Not required | [korea-etiquette guide](docs/features/korea-etiquette.md) |
+| Check Korean holidays | `korea-holidays` | KASI special-day API: holidays and national days, incl. exact lunar Seollal/Chuseok dates | Free API key required | [korea-holidays guide](docs/features/korea-holidays.md) |
+| Check air quality in Korea | `korea-air-quality` | AirKorea API: PM2.5/PM10 grades by city | Free API key required | [korea-air-quality guide](docs/features/korea-air-quality.md) |
+| Check Seoul bike-share availability | `seoul-bike` | Realtime Ttareungyi dock counts; testable with a public sample key | Free API key required | [seoul-bike guide](docs/features/seoul-bike.md) |
+| Find events in Seoul | `seoul-events` | Seoul cultural-event API: concerts, exhibitions, festivals by month/genre | Free API key required | [seoul-events guide](docs/features/seoul-events.md) |
 
 The canonical source for each skill is its `<skill>/SKILL.md`. The guides under `docs/features/` are summaries only - always refer to SKILL.md for full procedures, parameters, and error handling.
 
