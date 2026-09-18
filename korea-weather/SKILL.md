@@ -45,11 +45,12 @@ metadata:
 ### 2・3. 取得と読み方
 
 ```bash
+BASE_DATE=$(TZ=Asia/Seoul date +%Y%m%d)
 # 超短期実況(現在に近い値)
-curl -s "http://apis.data.go.kr/1360000/VilageFcstInfoService_2.0/getUltraSrtNcst?serviceKey={KEY}&pageNo=1&numOfRows=20&dataType=JSON&base_date=20260909&base_time=0800&nx=60&ny=127"
+curl -s "http://apis.data.go.kr/1360000/VilageFcstInfoService_2.0/getUltraSrtNcst?serviceKey={KEY}&pageNo=1&numOfRows=20&dataType=JSON&base_date=${BASE_DATE}&base_time=0800&nx=60&ny=127"
 
 # 短期予報(3日先まで)
-curl -s "http://apis.data.go.kr/1360000/VilageFcstInfoService_2.0/getVilageFcst?serviceKey={KEY}&pageNo=1&numOfRows=100&dataType=JSON&base_date=20260909&base_time=0800&nx=60&ny=127"
+curl -s "http://apis.data.go.kr/1360000/VilageFcstInfoService_2.0/getVilageFcst?serviceKey={KEY}&pageNo=1&numOfRows=100&dataType=JSON&base_date=${BASE_DATE}&base_time=0800&nx=60&ny=127"
 ```
 
 - `base_time`: 発表時刻。短期予報は 0200, 0500, 0800, 1100, 1400, 1700, 2000, 2300 の1日8回。発表直後はまだデータがなく、**発表時刻の10分後以降**に照会する。直近の発表を使うこと。

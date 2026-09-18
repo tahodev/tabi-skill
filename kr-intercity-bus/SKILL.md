@@ -30,7 +30,7 @@ curl -s "http://openapi.tago.go.kr/openapi/service/SuburbsBusInfoService/getSube
 ### 2. ターミナル間の便(getStrtpntAlocFndSuberbsBusInfo)
 
 ```bash
-curl -s "http://openapi.tago.go.kr/openapi/service/SuburbsBusInfoService/getStrtpntAlocFndSuberbsBusInfo?serviceKey={KEY}&_type=json&depTerminalId={DEP_ID}&arrTerminalId={ARR_ID}&depPlandTime=20260920"
+curl -s "http://openapi.tago.go.kr/openapi/service/SuburbsBusInfoService/getStrtpntAlocFndSuberbsBusInfo?serviceKey={KEY}&_type=json&depTerminalId={DEP_ID}&arrTerminalId={ARR_ID}&depPlandTime=${TRAVEL_DATE}"
 ```
 
 - `depTerminalId` / `arrTerminalId` は一覧で取ったID。`depPlandTime` は出発日(YYYYMMDD)。

@@ -24,7 +24,7 @@ metadata:
 ## ソースA: KEXIM 現在환율API
 
 ```bash
-curl -s "https://www.koreaexim.go.kr/site/program/financial/exchangeJSON?authkey={KEXIM_KEY}&searchdate=20260908&data=AP01"
+curl -s "https://www.koreaexim.go.kr/site/program/financial/exchangeJSON?authkey={KEXIM_KEY}&searchdate=${RATE_DATE}&data=AP01"
 ```
 
 - `searchdate`: 調べたい日付(YYYYMMDD)。当日11時前は前営業日のデータになる。土日・韓国の祝日はデータなし(直前営業日を指定する)。

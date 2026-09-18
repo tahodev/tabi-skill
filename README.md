@@ -34,12 +34,18 @@ Claude Code、Codex、OpenCode など、`npx skills add` に対応したコー�
 | 韓国各地の天気予報を調べる | `korea-weather` | 気象庁(KMA)公共データ短期予報APIで格子座標ごとの予報を取得 | APIキー(無料)が必要 | [korea-weather ガイド](docs/features/korea-weather.md) |
 | 気象特報(注意報・警報)を調べる | `korea-weather-warning` | 気象庁の気象特報APIで発表中の特報と通報文を照会。豪雨・台風シーズンの移動前チェックに | APIキー(無料)が必要 | [korea-weather-warning ガイド](docs/features/korea-weather-warning.md) |
 | 観光地・祭りを日本語で検索する | `kto-tour` | 韓国観光公社 TourAPI 4.0 の日本語サービス(JpnService2)。名前も説明も日本語 | APIキー(無料)が必要 | [kto-tour ガイド](docs/features/kto-tour.md) |
+| 宿泊施設の詳細を日本語で調べる | `kto-stay-detail` | TourAPI日本語サービスで宿・設備・チェックイン時刻を検索 | APIキー(無料)が必要 | [ガイド](docs/features/kto-stay-detail.md) |
+| 韓国全国の祭りを日本語で探す | `kto-festival` | TourAPI日本語サービスで開催日・地域から祭りを検索 | APIキー(無料)が必要 | [ガイド](docs/features/kto-festival.md) |
+| ソウルの公共Wi-Fiを探す | `seoul-wifi` | 施設名・住所・座標から公共Wi-Fi設置場所を検索 | APIキー(無料)が必要 | [ガイド](docs/features/seoul-wifi.md) |
+| 韓国の薬局を探す | `korea-pharmacy` | HIRA公式APIで地域・現在地周辺の薬局を検索 | APIキー(無料)が必要 | [ガイド](docs/features/korea-pharmacy.md) |
+| 韓国の病院を探す | `korea-hospital` | HIRA公式APIで地域・現在地周辺の病院を検索 | APIキー(無料)が必要 | [ガイド](docs/features/korea-hospital.md) |
+| AREX直通列車の時刻を調べる | `arex-timetable` | AREX公式サイトの現行時刻表を参照 | 不要 | [ガイド](docs/features/arex-timetable.md) |
 | 仁川空港の便情報を調べる | `incheon-airport` | 仁川国際空港公社APIで到着・出発便の遅延・ゲートを照会。空港鉄道データつき | APIキー(無料)が必要 | [incheon-airport ガイド](docs/features/incheon-airport.md) |
 | 緊急連絡先を調べる | `korea-emergency` | 112/119/1330(日本語可)・在韓日本国大使館などの静的データ。オフラインでも使える | 不要 | [korea-emergency ガイド](docs/features/korea-emergency.md) |
 | 旅の基本を調べる | `korea-etiquette` | コンセント・チップ・T-money・交通マナーのチートシート | 不要 | [korea-etiquette ガイド](docs/features/korea-etiquette.md) |
 | 韓国の祝日・記念日を調べる | `korea-holidays` | 韓国天文研究院(KASI)の特日情報APIで祝日・国慶日を照会。旧暦の連休(설날・추석)の正確な日付が取れる | APIキー(無料)が必要 | [korea-holidays ガイド](docs/features/korea-holidays.md) |
 | 韓国の空気の状態を調べる | `korea-air-quality` | エアコリア(AirKorea)APIでPM2.5/PM10の等級を照会。「今日ソウルの空気は?」に | APIキー(無料)が必要 | [korea-air-quality ガイド](docs/features/korea-air-quality.md) |
-| ソウルのシェアサイクルを調べる | `seoul-bike` | タリョンイ(따릉이)のリアルタイム貸出台数を照会。サンプルキーで即試せる | APIキー(無料)が必要 | [seoul-bike ガイド](docs/features/seoul-bike.md) |
+| ソウルのシェアサイクルを調べる | `seoul-bike` | タルンイ(따릉이)のリアルタイム貸出台数を照会。サンプルキーで即試せる | APIキー(無料)が必要 | [seoul-bike ガイド](docs/features/seoul-bike.md) |
 | ソウルのイベントを探す | `seoul-events` | ソウル市の文化イベントAPIでコンサート・展示・祭りを月・ジャンルで検索 | APIキー(無料)が必要 | [seoul-events ガイド](docs/features/seoul-events.md) |
 | ソウルの混雑状況を調べる | `seoul-crowd` | ソウル市リアルタイム都市データAPIで主要スポットの混雑度(4段階)を照会。「いま明洞は混んでる?」に | APIキー(無料)が必要 | [seoul-crowd ガイド](docs/features/seoul-crowd.md) |
 | 1週間先の天気の見通しを調べる | `korea-weather-midterm` | 気象庁の中期予報APIで3〜10日先の天気・気温の見通しを照会 | APIキー(無料)が必要 | [korea-weather-midterm ガイド](docs/features/korea-weather-midterm.md) |
@@ -52,7 +58,14 @@ Claude Code、Codex、OpenCode など、`npx skills add` に対応したコー�
 
 - 乗換検索アプリや予約サイトのスクレイピングは対象外です。公式API・公開データのみ。
 - 予約・購入・発券など状態を変更する操作は扱いません。照会と計算だけです。
-- 全エンドポイントは公開日(2026-09-09)に実測検証済み。以降の仕様変更は health-check CI と issue で追跡します。
+検証状態(2026-09-19再整理):
+
+| 状態 | スキル |
+| --- | --- |
+| 実データ応答確認 | krw-jpy-rate(ECOS, 9/9), seoul-bike / seoul-events / seoul-crowd(9/14), seoul-wifi / arex-timetable(9/19) |
+| オペレーション存在・認証エラー確認(実キー未実行) | kto-tour / kr-train / kr-bus / korea-weather / incheon-airport(9/9), korea-holidays / korea-air-quality / korea-weather-warning / korea-weather-midterm / kr-intercity-bus / kr-metro(9/14), kto-stay-detail / kto-festival / korea-pharmacy / korea-hospital(9/19) |
+| HTTP応答のみ、実データ未取得 | seoul-subway(9/19) |
+| 静的公式情報 | korea-emergency(9/19), korea-etiquette |
 - 市外バス(시외버스)は `kr-intercity-bus` で照会できます(2026-09-14 にオペレーション実在確認)。SRT(수서발 고속철도)は公開APIがないため対象外です。
 
 ## インストール
@@ -86,6 +99,12 @@ Sibling repos: [kurashi-skill](https://github.com/tahodev/kurashi-skill) (daily 
 | Check weather in Korea | `korea-weather` | KMA public-data short-term forecast API | Free API key required | [korea-weather guide](docs/features/korea-weather.md) |
 | Check weather warnings | `korea-weather-warning` | KMA weather-warning API: active advisories/warnings and bulletins | Free API key required | [korea-weather-warning guide](docs/features/korea-weather-warning.md) |
 | Search sights and festivals in Japanese | `kto-tour` | TourAPI 4.0 Japanese service (JpnService2): names and descriptions in Japanese | Free API key required | [kto-tour guide](docs/features/kto-tour.md) |
+| Search lodging details in Japanese | `kto-stay-detail` | TourAPI Japanese lodging and detail lookup | Free API key required | [guide](docs/features/kto-stay-detail.md) |
+| Search nationwide festivals in Japanese | `kto-festival` | TourAPI festival search by date and region | Free API key required | [guide](docs/features/kto-festival.md) |
+| Find Seoul public Wi-Fi | `seoul-wifi` | Public Wi-Fi locations by name, address or coordinates | Free API key required | [guide](docs/features/seoul-wifi.md) |
+| Find pharmacies in Korea | `korea-pharmacy` | Official HIRA pharmacy search | Free API key required | [guide](docs/features/korea-pharmacy.md) |
+| Find hospitals in Korea | `korea-hospital` | Official HIRA hospital search | Free API key required | [guide](docs/features/korea-hospital.md) |
+| Check AREX Express times | `arex-timetable` | Current official AREX timetable | Not required | [guide](docs/features/arex-timetable.md) |
 | Check Incheon Airport flights | `incheon-airport` | Arrival/departure status, delays, gates; airport-railroad data | Free API key required | [incheon-airport guide](docs/features/incheon-airport.md) |
 | Look up emergency contacts | `korea-emergency` | 112/119/1330 (Japanese OK), Embassy of Japan; works offline | Not required | [korea-emergency guide](docs/features/korea-emergency.md) |
 | Look up travel basics | `korea-etiquette` | Plugs, tipping, T-money, transit manners cheat sheet | Not required | [korea-etiquette guide](docs/features/korea-etiquette.md) |
@@ -104,7 +123,7 @@ Scope notes:
 
 - No scraping of transfer-search apps or booking sites. Official APIs and public data only.
 - Nothing here changes state: no reservations, purchases, or ticketing. Lookups and calculations only.
-- Every endpoint was verified live on release day (2026-09-09). Later spec changes are tracked by the health-check CI and issues.
+- Verification differs by skill: some have real response rows, some only confirmed operation existence via the expected auth error, and Seoul subway has HTTP reachability without a real sample row. See the Japanese verification matrix above (updated 2026-09-19).
 
 ### Install
 

@@ -35,7 +35,7 @@ curl -s "http://openapi.tago.go.kr/openapi/service/TrainInfoService/getCtyAcctoT
 ### 2. 列車時刻を照会する
 
 ```bash
-curl -s "http://openapi.tago.go.kr/openapi/service/TrainInfoService/getStrtpntAlocFndTrainInfo?serviceKey={KEY}&depPlaceId=NAT010000&arrPlaceId=NAT050445&depPlandTime=20260910&trainGradeCode=00"
+curl -s "http://openapi.tago.go.kr/openapi/service/TrainInfoService/getStrtpntAlocFndTrainInfo?serviceKey={KEY}&depPlaceId=NAT010000&arrPlaceId=NAT050445&depPlandTime=${TRAVEL_DATE}&trainGradeCode=00"
 ```
 
 - `depPlandTime`: 出発日(yyyyMMdd)。時刻まで付けるとその時刻以降。

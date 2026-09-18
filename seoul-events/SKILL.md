@@ -9,7 +9,7 @@ metadata:
 
 # seoul-events
 
-ソウルオープンデータ広場のソウル文化イベント情報API(culturalEventInfo)で、ソウル市内のコンサート・展示・祭り・公演を検索するスキル。2026-09-14 にサンプルキーで**実データ取得を実測確認**済み(日付フィルタ `2026-10` で113件、ジャンルフィルタ「축제」で1,492件のヒットを確認)。
+ソウルオープンデータ広場のソウル文化イベント情報API(culturalEventInfo)で、ソウル市内のコンサート・展示・祭り・公演を検索するスキル。サンプルキーで実データ取得を確認済み。件数は変動する観測値で、2026-09-19時点では日付フィルタ `2026-10` が159件、ジャンル「축제」が1,507件。
 
 ソウル市内に限定される。韓国全国の祭り・イベントは [kto-tour](../kto-tour/SKILL.md)(日本語対応)を使う。
 
@@ -30,10 +30,11 @@ curl -s -m 30 "http://openapi.seoul.go.kr:8088/sample/json/culturalEventInfo/1/3
 パスに検索条件を追加できる:`/{KEY}/json/culturalEventInfo/{START}/{END}/{CODENAME}/{TITLE}/{DATE}/`
 
 ```bash
-# 2026年10月のイベント(日付フィルタ実測済み: list_total_count=113)
-curl -s -m 30 "http://openapi.seoul.go.kr:8088/sample/json/culturalEventInfo/1/3/%20/%20/2026-10"
+# 対象月は実行時に指定する
+MONTH=$(date -d "+1 month" +%Y-%m)
+curl -s -m 30 "http://openapi.seoul.go.kr:8088/sample/json/culturalEventInfo/1/3/%20/%20/${MONTH}"
 
-# ジャンル「축제」(祭り)で絞る(実測: 1,492件)
+# ジャンル「축제」(祭り)で絞る(件数は変動)
 curl -s -m 30 "http://openapi.seoul.go.kr:8088/sample/json/culturalEventInfo/1/3/%EC%B6%95%EC%A0%9C"
 ```
 
@@ -71,4 +72,4 @@ curl -s -m 30 "http://openapi.seoul.go.kr:8088/sample/json/culturalEventInfo/1/3
 
 ## English summary
 
-Searches Seoul city cultural events (concerts, exhibitions, festivals, performances) via the Seoul Open Data Plaza culturalEventInfo API - verified live with the public `sample` key on 2026-09-14 (date filter 2026-10 returned 113 matches, genre filter "축제" 1,492). Free instantly-issued key from data.seoul.go.kr; sample key returns up to 5 rows (ERROR-335 beyond). Path filters after start/end are CODENAME (substring), TITLE (substring), DATE (YYYY-MM); pad empty ones with %20. Key fields: TITLE, PLACE, GUNAME, DATE, IS_FREE (무료/유료), USE_FEE, PRO_TIME, HMPG_ADDR (official detail page - give this to travelers), LAT/LOT. Seoul-only; for nationwide festivals use kto-tour. Always date-filter, and never invent events.
+Searches Seoul city cultural events (concerts, exhibitions, festivals, performances) via the Seoul Open Data Plaza culturalEventInfo API - verified live with the public `sample` key on 2026-09-14 (observed on 2026-09-19: date filter 2026-10 returned 159 matches and genre filter "축제" 1,507). Free instantly-issued key from data.seoul.go.kr; sample key returns up to 5 rows (ERROR-335 beyond). Path filters after start/end are CODENAME (substring), TITLE (substring), DATE (YYYY-MM); pad empty ones with %20. Key fields: TITLE, PLACE, GUNAME, DATE, IS_FREE (무료/유료), USE_FEE, PRO_TIME, HMPG_ADDR (official detail page - give this to travelers), LAT/LOT. Seoul-only; for nationwide festivals use kto-tour. Always date-filter, and never invent events.

@@ -22,7 +22,7 @@ metadata:
 ### 1. 陸上天気の見通し(getMidLandFcst)
 
 ```bash
-curl -s "http://apis.data.go.kr/1360000/MidFcstInfoService/getMidLandFcst?serviceKey={KEY}&pageNo=1&numOfRows=10&dataType=JSON&regId=11B00000&tmFc=202609140600"
+curl -s "http://apis.data.go.kr/1360000/MidFcstInfoService/getMidLandFcst?serviceKey={KEY}&pageNo=1&numOfRows=10&dataType=JSON&regId=11B00000&tmFc=${TM_FC}"
 ```
 
 - `regId` は中期予報区画コード。ソウル·仁川·京畿は `11B00000`。他の区画コードは気象庁の活用ガイドの別表参照。
@@ -32,7 +32,7 @@ curl -s "http://apis.data.go.kr/1360000/MidFcstInfoService/getMidLandFcst?servic
 ### 2. 気温の見通し(getMidTa)
 
 ```bash
-curl -s "http://apis.data.go.kr/1360000/MidFcstInfoService/getMidTa?serviceKey={KEY}&pageNo=1&numOfRows=10&dataType=JSON&regId=11B10101&tmFc=202609140600"
+curl -s "http://apis.data.go.kr/1360000/MidFcstInfoService/getMidTa?serviceKey={KEY}&pageNo=1&numOfRows=10&dataType=JSON&regId=11B10101&tmFc=${TM_FC}"
 ```
 
 - `regId` は都市コード(ソウルは `11B10101`)。3〜10日後の最低/最高気温の予報値が返る。
