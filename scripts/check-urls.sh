@@ -26,7 +26,7 @@ is_openapi_host() {
 # to one of these is a WARN, not a dead URL.
 is_geo_restricted_host() {
   case "$1" in
-    *www.arex.or.kr*|*www.koreaexim.go.kr*|*data.go.kr*|*ecos.bok.or.kr*|*openapi.seoul.go.kr*) return 0 ;;
+    *www.arex.or.kr*|*www.koreaexim.go.kr*|*data.go.kr*|*ecos.bok.or.kr*|*openapi.seoul.go.kr*|*arex.or.kr*|*emb-japan.go.jp*) return 0 ;;
     *) return 1 ;;
   esac
 }
@@ -49,6 +49,10 @@ for url in "${urls[@]}"; do
     *'{'*|*'}'*) echo "SKIP  $url (templated)"; continue ;;
   esac
   code=$(fetch_code "$url")
+  if is_geo_restricted_host "$url" && [[ ! "$code" =~ ^[23] ]]; then
+    echo "WARN  $code $url (blocked or unstable from this network; known restricted host)"
+    continue
+  fi
   case "$code" in
     2*|3*)
       echo "OK    $code $url" ;;

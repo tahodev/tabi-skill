@@ -25,7 +25,7 @@ TAGOの高速バス情報オープンAPIで、高速バスターミナル間の�
 curl -s "http://openapi.tago.go.kr/openapi/service/ExpBusInfoService/getExpBusTrminlList?serviceKey={KEY}"
 
 # 時刻照会(例: ソウル京釜 → 釜山総合)
-curl -s "http://openapi.tago.go.kr/openapi/service/ExpBusInfoService/getStrtpntAlocFndExpbusInfo?serviceKey={KEY}&depTerminalId=NAEK010&arrTerminalId=NAEK300&depPlandTime=20260910"
+curl -s "http://openapi.tago.go.kr/openapi/service/ExpBusInfoService/getStrtpntAlocFndExpbusInfo?serviceKey={KEY}&depTerminalId=NAEK010&arrTerminalId=NAEK300&depPlandTime=${TRAVEL_DATE}"
 ```
 
 - レスポンスの各item: `depPlandTime`/`arrPlandTime`(発着)、`charge`(運賃・ウォン)、`gradeNm`(等級名: 一般/優等/プレミアムなど)。

@@ -35,8 +35,9 @@ curl -s "http://apis.data.go.kr/B551011/JpnService2/areaBasedList2?serviceKey={K
 # キーワード検索(日本語キーワード可)
 curl -s "http://apis.data.go.kr/B551011/JpnService2/searchKeyword2?serviceKey={KEY}&MobileOS=ETC&MobileApp=tabi&_type=json&keyword=明洞"
 
-# 開催中の祭り(例: 2026年9月)
-curl -s "http://apis.data.go.kr/B551011/JpnService2/searchFestival2?serviceKey={KEY}&MobileOS=ETC&MobileApp=tabi&_type=json&eventStartDate=20260901"
+# 開催中の祭り
+START=$(date -d today +%Y%m%d)
+curl -s "http://apis.data.go.kr/B551011/JpnService2/searchFestival2?serviceKey={KEY}&MobileOS=ETC&MobileApp=tabi&_type=json&eventStartDate=${START}"
 
 # 詳細(contentIdは検索結果から)
 curl -s "http://apis.data.go.kr/B551011/JpnService2/detailCommon2?serviceKey={KEY}&MobileOS=ETC&MobileApp=tabi&_type=json&contentId=126508"
