@@ -62,9 +62,8 @@ Claude Code、Codex、OpenCode など、`npx skills add` に対応したコー�
 
 | 状態 | スキル |
 | --- | --- |
-| 実データ応答確認 | krw-jpy-rate(ECOS, 9/9), seoul-bike / seoul-events / seoul-crowd(9/14), seoul-wifi / arex-timetable(9/19) |
+| 実データ応答確認 | krw-jpy-rate(ECOS, 9/9), seoul-bike / seoul-events / seoul-crowd(9/14), seoul-wifi / arex-timetable(9/19), seoul-subway(列車位置API realtimePosition をサンプルキーで実測, 9/19。到着予測APIは実キー必要) |
 | オペレーション存在・認証エラー確認(実キー未実行) | kto-tour / kr-train / kr-bus / korea-weather / incheon-airport(9/9), korea-holidays / korea-air-quality / korea-weather-warning / korea-weather-midterm / kr-intercity-bus / kr-metro(9/14), kto-stay-detail / kto-festival / korea-pharmacy / korea-hospital(9/19) |
-| HTTP応答のみ、実データ未取得 | seoul-subway(9/19) |
 | 静的公式情報 | korea-emergency(9/19), korea-etiquette |
 - 市外バス(시외버스)は `kr-intercity-bus` で照会できます(2026-09-14 にオペレーション実在確認)。SRT(수서발 고속철도)は公開APIがないため対象外です。
 
