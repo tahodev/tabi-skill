@@ -22,8 +22,14 @@
 - `korea-beach` - 海洋水産部の海水浴場情報API(1192000)で全国の海水浴場を照会(無料APIキー。2026-09-21 オペレーション実在確認)
 - `korea-uv-index` - 気象庁の生活気象指数 照会サービス(4.0) `getUVIdxV5` で地域別紫外線指数を照会(無料APIキー。2026-09-21 オペレーション実在確認)
 
+- `korea-public-toilet` - 全国公衆トイレ標準データAPIで住所・開放時間・設備を照会(2026-09-21 操作実在確認、実キー未検証)
+- `korea-parking` - 全国駐車場情報標準データAPIで台数・料金・営業時間を照会(2026-09-21 操作実在確認、実キー未検証)
+- `korea-museum` - 全国博物館美術館情報標準データAPIで開館時間・休館日・料金を照会(2026-09-21 操作実在確認、実キー未検証)
+- `korea-tourist-site` - 全国観光地情報標準データAPIで営業時間・料金・駐車情報を照会(2026-09-21 操作実在確認、実キー未検証)
+- `korea-cultural-festival` - 全国文化祭標準データAPIで開催期間・場所・主催者を照会(2026-09-21 操作実在確認、実キー未検証)
+
 ### Changed
-- `check-urls.py`: WARN/オープンAPIゲートウェイのホスト一覧に `www.safetydata.go.kr` / `safetydata.go.kr` を追加(korea-disaster-alert のベースURL。HTTP 200 + resultCode 30 のキーエラーを「実在」と判定するため)
+- `check-urls.py`: WARN/オープンAPIゲートウェイのホスト一覧に `www.safetydata.go.kr` / `safetydata.go.kr` / `api.data.go.kr` を追加(korea-disaster-alert のベースURL。HTTP 200 + resultCode 30 のキーエラーを「実在」と判定するため)
 - 緊急連絡先を現行公式情報へ更新(1339廃止、1330受付時間、大使館領事番号)
 - READMEをスキル別検証マトリクスへ変更し、検証レベルの過大表現を修正
 - seoul-subway / incheon-airport の検証状態、seoul-eventsの変動件数、用語、運用例の日付を修正
