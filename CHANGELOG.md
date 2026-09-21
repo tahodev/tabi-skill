@@ -12,8 +12,18 @@
 
 ### Added
 - `kto-stay-detail`, `kto-festival`, `seoul-wifi`, `korea-pharmacy`, `korea-hospital`, `arex-timetable`
+- `kto-nearby` - TourAPI JpnService2 `locationBasedList2` で現在地周辺の観光スポットを座標・半径指定で検索(無料APIキー。2026-09-21 オペレーション実在確認)
+- `kto-food` - TourAPI JpnService2 で飲食店(コンテンツ種別39)を地域・キーワード検索。`areaBasedList2` / `searchKeyword2` を使用(無料APIキー。2026-09-21 オペレーション実在確認)
+- `kto-course` - TourAPI JpnService2 で旅行コース(コンテンツ種別25)を地域検索(無料APIキー。2026-09-21 オペレーション実在確認)
+- `korea-trail` - 韓国観光公社 Durunubi API で歩行コース(コリアぐるれ道等)の距離・所要時間・難易度を照会。`courseList` / `routeList` を使用。データは韓国語(無料APIキー。2026-09-21 オペレーション実在確認)
+- `korea-camping` - 韓国観光公社 GoCamping API で全国のキャンプ場を照会。`basedList` / `searchList` を使用。データは韓国語(無料APIキー。2026-09-21 オペレーション実在確認)
+- `kr-city-bus` - TAGOバス情報API(1613000)で地方都市の市内バス到着予測を照会。`getCtyCodeList` / `getSttnNoList` / `getSttnAcctoArvlPrearngeInfoList` / `getRouteNoList` を使用(無料APIキー。2026-09-21 オペレーション実在確認)
+- `korea-disaster-alert` - 行政安全部の災難文字API(safetydata.go.kr, DSSP-IF-00247)で緊急メッセージと対象地域を照会。データは韓国語(無料APIキー。2026-09-21 キーエラー応答で実在確認)
+- `korea-beach` - 海洋水産部の海水浴場情報API(1192000)で全国の海水浴場を照会(無料APIキー。2026-09-21 オペレーション実在確認)
+- `korea-uv-index` - 気象庁の生活気象指数 照会サービス(4.0) `getUVIdxV5` で地域別紫外線指数を照会(無料APIキー。2026-09-21 オペレーション実在確認)
 
 ### Changed
+- `check-urls.py`: WARN/オープンAPIゲートウェイのホスト一覧に `www.safetydata.go.kr` / `safetydata.go.kr` を追加(korea-disaster-alert のベースURL。HTTP 200 + resultCode 30 のキーエラーを「実在」と判定するため)
 - 緊急連絡先を現行公式情報へ更新(1339廃止、1330受付時間、大使館領事番号)
 - READMEをスキル別検証マトリクスへ変更し、検証レベルの過大表現を修正
 - seoul-subway / incheon-airport の検証状態、seoul-eventsの変動件数、用語、運用例の日付を修正
