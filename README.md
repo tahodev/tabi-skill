@@ -60,6 +60,11 @@ Claude Code、Codex、OpenCode など、`npx skills add` に対応したコー�
 | 災害の緊急メッセージを確認する | `korea-disaster-alert` | 行政安全部の災難文字APIで発令された緊急メッセージと対象地域を照会(韓国語データ) | APIキー(無料)が必要 | [ガイド](docs/features/korea-disaster-alert.md) |
 | 海水浴場の情報を調べる | `korea-beach` | 海洋水産部の海水浴場情報APIで全国の海水浴場を照会 | APIキー(無料)が必要 | [ガイド](docs/features/korea-beach.md) |
 | 紫外線指数を調べる | `korea-uv-index` | 気象庁の生活気象指数APIで地域別の紫外線指数(3時間ごと予測)を照会 | APIキー(無料)が必要 | [ガイド](docs/features/korea-uv-index.md) |
+| 公衆トイレを探す | `korea-public-toilet` | 全国公衆トイレ標準データで住所・開放時間・設備を照会(韓国語データ) | APIキー(無料)が必要 | [ガイド](docs/features/korea-public-toilet.md) |
+| 公共駐車場を探す | `korea-parking` | 全国駐車場標準データで台数・料金・営業時間を照会(韓国語データ) | APIキー(無料)が必要 | [ガイド](docs/features/korea-parking.md) |
+| 博物館・美術館を探す | `korea-museum` | 全国博物館美術館標準データで開館時間・休館日・料金を照会 | APIキー(無料)が必要 | [ガイド](docs/features/korea-museum.md) |
+| 観光地の実用情報を調べる | `korea-tourist-site` | 全国観光地標準データで営業時間・料金・駐車情報を照会 | APIキー(無料)が必要 | [ガイド](docs/features/korea-tourist-site.md) |
+| 地域文化祭を探す | `korea-cultural-festival` | 全国文化祭標準データで開催期間・場所・主催者を照会 | APIキー(無料)が必要 | [ガイド](docs/features/korea-cultural-festival.md) |
 
 各スキルの**正本は `<スキル名>/SKILL.md`** です。`docs/features/` のガイドは概要版なので、詳細な手順・パラメータ・エラー対応は必ず SKILL.md を参照してください。
 
@@ -72,7 +77,7 @@ Claude Code、Codex、OpenCode など、`npx skills add` に対応したコー�
 | 状態 | スキル |
 | --- | --- |
 | 実データ応答確認 | krw-jpy-rate(ECOS, 9/9), seoul-bike / seoul-events / seoul-crowd(9/14), seoul-wifi / arex-timetable(9/19) |
-| オペレーション存在・認証エラー確認(実キー未実行) | kto-tour / kr-train / kr-bus / korea-weather / incheon-airport(9/9), korea-holidays / korea-air-quality / korea-weather-warning / korea-weather-midterm / kr-intercity-bus / kr-metro(9/14), kto-stay-detail / kto-festival / korea-pharmacy / korea-hospital(9/19), kto-nearby / kto-food / kto-course / korea-trail / korea-camping / kr-city-bus / korea-disaster-alert / korea-beach / korea-uv-index(9/21) |
+| オペレーション存在・認証エラー確認(実キー未実行) | kto-tour / kr-train / kr-bus / korea-weather / incheon-airport(9/9), korea-holidays / korea-air-quality / korea-weather-warning / korea-weather-midterm / kr-intercity-bus / kr-metro(9/14), kto-stay-detail / kto-festival / korea-pharmacy / korea-hospital(9/19), kto-nearby / kto-food / kto-course / korea-trail / korea-camping / kr-city-bus / korea-disaster-alert / korea-beach / korea-uv-index / korea-public-toilet / korea-parking / korea-museum / korea-tourist-site / korea-cultural-festival(9/21) |
 | HTTP応答のみ、実データ未取得 | seoul-subway(9/19) |
 | 静的公式情報 | korea-emergency(9/19), korea-etiquette |
 - 市外バス(시외버스)は `kr-intercity-bus` で照会できます(2026-09-14 にオペレーション実在確認)。SRT(수서발 고속철도)は公開APIがないため対象外です。
@@ -134,6 +139,11 @@ Sibling repos: [kurashi-skill](https://github.com/tahodev/kurashi-skill) (daily 
 | Check disaster emergency messages | `korea-disaster-alert` | Ministry of the Interior and Safety cell-broadcast messages with target areas (Korean data) | Free API key required | [guide](docs/features/korea-disaster-alert.md) |
 | Look up beaches | `korea-beach` | Ministry of Oceans and Fisheries beach-info API | Free API key required | [guide](docs/features/korea-beach.md) |
 | Check the UV index | `korea-uv-index` | KMA living-weather-index API: 3-hourly UV forecasts by region | Free API key required | [guide](docs/features/korea-uv-index.md) |
+| Find public toilets | `korea-public-toilet` | Nationwide standard data: address, opening hours and facilities (Korean data) | Free API key required | [guide](docs/features/korea-public-toilet.md) |
+| Find public parking | `korea-parking` | Nationwide standard data: capacity, fees and opening hours (Korean data) | Free API key required | [guide](docs/features/korea-parking.md) |
+| Find museums and art museums | `korea-museum` | Nationwide standard data: hours, closure days and admission | Free API key required | [guide](docs/features/korea-museum.md) |
+| Check practical tourist-site details | `korea-tourist-site` | Nationwide standard data: hours, admission and parking | Free API key required | [guide](docs/features/korea-tourist-site.md) |
+| Find local cultural festivals | `korea-cultural-festival` | Nationwide standard data: dates, venues and organizers | Free API key required | [guide](docs/features/korea-cultural-festival.md) |
 
 The canonical source for each skill is its `<skill>/SKILL.md`. The guides under `docs/features/` are summaries only - always refer to SKILL.md for full procedures, parameters, and error handling.
 

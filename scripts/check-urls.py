@@ -4,14 +4,15 @@ from pathlib import Path
 import json, re, subprocess, sys
 root=Path(__file__).resolve().parents[1]
 MAX_WORKERS=8; TIMEOUT=20
-WARN_HOSTS={'emb-japan.go.jp', 'www.koreaexim.go.kr', 'www.kma.go.kr', 'data.seoul.go.kr', 'www.airport.kr', 'japanese.visitkorea.or.kr', 'www.mohw.go.kr', 'odp.airport.kr', 'ecos.bok.or.kr', 'koreaexim.go.kr', 'www.arex.or.kr', 'swopenapi.seoul.go.kr', 'apis.data.go.kr', 'openapi.tago.go.kr', 'arex.or.kr', 'openapi.seoul.go.kr', 'data.go.kr', 'www.safetydata.go.kr', 'safetydata.go.kr'}
-OPENAPI_HOSTS={'odp.airport.kr', 'ecos.bok.or.kr', 'koreaexim.go.kr', 'swopenapi.seoul.go.kr', 'apis.data.go.kr', 'openapi.tago.go.kr', 'openapi.seoul.go.kr', 'data.go.kr', 'www.safetydata.go.kr', 'safetydata.go.kr'}
+WARN_HOSTS={'www.kr.emb-japan.go.jp', 'culture.seoul.go.kr', 'kr.emb-japan.go.jp', 'emb-japan.go.jp', 'www.koreaexim.go.kr', 'www.kma.go.kr', 'data.seoul.go.kr', 'www.airport.kr', 'japanese.visitkorea.or.kr', 'www.mohw.go.kr', 'odp.airport.kr', 'ecos.bok.or.kr', 'koreaexim.go.kr', 'www.arex.or.kr', 'swopenapi.seoul.go.kr', 'apis.data.go.kr', 'openapi.tago.go.kr', 'arex.or.kr', 'openapi.seoul.go.kr', 'data.go.kr', 'www.safetydata.go.kr', 'safetydata.go.kr', 'api.data.go.kr'}
+OPENAPI_HOSTS={'odp.airport.kr', 'ecos.bok.or.kr', 'koreaexim.go.kr', 'swopenapi.seoul.go.kr', 'apis.data.go.kr', 'openapi.tago.go.kr', 'openapi.seoul.go.kr', 'data.go.kr', 'www.safetydata.go.kr', 'safetydata.go.kr', 'api.data.go.kr'}
 url_re=re.compile(r'https?://[^ )"`\'。，、；：（）<>]+')
 placeholders={'KEY':'INVALID_CI_KEY','SEOUL_KEY':'sample','KEXIM_KEY':'INVALID_CI_KEY','ECOS_KEY':'sample','CONTENT_ID':'126508','STATION_ID':'SUB0002','STN_ID':'108','TM_SEQ':'1','DEP_ID':'NAEK010','ARR_ID':'NAEK300','LON':'126.9780','LAT':'37.5665','START':'20260901','END':'20260930','AREA_NM':'%EB%AA%85%EB%8F%99','BASE_DATE':'20260919','TRAVEL_DATE':'20260919','RATE_DATE':'20260919','MONTH':'2026-09','TM_FC':'202609190600','CWA_API_KEY':'INVALID_CI_KEY'}
 items={}
 for path in root.glob('*/SKILL.md'):
     for raw in url_re.findall(path.read_text(encoding='utf-8')):
         url=raw.rstrip('.,;。,)}')
+        if re.search(r'/B551011/(?:Jpn|Kor|Eng)Service2$', url): continue  # service root is not an operation
         items.setdefault(url,set()).add(str(path.relative_to(root)))
 
 def materialize(url):
@@ -41,7 +42,7 @@ def check(pair):
         body,_,code=p.stdout.rpartition('\n'); code=code.strip() or '000'
     except subprocess.TimeoutExpired: body=''; code='000'
     templated=original!=url
-    if warning_host(h) and (code=='000' or not code.startswith(('2','3'))): return ('WARN',f'{owner}: {code} {original} (known geo/network restriction)')
+    if warning_host(h) and (code=='000' or (h.endswith('emb-japan.go.jp') and code=='403')): return ('WARN',f'{owner}: {code} {original} (known geo/network restriction)')
     if code=='000': return ('FAIL',f'{owner}: 000 {original}')
     if code.startswith(('2','3')):
         err=api_error(body[:200000])
@@ -49,7 +50,9 @@ def check(pair):
             if templated and openapi_host(h): return ('OK',f'{owner}: {code} {original} (template probe returned expected API status: {err})')
             return ('FAIL',f'{owner}: {code} {original} (API-level error: {err})')
         return ('OK',f'{owner}: {code} {original}')
-    if code in ('400','401','403') and openapi_host(h): return ('OK',f'{owner}: {code} {original} (endpoint exists; auth/parameters required)')
+    if code in ('400','401','403') and openapi_host(h):
+        if re.search(r'NO_OPENAPI_SERVICE_ERROR|해당 오픈API 서비스가 없거나 폐기됨', body, re.I): return ('FAIL',f'{owner}: {code} {original} (operation missing or retired)')
+        return ('OK',f'{owner}: {code} {original} (endpoint exists; auth/parameters required)')
     return ('FAIL',f'{owner}: {code} {original}')
 
 failed=False
