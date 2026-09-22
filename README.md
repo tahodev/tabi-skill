@@ -51,6 +51,20 @@ Claude Code、Codex、OpenCode など、`npx skills add` に対応したコー�
 | 1週間先の天気の見通しを調べる | `korea-weather-midterm` | 気象庁の中期予報APIで3〜10日先の天気・気温の見通しを照会 | APIキー(無料)が必要 | [korea-weather-midterm ガイド](docs/features/korea-weather-midterm.md) |
 | 市外バスの時刻・運賃を調べる | `kr-intercity-bus` | TAGO市外バスAPIでターミナル間の便を照会。江陵・慶州など地方都市へ | APIキー(無料)が必要 | [kr-intercity-bus ガイド](docs/features/kr-intercity-bus.md) |
 | 釜山など地方都市の地下鉄を調べる | `kr-metro` | TAGO地下鉄情報APIで釜山・大邱・大田・光州の駅検索と時刻表を照会 | APIキー(無料)が必要 | [kr-metro ガイド](docs/features/kr-metro.md) |
+| いまいる場所の周辺観光地を調べる | `kto-nearby` | TourAPI日本語サービスで現在地の座標と半径から周辺スポットを検索 | APIキー(無料)が必要 | [ガイド](docs/features/kto-nearby.md) |
+| 韓国の飲食店を日本語で探す | `kto-food` | TourAPI日本語サービスで地域・キーワードから飲食店を検索 | APIキー(無料)が必要 | [ガイド](docs/features/kto-food.md) |
+| おすすめ旅行コースを日本語で探す | `kto-course` | TourAPI日本語サービスでモデルコース(旅行コース)を検索 | APIキー(無料)が必要 | [ガイド](docs/features/kto-course.md) |
+| 歩行コース(コリアぐるれ道)を調べる | `korea-trail` | 韓国観光公社Durunubi APIでコースの距離・所要時間・難易度を照会(韓国語データ) | APIキー(無料)が必要 | [ガイド](docs/features/korea-trail.md) |
+| キャンプ場を探す | `korea-camping` | 韓国観光公社コキャンピングAPIで全国のキャンプ場を検索(韓国語データ) | APIキー(無料)が必要 | [ガイド](docs/features/korea-camping.md) |
+| 地方都市の市バス到着時刻を調べる | `kr-city-bus` | TAGOバス到着情報APIで停留所別のリアルタイム到着予測を照会 | APIキー(無料)が必要 | [ガイド](docs/features/kr-city-bus.md) |
+| 災害の緊急メッセージを確認する | `korea-disaster-alert` | 行政安全部の災難文字APIで発令された緊急メッセージと対象地域を照会(韓国語データ) | APIキー(無料)が必要 | [ガイド](docs/features/korea-disaster-alert.md) |
+| 海水浴場の情報を調べる | `korea-beach` | 海洋水産部の海水浴場情報APIで全国の海水浴場を照会 | APIキー(無料)が必要 | [ガイド](docs/features/korea-beach.md) |
+| 紫外線指数を調べる | `korea-uv-index` | 気象庁の生活気象指数APIで地域別の紫外線指数(3時間ごと予測)を照会 | APIキー(無料)が必要 | [ガイド](docs/features/korea-uv-index.md) |
+| 公衆トイレを探す | `korea-public-toilet` | 全国公衆トイレ標準データで住所・開放時間・設備を照会(韓国語データ) | APIキー(無料)が必要 | [ガイド](docs/features/korea-public-toilet.md) |
+| 公共駐車場を探す | `korea-parking` | 全国駐車場標準データで台数・料金・営業時間を照会(韓国語データ) | APIキー(無料)が必要 | [ガイド](docs/features/korea-parking.md) |
+| 博物館・美術館を探す | `korea-museum` | 全国博物館美術館標準データで開館時間・休館日・料金を照会 | APIキー(無料)が必要 | [ガイド](docs/features/korea-museum.md) |
+| 観光地の実用情報を調べる | `korea-tourist-site` | 全国観光地標準データで営業時間・料金・駐車情報を照会 | APIキー(無料)が必要 | [ガイド](docs/features/korea-tourist-site.md) |
+| 地域文化祭を探す | `korea-cultural-festival` | 全国文化祭標準データで開催期間・場所・主催者を照会 | APIキー(無料)が必要 | [ガイド](docs/features/korea-cultural-festival.md) |
 
 各スキルの**正本は `<スキル名>/SKILL.md`** です。`docs/features/` のガイドは概要版なので、詳細な手順・パラメータ・エラー対応は必ず SKILL.md を参照してください。
 
@@ -58,12 +72,12 @@ Claude Code、Codex、OpenCode など、`npx skills add` に対応したコー�
 
 - 乗換検索アプリや予約サイトのスクレイピングは対象外です。公式API・公開データのみ。
 - 予約・購入・発券など状態を変更する操作は扱いません。照会と計算だけです。
-検証状態(2026-09-19再整理):
+検証状態(2026-09-22更新):
 
 | 状態 | スキル |
 | --- | --- |
 | 実データ応答確認 | krw-jpy-rate(ECOS, 9/9), seoul-bike / seoul-events / seoul-crowd(9/14), seoul-wifi / arex-timetable(9/19), seoul-subway(列車位置・到着予測APIをサンプルキーで実測, 9/22。本番利用は無料キー推奨) |
-| オペレーション存在・認証エラー確認(実キー未実行) | kto-tour / kr-train / kr-bus / korea-weather / incheon-airport(9/9), korea-holidays / korea-air-quality / korea-weather-warning / korea-weather-midterm / kr-intercity-bus / kr-metro(9/14), kto-stay-detail / kto-festival / korea-pharmacy / korea-hospital(9/19) |
+| オペレーション存在・認証エラー確認(実キー未実行) | kto-tour / kr-train / kr-bus / korea-weather / incheon-airport(9/9), korea-holidays / korea-air-quality / korea-weather-warning / korea-weather-midterm / kr-intercity-bus / kr-metro(9/14), kto-stay-detail / kto-festival / korea-pharmacy / korea-hospital(9/19), kto-nearby / kto-food / kto-course / korea-trail / korea-camping / kr-city-bus / korea-disaster-alert / korea-beach / korea-uv-index / korea-public-toilet / korea-parking / korea-museum / korea-tourist-site / korea-cultural-festival(9/21) |
 | 静的公式情報 | korea-emergency(9/19), korea-etiquette |
 - 市外バス(시외버스)は `kr-intercity-bus` で照会できます(2026-09-14 にオペレーション実在確認)。SRT(수서발 고속철도)は公開APIがないため対象外です。
 
@@ -115,6 +129,20 @@ Sibling repos: [kurashi-skill](https://github.com/tahodev/kurashi-skill) (daily 
 | Check the week-ahead weather outlook | `korea-weather-midterm` | KMA mid-range forecast API: 3-10 day outlook and temperatures | Free API key required | [korea-weather-midterm guide](docs/features/korea-weather-midterm.md) |
 | Check intercity bus times and fares | `kr-intercity-bus` | TAGO intercity bus API: terminal-to-terminal schedules (regional cities) | Free API key required | [kr-intercity-bus guide](docs/features/kr-intercity-bus.md) |
 | Check regional-city subways (Busan, etc.) | `kr-metro` | TAGO subway API: station search and timetables for Busan/Daegu/Daejeon/Gwangju | Free API key required | [kr-metro guide](docs/features/kr-metro.md) |
+| Find sights near where you are | `kto-nearby` | TourAPI Japanese service: nearby spots by coordinate and radius | Free API key required | [guide](docs/features/kto-nearby.md) |
+| Find restaurants in Japanese | `kto-food` | TourAPI Japanese service: restaurants by region or keyword | Free API key required | [guide](docs/features/kto-food.md) |
+| Find recommended travel courses in Japanese | `kto-course` | TourAPI Japanese service: model travel courses | Free API key required | [guide](docs/features/kto-course.md) |
+| Look up walking trails (Korea Dulle-gil) | `korea-trail` | KTO Durunubi API: course distance, duration, difficulty (Korean data) | Free API key required | [guide](docs/features/korea-trail.md) |
+| Find campsites | `korea-camping` | KTO GoCamping API: campsites nationwide (Korean data) | Free API key required | [guide](docs/features/korea-camping.md) |
+| Check regional city-bus arrivals | `kr-city-bus` | TAGO bus API: realtime per-stop arrival predictions | Free API key required | [guide](docs/features/kr-city-bus.md) |
+| Check disaster emergency messages | `korea-disaster-alert` | Ministry of the Interior and Safety cell-broadcast messages with target areas (Korean data) | Free API key required | [guide](docs/features/korea-disaster-alert.md) |
+| Look up beaches | `korea-beach` | Ministry of Oceans and Fisheries beach-info API | Free API key required | [guide](docs/features/korea-beach.md) |
+| Check the UV index | `korea-uv-index` | KMA living-weather-index API: 3-hourly UV forecasts by region | Free API key required | [guide](docs/features/korea-uv-index.md) |
+| Find public toilets | `korea-public-toilet` | Nationwide standard data: address, opening hours and facilities (Korean data) | Free API key required | [guide](docs/features/korea-public-toilet.md) |
+| Find public parking | `korea-parking` | Nationwide standard data: capacity, fees and opening hours (Korean data) | Free API key required | [guide](docs/features/korea-parking.md) |
+| Find museums and art museums | `korea-museum` | Nationwide standard data: hours, closure days and admission | Free API key required | [guide](docs/features/korea-museum.md) |
+| Check practical tourist-site details | `korea-tourist-site` | Nationwide standard data: hours, admission and parking | Free API key required | [guide](docs/features/korea-tourist-site.md) |
+| Find local cultural festivals | `korea-cultural-festival` | Nationwide standard data: dates, venues and organizers | Free API key required | [guide](docs/features/korea-cultural-festival.md) |
 
 The canonical source for each skill is its `<skill>/SKILL.md`. The guides under `docs/features/` are summaries only - always refer to SKILL.md for full procedures, parameters, and error handling.
 
