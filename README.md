@@ -72,13 +72,12 @@ Claude Code、Codex、OpenCode など、`npx skills add` に対応したコー�
 
 - 乗換検索アプリや予約サイトのスクレイピングは対象外です。公式API・公開データのみ。
 - 予約・購入・発券など状態を変更する操作は扱いません。照会と計算だけです。
-検証状態(2026-09-21更新):
+検証状態(2026-09-22更新):
 
 | 状態 | スキル |
 | --- | --- |
-| 実データ応答確認 | krw-jpy-rate(ECOS, 9/9), seoul-bike / seoul-events / seoul-crowd(9/14), seoul-wifi / arex-timetable(9/19) |
+| 実データ応答確認 | krw-jpy-rate(ECOS, 9/9), seoul-bike / seoul-events / seoul-crowd(9/14), seoul-wifi / arex-timetable(9/19), seoul-subway(列車位置・到着予測APIをサンプルキーで実測, 9/22。本番利用は無料キー推奨) |
 | オペレーション存在・認証エラー確認(実キー未実行) | kto-tour / kr-train / kr-bus / korea-weather / incheon-airport(9/9), korea-holidays / korea-air-quality / korea-weather-warning / korea-weather-midterm / kr-intercity-bus / kr-metro(9/14), kto-stay-detail / kto-festival / korea-pharmacy / korea-hospital(9/19), kto-nearby / kto-food / kto-course / korea-trail / korea-camping / kr-city-bus / korea-disaster-alert / korea-beach / korea-uv-index / korea-public-toilet / korea-parking / korea-museum / korea-tourist-site / korea-cultural-festival(9/21) |
-| HTTP応答のみ、実データ未取得 | seoul-subway(9/19) |
 | 静的公式情報 | korea-emergency(9/19), korea-etiquette |
 - 市外バス(시외버스)は `kr-intercity-bus` で照会できます(2026-09-14 にオペレーション実在確認)。SRT(수서발 고속철도)は公開APIがないため対象外です。
 
@@ -151,7 +150,7 @@ Scope notes:
 
 - No scraping of transfer-search apps or booking sites. Official APIs and public data only.
 - Nothing here changes state: no reservations, purchases, or ticketing. Lookups and calculations only.
-- Verification differs by skill: some have real response rows, some only confirmed operation existence via the expected auth error, and Seoul subway has HTTP reachability without a real sample row. See the Japanese verification matrix above (updated 2026-09-21).
+- Verification differs by skill: some have real response rows, some only confirmed operation existence via the expected auth error, and Seoul subway returned live train-position and arrival rows with the sample key on 2026-09-22. See the Japanese verification matrix above (updated 2026-09-22).
 
 ### Install
 

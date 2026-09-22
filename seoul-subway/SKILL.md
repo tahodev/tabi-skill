@@ -9,7 +9,7 @@ metadata:
 
 # seoul-subway
 
-ソウル特別市のオープンAPIで、地下鉄のリアルタイム到着予測を取得するスキル。2026-09-19 再検証ではサンプルキーのHTTP応答は得られたが、APIレベルは `INFO-200`(該当データなし)で、実到着データは未取得。
+ソウル特別市のオープンAPIで、地下鉄のリアルタイム到着予測を取得するスキル。到着予測API(realtimeStationArrival)と列車位置API(realtimePosition)の両方で、サンプルキーのまま実データが取れることを 2026-09-22 に再実測した(後述の「再現可能な実データ確認例」)。本番利用には無料キーを取得する。
 
 ## キーの取得
 
@@ -68,6 +68,31 @@ curl -s "http://swopenapi.seoul.go.kr/api/subway/{SEOUL_KEY}/json/realtimeStatio
 
 **レスポンス例**: `examples/realtime-station-arrival.sample.json`(構造を再現した記述例。2026-09-10時点ではサンプルキーが `ERROR-336` を返し実測取得できなかった)。
 
+## 再現可能な実データ確認例(2026-09-22 実測)
+
+ソウル交通公社の**列車位置API(realtimePosition)** と**到着予測API(realtimeStationArrival)** は、どちらもサンプルキーで実データを確認できる。サンプルキーは検証用なので、本番利用には無料キーを取得する。
+
+```bash
+# 1号線(1호선)の現在走行中の列車位置。サンプルキー `sample` のまま動く
+curl -s -m 30 "http://swopenapi.seoul.go.kr/api/subway/sample/json/realtimePosition/0/5/1%ED%98%B8%EC%84%A0"
+```
+
+確認できた主要フィールド(2026-09-22 13:58 KST 実測、1号線70編成・2号線36編成):
+
+- `errorMessage.code` が `INFO-000` で正常。`errorMessage.total` が走行中の編成数。
+- `subwayNm`: 路線名(「1호선」)。`subwayId`: 1001。
+- `statnNm`: 列車がいる駅(例: 종로3가 = 鍾路3街)。
+- `trainNo`: 列車番号。`recptnDt`: データ生成時刻(例: 2026-09-22 13:58:46)。
+- `updnLine`: 0 = 上り/内回り、1 = 下り/外回り。`trainSttus`: 0 = 進入、1 = 到着、2 = 出発、3 = 前駅出発。
+
+2号線(2호선, `%ED%98%B8%EC%84%A0` 部分を `2호선` に変更)でも同様に実データを確認済み(36編成)。到着予測APIも `realtimeStationArrival/0/5/%EC%84%9C%EC%9A%B8` で `INFO-000`、実到着20件(先頭5件)を確認した。サンプルキーの制限は予告なく変わり得るため、`ERROR-33x` が返る場合は無料キーで再確認する。
+
+失敗の見分け方:
+
+- **空レスポンス(該当データなし)**: HTTP 200 で `INFO-200`。駅名の誤りか未対応路線。
+- **認証エラー**: キー不正・サンプルキーの制限時は HTTP 200/500 で `ERROR-33x` 系。実キーの有効性と取得範囲を確認する。
+- **海外ランナー制限**: 韓国政府系ホストは海外IPからの接続を遮断することがあり、タイムアウトや接続失敗になる(GitHub Actions の米国リージョンランナーで観測済み)。JSONのエラーコードではなく接続自体の失敗で見分ける。
+
 ## 注意
 
 - 到着予測はソウル交通公社の提供データそのまま。遅延で狂うことがある。
@@ -82,4 +107,4 @@ curl -s "http://swopenapi.seoul.go.kr/api/subway/{SEOUL_KEY}/json/realtimeStatio
 
 ## English summary
 
-Fetches realtime Seoul subway arrival predictions from the Seoul Open Data Plaza API (HTTP response rechecked on 2026-09-19, but no real arrival row was obtained with the sample key). Needs a free instantly-issued key from data.seoul.go.kr. Station names must be in Korean (without the "역" suffix); a Japanese station-name table is included and the full multilingual dataset is on the public data portal (15044232). Always quote the line and direction (`trainLineNm`) and the data timestamp (`recptnDt`).
+Fetches realtime Seoul subway arrival predictions from the Seoul Open Data Plaza API. Both realtimeStationArrival and realtimePosition returned live arrival/train-position rows with the sample key (reverified 2026-09-22); get a free instantly-issued key from data.seoul.go.kr for production use. Station names must be in Korean (without the "역" suffix); a Japanese station-name table is included and the full multilingual dataset is on the public data portal (15044232). Always quote the line and direction (`trainLineNm`) and the data timestamp (`recptnDt`).
