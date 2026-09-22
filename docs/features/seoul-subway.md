@@ -1,6 +1,6 @@
 # seoul-subway ガイド
 
-ソウル地下鉄のリアルタイム到着予測を、ソウルオープンデータ広場APIで取得するスキル。到着予測APIは無料APIキーが必要。列車位置API(realtimePosition)はサンプルキーで実データ確認済み(2026-09-19)。
+ソウル地下鉄のリアルタイム到着予測を、ソウルオープンデータ広場APIで取得するスキル。到着予測API(realtimeStationArrival)と列車位置API(realtimePosition)はサンプルキーで実データ確認済み(2026-09-22)。本番利用には無料APIキーを推奨。
 
 **正本は [`seoul-subway/SKILL.md`](../../seoul-subway/SKILL.md)。** 駅名対応表、路線コード、エラー時の対応はすべてそちら。このガイドは概要のみ。
 
