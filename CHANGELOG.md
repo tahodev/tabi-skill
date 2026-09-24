@@ -10,6 +10,16 @@
 
 ## [Unreleased]
 
+### Added
+- 検証ポリシー `docs/verification.md` と検証レジストリ `docs/verification.json`: 全38スキルに `live-data-verified` / `endpoint-confirmed` / `experimental` の等級と検証日を付与
+- `scripts/check-verification.py`: 等級・検証日の形式、鮮度期限(live-data-verified 90日、endpoint-confirmed 180日、個別 `review_days`)、READMEマトリクスとの一致をCIで検査
+- `scripts/check-fixtures.py`: `examples/` のレスポンス例をパース・成功ステータス・レコード件数・SKILL.mdでの captured/illustrative 表記の一致でスモークテスト
+
+### Changed
+- READMEの検証マトリクスを3等級の表記に統一。`korea-emergency` は公式出典照合済みとして `live-data-verified`(30日で再確認)、`korea-etiquette` は出典未記載のため `experimental` に分類
+- health-check ワークフローに検証等級チェックとfixtureスモークテストを追加。鮮度切れは push/PR では WARN、定期・手動実行では FAIL(issue自動作成)
+- CONTRIBUTING / AGENTS に検証等級の運用ルールを追加
+
 ## [0.3.0] - 2026-09-23
 
 ### Added - live-data-verified
