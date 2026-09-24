@@ -1,0 +1,259 @@
+{
+  "$comment": "tabi-skill verification registry. Policy: docs/verification.md. Checked by scripts/check-verification.py and scripts/check-fixtures.py.",
+  "policy": {
+    "max_age_days": {
+      "live-data-verified": 90,
+      "endpoint-confirmed": 180
+    },
+    "warn_before_days": 14
+  },
+  "skills": {
+    "arex-timetable": {
+      "status": "live-data-verified",
+      "kind": "api",
+      "verified_on": "2026-09-19"
+    },
+    "incheon-airport": {
+      "status": "endpoint-confirmed",
+      "kind": "api",
+      "verified_on": "2026-09-09",
+      "fixtures": [
+        {
+          "path": "incheon-airport/examples/getPassengerArrivalsDSOdp.sample.json",
+          "origin": "illustrative"
+        }
+      ]
+    },
+    "korea-air-quality": {
+      "status": "endpoint-confirmed",
+      "kind": "api",
+      "verified_on": "2026-09-14"
+    },
+    "korea-beach": {
+      "status": "endpoint-confirmed",
+      "kind": "api",
+      "verified_on": "2026-09-21"
+    },
+    "korea-camping": {
+      "status": "endpoint-confirmed",
+      "kind": "api",
+      "verified_on": "2026-09-21"
+    },
+    "korea-cultural-festival": {
+      "status": "endpoint-confirmed",
+      "kind": "api",
+      "verified_on": "2026-09-21"
+    },
+    "korea-disaster-alert": {
+      "status": "endpoint-confirmed",
+      "kind": "api",
+      "verified_on": "2026-09-21",
+      "note": "キーエラー応答で実在確認"
+    },
+    "korea-emergency": {
+      "status": "live-data-verified",
+      "kind": "static",
+      "verified_on": "2026-09-19",
+      "review_days": 30,
+      "note": "公式ページ(観光公社・保健福祉部・在韓日本国大使館)の掲載内容と照合。電話番号は毎月、住所・受付時間は四半期ごとに再確認"
+    },
+    "korea-etiquette": {
+      "status": "experimental",
+      "kind": "static",
+      "note": "公式出典と検証日が未記載。出典を付けて照合したら昇格する"
+    },
+    "korea-holidays": {
+      "status": "endpoint-confirmed",
+      "kind": "api",
+      "verified_on": "2026-09-14"
+    },
+    "korea-hospital": {
+      "status": "endpoint-confirmed",
+      "kind": "api",
+      "verified_on": "2026-09-19"
+    },
+    "korea-museum": {
+      "status": "endpoint-confirmed",
+      "kind": "api",
+      "verified_on": "2026-09-21"
+    },
+    "korea-parking": {
+      "status": "endpoint-confirmed",
+      "kind": "api",
+      "verified_on": "2026-09-21"
+    },
+    "korea-pharmacy": {
+      "status": "endpoint-confirmed",
+      "kind": "api",
+      "verified_on": "2026-09-19"
+    },
+    "korea-public-toilet": {
+      "status": "endpoint-confirmed",
+      "kind": "api",
+      "verified_on": "2026-09-21"
+    },
+    "korea-tourist-site": {
+      "status": "endpoint-confirmed",
+      "kind": "api",
+      "verified_on": "2026-09-21"
+    },
+    "korea-trail": {
+      "status": "endpoint-confirmed",
+      "kind": "api",
+      "verified_on": "2026-09-21"
+    },
+    "korea-uv-index": {
+      "status": "endpoint-confirmed",
+      "kind": "api",
+      "verified_on": "2026-09-21"
+    },
+    "korea-weather": {
+      "status": "endpoint-confirmed",
+      "kind": "api",
+      "verified_on": "2026-09-09",
+      "fixtures": [
+        {
+          "path": "korea-weather/examples/getUltraSrtNcst.sample.json",
+          "origin": "illustrative"
+        }
+      ]
+    },
+    "korea-weather-midterm": {
+      "status": "endpoint-confirmed",
+      "kind": "api",
+      "verified_on": "2026-09-14"
+    },
+    "korea-weather-warning": {
+      "status": "endpoint-confirmed",
+      "kind": "api",
+      "verified_on": "2026-09-14",
+      "fixtures": [
+        {
+          "path": "korea-weather-warning/examples/getWthrWrnList.sample.json",
+          "origin": "illustrative"
+        }
+      ]
+    },
+    "kr-bus": {
+      "status": "endpoint-confirmed",
+      "kind": "api",
+      "verified_on": "2026-09-09",
+      "fixtures": [
+        {
+          "path": "kr-bus/examples/getStrtpntAlocFndExpbusInfo.sample.xml",
+          "origin": "illustrative"
+        }
+      ]
+    },
+    "kr-city-bus": {
+      "status": "endpoint-confirmed",
+      "kind": "api",
+      "verified_on": "2026-09-21"
+    },
+    "kr-intercity-bus": {
+      "status": "endpoint-confirmed",
+      "kind": "api",
+      "verified_on": "2026-09-14"
+    },
+    "kr-metro": {
+      "status": "endpoint-confirmed",
+      "kind": "api",
+      "verified_on": "2026-09-14"
+    },
+    "kr-train": {
+      "status": "endpoint-confirmed",
+      "kind": "api",
+      "verified_on": "2026-09-09",
+      "fixtures": [
+        {
+          "path": "kr-train/examples/getStrtpntAlocFndTrainInfo.sample.xml",
+          "origin": "illustrative"
+        }
+      ]
+    },
+    "krw-jpy-rate": {
+      "status": "live-data-verified",
+      "kind": "api",
+      "verified_on": "2026-09-09",
+      "note": "ECOSサンプルキーで実データ取得。KEXIMは海外IP遮断のため未実測",
+      "fixtures": [
+        {
+          "path": "krw-jpy-rate/examples/ecos-key-statistic-list.sample.json",
+          "origin": "captured"
+        },
+        {
+          "path": "krw-jpy-rate/examples/kexim-exchangejson.sample.json",
+          "origin": "illustrative"
+        }
+      ]
+    },
+    "kto-course": {
+      "status": "endpoint-confirmed",
+      "kind": "api",
+      "verified_on": "2026-09-21"
+    },
+    "kto-festival": {
+      "status": "endpoint-confirmed",
+      "kind": "api",
+      "verified_on": "2026-09-19"
+    },
+    "kto-food": {
+      "status": "endpoint-confirmed",
+      "kind": "api",
+      "verified_on": "2026-09-21"
+    },
+    "kto-nearby": {
+      "status": "endpoint-confirmed",
+      "kind": "api",
+      "verified_on": "2026-09-21"
+    },
+    "kto-stay-detail": {
+      "status": "endpoint-confirmed",
+      "kind": "api",
+      "verified_on": "2026-09-19"
+    },
+    "kto-tour": {
+      "status": "endpoint-confirmed",
+      "kind": "api",
+      "verified_on": "2026-09-09",
+      "fixtures": [
+        {
+          "path": "kto-tour/examples/area-based-list2.sample.json",
+          "origin": "illustrative"
+        }
+      ]
+    },
+    "seoul-bike": {
+      "status": "live-data-verified",
+      "kind": "api",
+      "verified_on": "2026-09-14"
+    },
+    "seoul-crowd": {
+      "status": "live-data-verified",
+      "kind": "api",
+      "verified_on": "2026-09-14"
+    },
+    "seoul-events": {
+      "status": "live-data-verified",
+      "kind": "api",
+      "verified_on": "2026-09-14"
+    },
+    "seoul-subway": {
+      "status": "live-data-verified",
+      "kind": "api",
+      "verified_on": "2026-09-22",
+      "note": "realtimePosition / realtimeStationArrival をサンプルキーで実測。本番利用は無料キー推奨",
+      "fixtures": [
+        {
+          "path": "seoul-subway/examples/realtime-station-arrival.sample.json",
+          "origin": "illustrative"
+        }
+      ]
+    },
+    "seoul-wifi": {
+      "status": "live-data-verified",
+      "kind": "api",
+      "verified_on": "2026-09-19"
+    }
+  }
+}
