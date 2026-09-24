@@ -17,6 +17,20 @@ tabi-skill への貢献に興味を持ってくれてありがとうございま
 - 実測した日付と、失敗時の挙動(404、5xx、空のレスポンス)も確認し、「エラー・失敗時の対応」セクションに書く。
 - 外部データに基準日があるもの(料金、連絡先など)は、基準日と公式の根拠を本文に明記する。
 
+## 検証等級(必須)
+
+各スキルは [docs/verification.json](docs/verification.json) に等級と検証日を登録する。等級の定義と鮮度期限は [検証ポリシー](docs/verification.md) を参照。
+
+| 等級 | 意味 |
+| --- | --- |
+| `live-data-verified` | 実際のレスポンス行(静的スキルは公式出典の掲載内容)を確認済み |
+| `endpoint-confirmed` | オペレーションの実在と認証エラー応答のみ確認 |
+| `experimental` | 出典・実測が未整備 |
+
+- 新規スキルは、実測した範囲に合わせて等級を付け、READMEの検証マトリクスの該当行にも追加する。
+- `examples/` にレスポンス例を置くときは `fixtures` に登録し、実測取得なら `captured`、構造の再現なら `illustrative` とする。SKILL.md側でも同じ区別を書く。
+- 投稿前に `bash scripts/lint-skills.sh`、`python3 scripts/check-verification.py`、`python3 scripts/check-fixtures.py` を通す。
+
 ## SKILL.md の形式
 
 - スキルはリポジトリ直下に1ディレクトリ1スキルで置き、各ディレクトリに `SKILL.md` を置く(`npx skills add` 互換)。
