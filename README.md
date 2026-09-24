@@ -21,6 +21,19 @@ Claude Code、Codex、OpenCode など、`npx skills add` に対応したコー�
 
 姉妹リポジトリ: 日本の暮らし向け [kurashi-skill](https://github.com/tahodev/kurashi-skill) 、台湾の暮らし向け [baodao-skill](https://github.com/tahodev/baodao-skill) 。
 
+## はじめての方へ(スターターガイド)
+
+目的別の4パックから選ぶと、必要なスキルだけをまとめて入れられます。5分で試せる手順とAPIキーの発行ページは [スターターガイド](docs/starter.md) にまとめています。
+
+| パック | 向いている旅 | 主なスキル |
+| --- | --- | --- |
+| [初めての韓国](docs/starter.md#初めての韓国) | 出発前の準備と空港からの移動 | krw-jpy-rate, korea-weather, korea-holidays, incheon-airport, arex-timetable, kto-tour, korea-etiquette, korea-emergency |
+| [ソウル週末](docs/starter.md#ソウル週末) | ソウル市内の移動・混雑・グルメ・イベント | seoul-subway, seoul-crowd, seoul-events, seoul-bike, seoul-wifi, kto-food, kto-nearby, korea-weather |
+| [地方都市](docs/starter.md#地方都市) | 釜山・慶州・全州などへの移動と観光 | kr-train, kr-bus, kr-intercity-bus, kr-city-bus, kr-metro, kto-course, kto-festival, kto-stay-detail, korea-tourist-site |
+| [緊急・安全](docs/starter.md#緊急安全) | 体調不良・災害・天候の急変への備え | korea-emergency, korea-disaster-alert, korea-weather-warning, korea-pharmacy, korea-hospital, korea-air-quality, korea-uv-index |
+
+キーなしで今すぐ試せるのは `arex-timetable` / `korea-emergency` / `korea-etiquette`、サンプルキーで数件試せるのは `seoul-subway` / `seoul-bike` / `krw-jpy-rate`(ECOS)です。
+
 ## できること
 
 「ログイン」列は、利用者本人のアカウントやシークレットが必要かどうかだけを示します。
@@ -101,6 +114,10 @@ Node.js 18 以上と `npx` が必要です。詳しくは [インストールガ
 Works with any coding agent that supports `npx skills add` (Claude Code, Codex, OpenCode, ...).
 
 Sibling repos: [kurashi-skill](https://github.com/tahodev/kurashi-skill) (daily life in Japan), [baodao-skill](https://github.com/tahodev/baodao-skill) (daily life in Taiwan).
+
+### Starter guide
+
+New here? Pick one of four packs - First trip to Korea, Seoul weekend, Regional cities, or Emergency & safety - and install just those skills. The [starter guide](docs/starter.md) (Japanese) has a 5-minute quick start, one install command per pack, and the sign-up page for every free API key. `arex-timetable`, `korea-emergency`, and `korea-etiquette` work without a key; `seoul-subway`, `seoul-bike`, and `krw-jpy-rate` (ECOS) return a few live rows with the sample key `sample`.
 
 ### What you can do
 
