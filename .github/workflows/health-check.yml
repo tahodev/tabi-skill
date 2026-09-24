@@ -26,6 +26,12 @@ jobs:
         run: bash scripts/lint-skills.sh
       - name: Check README and docs drift
         run: python3 scripts/check-docs-drift.py
+      - name: Check verification grades and freshness
+        env:
+          TABI_FRESHNESS: ${{ (github.event_name == 'schedule' || github.event_name == 'workflow_dispatch') && 'strict' || 'warn' }}
+        run: python3 scripts/check-verification.py
+      - name: Smoke-test response fixtures
+        run: python3 scripts/check-fixtures.py
       - name: Validate documented code blocks
         run: python3 scripts/check-code-blocks.py
       - name: Check documented URLs and API responses
@@ -35,7 +41,7 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          TITLE="health-check failed: lint, docs, code, or URL ($(date -u +%Y-%m-%d))"
+          TITLE="health-check failed: lint, docs, verification, fixtures, code, or URL ($(date -u +%Y-%m-%d))"
           BODY="Health-check failed. Run: $GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID"
           EXISTING=$(gh issue list --state open --search 'health-check failed' --json number --jq '.[0].number // empty')
           if [ -n "$EXISTING" ]; then
