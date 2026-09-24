@@ -72,13 +72,14 @@ Claude Code、Codex、OpenCode など、`npx skills add` に対応したコー�
 
 - 乗換検索アプリや予約サイトのスクレイピングは対象外です。公式API・公開データのみ。
 - 予約・購入・発券など状態を変更する操作は扱いません。照会と計算だけです。
-検証状態(2026-09-22更新):
+検証状態(2026-09-24更新。等級の定義・鮮度期限・昇格条件は [検証ポリシー](docs/verification.md)、スキル別の検証日は [docs/verification.json](docs/verification.json)):
 
-| 状態 | スキル |
-| --- | --- |
-| 実データ応答確認 | krw-jpy-rate(ECOS, 9/9), seoul-bike / seoul-events / seoul-crowd(9/14), seoul-wifi / arex-timetable(9/19), seoul-subway(列車位置・到着予測APIをサンプルキーで実測, 9/22。本番利用は無料キー推奨) |
-| オペレーション存在・認証エラー確認(実キー未実行) | kto-tour / kr-train / kr-bus / korea-weather / incheon-airport(9/9), korea-holidays / korea-air-quality / korea-weather-warning / korea-weather-midterm / kr-intercity-bus / kr-metro(9/14), kto-stay-detail / kto-festival / korea-pharmacy / korea-hospital(9/19), kto-nearby / kto-food / kto-course / korea-trail / korea-camping / kr-city-bus / korea-disaster-alert / korea-beach / korea-uv-index / korea-public-toilet / korea-parking / korea-museum / korea-tourist-site / korea-cultural-festival(9/21) |
-| 静的公式情報 | korea-emergency(9/19), korea-etiquette |
+| 状態 | 意味 | スキル |
+| --- | --- | --- |
+| `live-data-verified` | 実際のレスポンス行(静的スキルは公式出典の掲載内容)を確認済み。90日ごとに再確認 | krw-jpy-rate(ECOS, 9/9), seoul-bike / seoul-events / seoul-crowd(9/14), seoul-wifi / arex-timetable(9/19), seoul-subway(列車位置・到着予測APIをサンプルキーで実測, 9/22。本番利用は無料キー推奨), korea-emergency(公式出典と照合, 9/19。電話番号は毎月再確認) |
+| `endpoint-confirmed` | オペレーションの実在と認証エラー応答のみ確認(実キー未実行)。180日ごとに再確認 | kto-tour / kr-train / kr-bus / korea-weather / incheon-airport(9/9), korea-holidays / korea-air-quality / korea-weather-warning / korea-weather-midterm / kr-intercity-bus / kr-metro(9/14), kto-stay-detail / kto-festival / korea-pharmacy / korea-hospital(9/19), kto-nearby / kto-food / kto-course / korea-trail / korea-camping / kr-city-bus / korea-disaster-alert / korea-beach / korea-uv-index / korea-public-toilet / korea-parking / korea-museum / korea-tourist-site / korea-cultural-festival(9/21) |
+| `experimental` | 出典や実測が未整備。利用時は内容を要確認 | korea-etiquette(公式出典・検証日が未記載) |
+
 - 市外バス(시외버스)は `kr-intercity-bus` で照会できます(2026-09-14 にオペレーション実在確認)。SRT(수서발 고속철도)は公開APIがないため対象外です。
 
 ## インストール
@@ -150,7 +151,7 @@ Scope notes:
 
 - No scraping of transfer-search apps or booking sites. Official APIs and public data only.
 - Nothing here changes state: no reservations, purchases, or ticketing. Lookups and calculations only.
-- Verification differs by skill: some have real response rows, some only confirmed operation existence via the expected auth error, and Seoul subway returned live train-position and arrival rows with the sample key on 2026-09-22. See the Japanese verification matrix above (updated 2026-09-22).
+- Verification differs by skill: some have real response rows, some only confirmed operation existence via the expected auth error, and Seoul subway returned live train-position and arrival rows with the sample key on 2026-09-22. Each skill carries one grade - `live-data-verified`, `endpoint-confirmed`, or `experimental` - with a verification date and a freshness limit enforced in CI. See the Japanese matrix above and [docs/verification.md](docs/verification.md).
 
 ### Install
 
