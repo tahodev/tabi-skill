@@ -13,6 +13,7 @@
 ### Added
 - 検証ポリシー `docs/verification.md` と検証レジストリ `docs/verification.json`: 全38スキルに `live-data-verified` / `endpoint-confirmed` / `experimental` の等級と検証日を付与
 - `scripts/check-verification.py`: 等級・検証日の形式、鮮度期限(live-data-verified 90日、endpoint-confirmed 180日、個別 `review_days`)、READMEマトリクスとの一致をCIで検査
+- スターターガイド `docs/starter.md`: 初めての韓国 / ソウル週末 / 地方都市 / 緊急・安全の4パック、5分クイックスタート、APIキー発行ページ一覧。READMEに日英の導入セクションを追加
 - `scripts/check-fixtures.py`: `examples/` のレスポンス例をパース・成功ステータス・レコード件数・SKILL.mdでの captured/illustrative 表記の一致でスモークテスト
 
 ### Changed
