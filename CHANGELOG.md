@@ -11,12 +11,15 @@
 ## [Unreleased]
 
 ### Added
+- `korea-tax-refund` - 事後免税(タックスリファンド)の条件・即時還付・空港/市内カウンターの手順を収録した静的スキル(韓国観光公社「免税制度と税金還付」最終更新2025-10-21を2026-10-28に照合)
 - 検証ポリシー `docs/verification.md` と検証レジストリ `docs/verification.json`: 全38スキルに `live-data-verified` / `endpoint-confirmed` / `experimental` の等級と検証日を付与
 - `scripts/check-verification.py`: 等級・検証日の形式、鮮度期限(live-data-verified 90日、endpoint-confirmed 180日、個別 `review_days`)、READMEマトリクスとの一致をCIで検査
 - スターターガイド `docs/starter.md`: 初めての韓国 / ソウル週末 / 地方都市 / 緊急・安全の4パック、5分クイックスタート、APIキー発行ページ一覧。READMEに日英の導入セクションを追加
 - `scripts/check-fixtures.py`: `examples/` のレスポンス例をパース・成功ステータス・レコード件数・SKILL.mdでの captured/illustrative 表記の一致でスモークテスト
 
 ### Changed
+- `korea-emergency` を再検証(2026-10-28): 1330の受付時間(07:00〜24:00 KST)、在韓日本国大使館の住所・領事部電話番号を公式ページと再照合。health-check の鮮度切れ(issue #8)を解消
+- `korea-etiquette` に公式出典(韓国観光公社「電圧・通信・郵便」「交通カード:Tmoney&cashbee」)を追記し、`experimental` から `live-data-verified` へ昇格(2026-10-28照合)。ソウルのバスの現金不可の記述を「路線が多い」に修正
 - READMEの検証マトリクスを3等級の表記に統一。`korea-emergency` は公式出典照合済みとして `live-data-verified`(30日で再確認)、`korea-etiquette` は出典未記載のため `experimental` に分類
 - health-check ワークフローに検証等級チェックとfixtureスモークテストを追加。鮮度切れは push/PR では WARN、定期・手動実行では FAIL(issue自動作成)
 - CONTRIBUTING / AGENTS に検証等級の運用ルールを追加

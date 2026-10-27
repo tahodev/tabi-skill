@@ -9,7 +9,7 @@ metadata:
 
 # korea-emergency
 
-韓国旅行中に必要になる連絡先の静的データ集。API不要。ネットが不安定な状況でもエージェントが即答できるようにするためのスキル。公式情報を2026-09-19に再確認した。電話番号は毎月、住所と受付時間は四半期ごとに公式ページで見直す。
+韓国旅行中に必要になる連絡先の静的データ集。API不要。ネットが不安定な状況でもエージェントが即答できるようにするためのスキル。公式情報を2026-10-28に再確認した。電話番号は毎月、住所と受付時間は四半期ごとに公式ページで見直す。
 
 ## 緊急電話番号(韓国国内から)
 
@@ -39,10 +39,10 @@ metadata:
 
 ## データの鮮度について
 
-出典: 韓国観光公社、韓国保健福祉部、在韓日本国大使館領事部(https://www.kr.emb-japan.go.jp/itpr_ja/consulate.html)。検証日: 2026-09-19。電話番号は毎月、住所・受付時間は四半期ごとに再確認する。
+出典: 韓国観光公社、韓国保健福祉部、在韓日本国大使館領事部(https://www.kr.emb-japan.go.jp/itpr_ja/consulate.html)。検証日: 2026-10-28。電話番号は毎月、住所・受付時間は四半期ごとに再確認する。
 
 電話番号や住所は変わることがある。**人命に関わる場面では、このデータをそのまま鵜呑みにせず、1330や大使館の公式案内で再確認する**よう必ず添える。
 
 ## English summary
 
-Static emergency-contact data for travelers in Korea: police 112, fire/ambulance 119, the 1330 tourist hotline (Japanese-speaking, 07:00-24:00 KST), immigration 1345, and the Embassy of Japan consular line (+82-2-739-7400, with after-hours emergency routing). The former 1339 line was abolished and merged into 119. No API needed. Data rechecked 2026-09-19; always tell the traveler to reconfirm via official channels in a real emergency.
+Static emergency-contact data for travelers in Korea: police 112, fire/ambulance 119, the 1330 tourist hotline (Japanese-speaking, 07:00-24:00 KST), immigration 1345, and the Embassy of Japan consular line (+82-2-739-7400, with after-hours emergency routing). The former 1339 line was abolished and merged into 119. No API needed. Data rechecked 2026-10-28; always tell the traveler to reconfirm via official channels in a real emergency.

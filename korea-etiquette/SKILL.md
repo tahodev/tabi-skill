@@ -9,7 +9,7 @@ metadata:
 
 # korea-etiquette
 
-日本からの旅行者が最初に躓く実用ポイントの静的チートシート。API不要。内容は2026-09-09時点の一般的な情報ベース。
+日本からの旅行者が最初に躓く実用ポイントの静的チートシート。API不要。主要な事実(電圧・プラグ、交通カード)は2026-10-28に韓国観光公社の公式ページと照合した。マナー・習慣の記述は旅行者向けの一般的な助言として維持している。
 
 ## 電源・コンセント
 
@@ -21,7 +21,7 @@ metadata:
 
 - **チップの習慣はない**。レストラン・タクシー・ホテルとも不要。
 - カード決済の普及率が非常に高く、屋台以外はほぼカードで済む。タッチ決済対応店も多い。
-- 交通系ICカード **T-money**: コンビニや駅で買え、地下鉄・バス・タクシー・コンビニ支払いに使える。ソウルのバスは**現金不可**の路線がほとんどなので、到着したらまずT-money。
+- 交通系ICカード **T-money**: コンビニや駅で買え、地下鉄・バス・タクシー・コンビニ支払いに使える。ソウルのバスは**現金不可**の路線が多いので、到着したらまずT-money。
 
 ## 交通マナー
 
@@ -45,10 +45,15 @@ metadata:
 - 箸は金属製で重い。スープはレンゲ(숟가락)で。
 - 年上の人が箸を取るまで待つ、グラスは両手で受ける、くらいを知っていれば十分。
 
-## データの鮮度について
+## 出典・データの鮮度について
+
+公式出典との照合(2026-10-28):
+
+- 電圧220V/60Hz・丸穴2つのコンセント、ホテルフロントでの変換プラグ貸出、空港・免税店での販売: 韓国観光公社「電圧・通信・郵便」( https://japanese.visitkorea.or.kr/svc/contents/contentsView.do?vcontsId=140048 )
+- T-moneyカードの購入場所(コンビニ等)・2,500ウォン〜・乗換割引・タクシー利用: 韓国観光公社「交通カード:Tmoney&cashbee」( https://japanese1.visitkorea.or.kr/jpn/TRP/TR_JPN_9_1_1.jsp )
 
 習慣や規制は変わる。料金・規制が絡む具体判断(「このカードが使えるか」など)は、店・公式案内での確認を勧める。
 
 ## English summary
 
-A static cheat sheet for Japanese travelers in Korea: power is 220V/60Hz with C/F plugs (Japanese A plugs need an adapter), no tipping, T-money card is essential (Seoul buses are cashless), priority seats on the subway should be left free, Papago beats Google Translate for Korean, and Naver/Kakao Map replace Google Maps (navigation is restricted in Korea). No API needed. Data as of 2026-09-09.
+A static cheat sheet for Japanese travelers in Korea: power is 220V/60Hz with C/F plugs (Japanese A plugs need an adapter), no tipping, T-money card is essential (Seoul buses are cashless), priority seats on the subway should be left free, Papago beats Google Translate for Korean, and Naver/Kakao Map replace Google Maps (navigation is restricted in Korea). No API needed. Voltage/plug and transit-card facts cross-checked with official Korea Tourism Organization pages on 2026-10-28; manners and customs notes are general travel advice.

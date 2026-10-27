@@ -53,14 +53,15 @@
     "korea-emergency": {
       "status": "live-data-verified",
       "kind": "static",
-      "verified_on": "2026-09-19",
+      "verified_on": "2026-10-28",
       "review_days": 30,
       "note": "公式ページ(観光公社・保健福祉部・在韓日本国大使館)の掲載内容と照合。電話番号は毎月、住所・受付時間は四半期ごとに再確認"
     },
     "korea-etiquette": {
-      "status": "experimental",
+      "status": "live-data-verified",
       "kind": "static",
-      "note": "公式出典と検証日が未記載。出典を付けて照合したら昇格する"
+      "verified_on": "2026-10-28",
+      "note": "電圧・プラグ、交通カード(T-money)を韓国観光公社の公式ページと照合。マナー・習慣の記述は助言として維持"
     },
     "korea-holidays": {
       "status": "endpoint-confirmed",
@@ -254,6 +255,12 @@
       "status": "live-data-verified",
       "kind": "api",
       "verified_on": "2026-09-19"
+    },
+    "korea-tax-refund": {
+      "status": "live-data-verified",
+      "kind": "static",
+      "verified_on": "2026-10-28",
+      "note": "韓国観光公社「免税制度と税金還付」(ページ最終更新2025-10-21)の掲載内容と照合"
     }
   }
 }

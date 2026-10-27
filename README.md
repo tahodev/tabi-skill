@@ -27,7 +27,7 @@ Claude Code、Codex、OpenCode など、`npx skills add` に対応したコー�
 
 | パック | 向いている旅 | 主なスキル |
 | --- | --- | --- |
-| [初めての韓国](docs/starter.md#初めての韓国) | 出発前の準備と空港からの移動 | krw-jpy-rate, korea-weather, korea-holidays, incheon-airport, arex-timetable, kto-tour, korea-etiquette, korea-emergency |
+| [初めての韓国](docs/starter.md#初めての韓国) | 出発前の準備と空港からの移動 | krw-jpy-rate, korea-weather, korea-holidays, incheon-airport, arex-timetable, kto-tour, korea-etiquette, korea-emergency, korea-tax-refund |
 | [ソウル週末](docs/starter.md#ソウル週末) | ソウル市内の移動・混雑・グルメ・イベント | seoul-subway, seoul-crowd, seoul-events, seoul-bike, seoul-wifi, kto-food, kto-nearby, korea-weather |
 | [地方都市](docs/starter.md#地方都市) | 釜山・慶州・全州などへの移動と観光 | kr-train, kr-bus, kr-intercity-bus, kr-city-bus, kr-metro, kto-course, kto-festival, kto-stay-detail, korea-tourist-site |
 | [緊急・安全](docs/starter.md#緊急安全) | 体調不良・災害・天候の急変への備え | korea-emergency, korea-disaster-alert, korea-weather-warning, korea-pharmacy, korea-hospital, korea-air-quality, korea-uv-index |
@@ -56,6 +56,7 @@ Claude Code、Codex、OpenCode など、`npx skills add` に対応したコー�
 | 仁川空港の便情報を調べる | `incheon-airport` | 仁川国際空港公社APIで到着・出発便の遅延・ゲートを照会。空港鉄道データつき | APIキー(無料)が必要 | [incheon-airport ガイド](docs/features/incheon-airport.md) |
 | 緊急連絡先を調べる | `korea-emergency` | 112/119/1330(日本語可)・在韓日本国大使館などの静的データ。オフラインでも使える | 不要 | [korea-emergency ガイド](docs/features/korea-emergency.md) |
 | 旅の基本を調べる | `korea-etiquette` | コンセント・チップ・T-money・交通マナーのチートシート | 不要 | [korea-etiquette ガイド](docs/features/korea-etiquette.md) |
+| 買い物の税金還付を調べる | `korea-tax-refund` | 事後免税(タックスリファンド)の条件・即時還付・空港/市内カウンターの手順。韓国観光公社の公式案内ベース | 不要 | [ガイド](docs/features/korea-tax-refund.md) |
 | 韓国の祝日・記念日を調べる | `korea-holidays` | 韓国天文研究院(KASI)の特日情報APIで祝日・国慶日を照会。旧暦の連休(설날・추석)の正確な日付が取れる | APIキー(無料)が必要 | [korea-holidays ガイド](docs/features/korea-holidays.md) |
 | 韓国の空気の状態を調べる | `korea-air-quality` | エアコリア(AirKorea)APIでPM2.5/PM10の等級を照会。「今日ソウルの空気は?」に | APIキー(無料)が必要 | [korea-air-quality ガイド](docs/features/korea-air-quality.md) |
 | ソウルのシェアサイクルを調べる | `seoul-bike` | タルンイ(따릉이)のリアルタイム貸出台数を照会。サンプルキーで即試せる | APIキー(無料)が必要 | [seoul-bike ガイド](docs/features/seoul-bike.md) |
@@ -85,13 +86,13 @@ Claude Code、Codex、OpenCode など、`npx skills add` に対応したコー�
 
 - 乗換検索アプリや予約サイトのスクレイピングは対象外です。公式API・公開データのみ。
 - 予約・購入・発券など状態を変更する操作は扱いません。照会と計算だけです。
-検証状態(2026-09-24更新。等級の定義・鮮度期限・昇格条件は [検証ポリシー](docs/verification.md)、スキル別の検証日は [docs/verification.json](docs/verification.json)):
+検証状態(2026-10-28更新。等級の定義・鮮度期限・昇格条件は [検証ポリシー](docs/verification.md)、スキル別の検証日は [docs/verification.json](docs/verification.json)):
 
 | 状態 | 意味 | スキル |
 | --- | --- | --- |
-| `live-data-verified` | 実際のレスポンス行(静的スキルは公式出典の掲載内容)を確認済み。90日ごとに再確認 | krw-jpy-rate(ECOS, 9/9), seoul-bike / seoul-events / seoul-crowd(9/14), seoul-wifi / arex-timetable(9/19), seoul-subway(列車位置・到着予測APIをサンプルキーで実測, 9/22。本番利用は無料キー推奨), korea-emergency(公式出典と照合, 9/19。電話番号は毎月再確認) |
+| `live-data-verified` | 実際のレスポンス行(静的スキルは公式出典の掲載内容)を確認済み。90日ごとに再確認 | krw-jpy-rate(ECOS, 9/9), seoul-bike / seoul-events / seoul-crowd(9/14), seoul-wifi / arex-timetable(9/19), seoul-subway(列車位置・到着予測APIをサンプルキーで実測, 9/22。本番利用は無料キー推奨), korea-emergency(公式出典と照合, 10/28。電話番号は毎月再確認), korea-etiquette(公式出典と照合, 10/28), korea-tax-refund(公式出典と照合, 10/28) |
 | `endpoint-confirmed` | オペレーションの実在と認証エラー応答のみ確認(実キー未実行)。180日ごとに再確認 | kto-tour / kr-train / kr-bus / korea-weather / incheon-airport(9/9), korea-holidays / korea-air-quality / korea-weather-warning / korea-weather-midterm / kr-intercity-bus / kr-metro(9/14), kto-stay-detail / kto-festival / korea-pharmacy / korea-hospital(9/19), kto-nearby / kto-food / kto-course / korea-trail / korea-camping / kr-city-bus / korea-disaster-alert / korea-beach / korea-uv-index / korea-public-toilet / korea-parking / korea-museum / korea-tourist-site / korea-cultural-festival(9/21) |
-| `experimental` | 出典や実測が未整備。利用時は内容を要確認 | korea-etiquette(公式出典・検証日が未記載) |
+| `experimental` | 出典や実測が未整備。利用時は内容を要確認 | (なし) |
 
 - 市外バス(시외버스)は `kr-intercity-bus` で照会できます(2026-09-14 にオペレーション実在確認)。SRT(수서발 고속철도)は公開APIがないため対象外です。
 
@@ -139,6 +140,7 @@ New here? Pick one of four packs - First trip to Korea, Seoul weekend, Regional 
 | Check Incheon Airport flights | `incheon-airport` | Arrival/departure status, delays, gates; airport-railroad data | Free API key required | [incheon-airport guide](docs/features/incheon-airport.md) |
 | Look up emergency contacts | `korea-emergency` | 112/119/1330 (Japanese OK), Embassy of Japan; works offline | Not required | [korea-emergency guide](docs/features/korea-emergency.md) |
 | Look up travel basics | `korea-etiquette` | Plugs, tipping, T-money, transit manners cheat sheet | Not required | [korea-etiquette guide](docs/features/korea-etiquette.md) |
+| Check shopping tax-refund rules | `korea-tax-refund` | Tax Refund eligibility, instant refunds, airport/city counter procedure; based on the official KTO guide | Not required | [guide](docs/features/korea-tax-refund.md) |
 | Check Korean holidays | `korea-holidays` | KASI special-day API: holidays and national days, incl. exact lunar Seollal/Chuseok dates | Free API key required | [korea-holidays guide](docs/features/korea-holidays.md) |
 | Check air quality in Korea | `korea-air-quality` | AirKorea API: PM2.5/PM10 grades by city | Free API key required | [korea-air-quality guide](docs/features/korea-air-quality.md) |
 | Check Seoul bike-share availability | `seoul-bike` | Realtime Ttareungyi dock counts; testable with a public sample key | Free API key required | [seoul-bike guide](docs/features/seoul-bike.md) |

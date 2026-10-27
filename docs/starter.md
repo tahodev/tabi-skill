@@ -7,7 +7,7 @@ tabi-skill を初めて使う人向けに、旅行の目的別に4つのスキ�
 1. **インストール(1分)**: Node.js 18 以上と `npx` が使える環境で、まず「初めての韓国」パックを入れます。
 
    ```bash
-   npx --yes skills add tahodev/tabi-skill --skill krw-jpy-rate --skill korea-weather --skill korea-holidays --skill incheon-airport --skill arex-timetable --skill kto-tour --skill korea-etiquette --skill korea-emergency -g
+   npx --yes skills add tahodev/tabi-skill --skill krw-jpy-rate --skill korea-weather --skill korea-holidays --skill incheon-airport --skill arex-timetable --skill kto-tour --skill korea-etiquette --skill korea-emergency --skill korea-tax-refund -g
    ```
 
 2. **キーなしで試す(1分)**: 次のスキルはAPIキーがなくても動きます。エージェントにそのまま聞いてみてください。
@@ -39,9 +39,10 @@ tabi-skill を初めて使う人向けに、旅行の目的別に4つのスキ�
 | `kto-tour` | 観光地を日本語で検索 | 公共データポータル |
 | `korea-etiquette` | マナー・習慣 | 不要 |
 | `korea-emergency` | 緊急連絡先 | 不要 |
+| `korea-tax-refund` | 買い物の税金還付 | 不要 |
 
 ```bash
-npx --yes skills add tahodev/tabi-skill --skill krw-jpy-rate --skill korea-weather --skill korea-holidays --skill incheon-airport --skill arex-timetable --skill kto-tour --skill korea-etiquette --skill korea-emergency -g
+npx --yes skills add tahodev/tabi-skill --skill krw-jpy-rate --skill korea-weather --skill korea-holidays --skill incheon-airport --skill arex-timetable --skill kto-tour --skill korea-etiquette --skill korea-emergency --skill korea-tax-refund -g
 ```
 
 ### ソウル週末
