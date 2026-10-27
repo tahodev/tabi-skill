@@ -32,7 +32,7 @@ Claude Code、Codex、OpenCode など、`npx skills add` に対応したコー�
 | [地方都市](docs/starter.md#地方都市) | 釜山・慶州・全州などへの移動と観光 | kr-train, kr-bus, kr-intercity-bus, kr-city-bus, kr-metro, kto-course, kto-festival, kto-stay-detail, korea-tourist-site |
 | [緊急・安全](docs/starter.md#緊急安全) | 体調不良・災害・天候の急変への備え | korea-emergency, korea-disaster-alert, korea-weather-warning, korea-pharmacy, korea-hospital, korea-air-quality, korea-uv-index |
 
-キーなしで今すぐ試せるのは `arex-timetable` / `korea-emergency` / `korea-etiquette`、サンプルキーで数件試せるのは `seoul-subway` / `seoul-bike` / `krw-jpy-rate`(ECOS)です。
+キーなしで今すぐ試せるのは `arex-timetable` / `korea-emergency` / `korea-etiquette` / `korea-tax-refund`、サンプルキーで数件試せるのは `seoul-subway` / `seoul-bike` / `krw-jpy-rate`(ECOS)です。
 
 ## できること
 
@@ -118,7 +118,7 @@ Sibling repos: [kurashi-skill](https://github.com/tahodev/kurashi-skill) (daily 
 
 ### Starter guide
 
-New here? Pick one of four packs - First trip to Korea, Seoul weekend, Regional cities, or Emergency & safety - and install just those skills. The [starter guide](docs/starter.md) (Japanese) has a 5-minute quick start, one install command per pack, and the sign-up page for every free API key. `arex-timetable`, `korea-emergency`, and `korea-etiquette` work without a key; `seoul-subway`, `seoul-bike`, and `krw-jpy-rate` (ECOS) return a few live rows with the sample key `sample`.
+New here? Pick one of four packs - First trip to Korea, Seoul weekend, Regional cities, or Emergency & safety - and install just those skills. The [starter guide](docs/starter.md) (Japanese) has a 5-minute quick start, one install command per pack, and the sign-up page for every free API key. `arex-timetable`, `korea-emergency`, `korea-etiquette`, and `korea-tax-refund` work without a key; `seoul-subway`, `seoul-bike`, and `krw-jpy-rate` (ECOS) return a few live rows with the sample key `sample`.
 
 ### What you can do
 
