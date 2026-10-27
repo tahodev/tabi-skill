@@ -57,12 +57,12 @@ curl -s -m 30 "https://apis.data.go.kr/B551177/BusInformation/getBusInfo?service
 - T1: `https://odp.airport.kr/openapi/statusOfDepartureCongestion/getDepartureCongestion`(リクエスト `terminalId=P01`)
 - T2: `https://odp.airport.kr/openapi/statusOfDepartureCongestionT2/getDepartureCongestionT2`
 
-いずれも 2026-10-28 に data.go.kr の公式詳細ページでエンドポイント記載を確認したが、実行ホスト `odp.airport.kr` が検証環境(海外IP)から接続不能で、認証応答・実データは未確認(下のAREXと同じ状況)。利用時は実キーでの確認が先決。待機人数データであり「あと何分で通れる」という所要時間保証ではない点を旅行者に伝える。
+いずれも 2026-10-28 に data.go.kr の公式詳細ページでエンドポイント記載を確認したが、実行ホスト `odp.airport.kr` が検証環境から接続不能で、認証応答・実データは未確認(下のAREXと同じ状況)。なおT1用ページ(15148225)の説明文には「T2は追って提供予定」とあるが、T2用は別API(15161098)として既に公開されている。利用時は実キーでの確認が先決。待機人数データであり「あと何分で通れる」という所要時間保証ではない点を旅行者に伝える。
 
 ## 空港鉄道(AREX)のデータ
 
 空港鉄道の運行データ(열차 운행 일정 + 실제 발착 시각)も公共データポータルにある(仁川国際空港公社「인천공항 공항철도 운행 정보」、data.go.kr 15098226、要serviceKey、オペレーション `getAirportRailroad`、実行ホスト `odp.airport.kr`): https://www.data.go.kr/data/15098226/openapi.do
-  - 2026-09-10: データセットページは確認できたが、実行ホスト `odp.airport.kr` が検証環境(海外IP)から接続不能でオペレーションの実在は未確認。独立スキル化は実測できてから。
+  - 2026-09-10: データセットページは確認できたが、実行ホスト `odp.airport.kr` が検証環境から接続不能でオペレーションの実在は未確認。独立スキル化は実測できてから。
 
 旅行者向けの基本(2026-09-09時点、公式案内ベース):
 
