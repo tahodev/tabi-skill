@@ -20,6 +20,7 @@
 ### Changed
 - `korea-emergency` を再検証(2026-10-28): 1330の受付時間(07:00〜24:00 KST)、在韓日本国大使館の住所・領事部電話番号を公式ページと再照合。health-check の鮮度切れ(issue #8)を解消
 - `korea-etiquette` に公式出典(韓国観光公社「電圧・通信・郵便」「交通カード:Tmoney&cashbee」)を追記し、`experimental` から `live-data-verified` へ昇格(2026-10-28照合)。ソウルのバスの現金不可の記述を「路線が多い」に修正
+- `scripts/check-verification.py`: 鮮度判定の「今日」をAsia/Seoul基準に変更。UTCのGitHubランナーではKST午前中の検証日が「未来日」と誤判定され、push時のhealth-checkが失敗していた
 - READMEの検証マトリクスを3等級の表記に統一。`korea-emergency` は公式出典照合済みとして `live-data-verified`(30日で再確認)、`korea-etiquette` は出典未記載のため `experimental` に分類
 - health-check ワークフローに検証等級チェックとfixtureスモークテストを追加。鮮度切れは push/PR では WARN、定期・手動実行では FAIL(issue自動作成)
 - CONTRIBUTING / AGENTS に検証等級の運用ルールを追加

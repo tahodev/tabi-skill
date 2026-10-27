@@ -6,7 +6,8 @@ Set TABI_FRESHNESS=warn to report stale grades as WARN instead of FAIL
 (used on push/PR so an expiring date does not block unrelated changes;
 the scheduled run stays strict and opens an issue).
 """
-from datetime import date
+from datetime import date, datetime
+from zoneinfo import ZoneInfo
 from pathlib import Path
 import json, os, re, sys
 
@@ -17,7 +18,10 @@ reg = json.loads((root / 'docs/verification.json').read_text(encoding='utf-8'))
 policy = reg['policy']
 entries = reg['skills']
 soft_freshness = os.environ.get('TABI_FRESHNESS') == 'warn'
-today = date.fromisoformat(os.environ.get('TABI_TODAY') or date.today().isoformat())
+# Registry dates are written in the maintainer's timezone (Asia/Seoul).
+# date.today() on a UTC runner lags up to 9 hours behind, so a same-morning
+# KST verification looked like a future date and failed CI. Compare in KST.
+today = date.fromisoformat(os.environ.get('TABI_TODAY') or datetime.now(ZoneInfo('Asia/Seoul')).date().isoformat())
 skills = sorted(p.parent.name for p in root.glob('*/SKILL.md'))
 failed = False
 
