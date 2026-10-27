@@ -1,6 +1,6 @@
 ---
 name: incheon-airport
-description: 仁川国際空港の旅客便の到着・出発状況(遅延・ゲート・ターミナル)を仁川国際空港公社のAPIで調べる。空港鉄道(AREX)のデータも併記。「成田からの便、何時に着く?」に対応。無料APIキーが必要。
+description: 仁川国際空港の旅客便の到着・出発状況(遅延・ゲート・ターミナル)に加え、空港バスの路線・始発/終電・運賃と出国場の混雑度を仁川国際空港公社のAPIで調べる。空港鉄道(AREX)のデータも併記。無料APIキーが必要。
 license: MIT
 metadata:
   category: transit
@@ -40,6 +40,25 @@ curl -s "http://apis.data.go.kr/B551177/StatusOfPassengerFlightsDSOdp/getPasseng
 
 **レスポンス例**: `examples/getPassengerArrivalsDSOdp.sample.json`(構造を再現した記述例。実キーでの実測取得ではない)。
 
+## 空港バス情報(getBusInfo)
+
+仁川国際空港公社のバス情報APIで、T1/T2に運行中の空港バスを照会できる。2026-10-28 に `SERVICE_KEY_IS_NULL` で実在を確認(実キー未実行)。
+
+```bash
+curl -s -m 30 "https://apis.data.go.kr/B551177/BusInformation/getBusInfo?serviceKey={KEY}&type=json"
+```
+
+公式説明にある提供情報: 運行地域ごとのバス番号、空港行きの始発・終電、T1/T2終点行きの始発・終電、大人運賃、バス等級、運行会社。平日・週末のデータあり。地域絞り込みのパラメータ名は公式活用ガイド(data.go.kr 15095045)を参照。
+
+## 出国場の混雑度(출국장 혼잡도)
+
+出国場(保安検査場)ごとの待機人数が1分周期データで公開されている(公共データポータル 15148225 = T1用、15161098 = T2用):
+
+- T1: `https://odp.airport.kr/openapi/statusOfDepartureCongestion/getDepartureCongestion`(リクエスト `terminalId=P01`)
+- T2: `https://odp.airport.kr/openapi/statusOfDepartureCongestionT2/getDepartureCongestionT2`
+
+いずれも 2026-10-28 に data.go.kr の公式詳細ページでエンドポイント記載を確認したが、実行ホスト `odp.airport.kr` が検証環境(海外IP)から接続不能で、認証応答・実データは未確認(下のAREXと同じ状況)。利用時は実キーでの確認が先決。待機人数データであり「あと何分で通れる」という所要時間保証ではない点を旅行者に伝える。
+
 ## 空港鉄道(AREX)のデータ
 
 空港鉄道の運行データ(열차 운행 일정 + 실제 발착 시각)も公共データポータルにある(仁川国際空港公社「인천공항 공항철도 운행 정보」、data.go.kr 15098226、要serviceKey、オペレーション `getAirportRailroad`、実行ホスト `odp.airport.kr`): https://www.data.go.kr/data/15098226/openapi.do
@@ -66,4 +85,4 @@ curl -s "http://apis.data.go.kr/B551177/StatusOfPassengerFlightsDSOdp/getPasseng
 
 ## English summary
 
-Checks Incheon Airport passenger flight arrivals/departures (delays, gates, terminals) via the Incheon International Airport Corporation API - endpoint existence verified on 2026-09-09; not yet exercised with a real key. Free data.go.kr serviceKey required. Filter by time window and counterpart airport code (NRT/HND/KIX/...). Also documents the AREX airport-railroad dataset (data.go.kr 15098226) and baseline travel times (direct train Seoul Station to T1 ~43 min, T2 ~51 min). Read-only.
+Checks Incheon Airport passenger flight arrivals/departures (delays, gates, terminals) via the Incheon International Airport Corporation API - endpoint existence verified on 2026-09-09; not yet exercised with a real key. Free data.go.kr serviceKey required. Filter by time window and counterpart airport code (NRT/HND/KIX/...). Also covers airport bus routes (getBusInfo: bus numbers, first/last buses, adult fares - auth-verified 2026-10-28) and departure-hall congestion (T1/T2 waiting counts on odp.airport.kr; host unreachable from the verification environment, so only the official data.go.kr endpoint listing is confirmed - it is a waiting count, not a guaranteed wait time). Also documents the AREX airport-railroad dataset (data.go.kr 15098226) and baseline travel times (direct train Seoul Station to T1 ~43 min, T2 ~51 min). Read-only.

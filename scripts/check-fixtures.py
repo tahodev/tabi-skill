@@ -43,6 +43,9 @@ def json_status(obj):
             if 'result' in cur and isinstance(cur['result'], int):
                 return cur['result'] == 1, f'result={cur["result"]}'
             if 'RESULT' in cur and isinstance(cur['RESULT'], dict):
+                code = str(cur['RESULT'].get('CODE', ''))
+                if code:
+                    return code in OK_CODES, f'RESULT.CODE={code}'
                 return False, f'RESULT={cur["RESULT"]}'
             stack.extend(cur.values())
         elif isinstance(cur, list):

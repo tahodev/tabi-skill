@@ -7,7 +7,7 @@ tabi-skill を初めて使う人向けに、旅行の目的別に4つのスキ�
 1. **インストール(1分)**: Node.js 18 以上と `npx` が使える環境で、まず「初めての韓国」パックを入れます。
 
    ```bash
-   npx --yes skills add tahodev/tabi-skill --skill krw-jpy-rate --skill korea-weather --skill korea-holidays --skill incheon-airport --skill arex-timetable --skill kto-tour --skill korea-etiquette --skill korea-emergency --skill korea-tax-refund -g
+   npx --yes skills add tahodev/tabi-skill --skill krw-jpy-rate --skill korea-weather --skill korea-holidays --skill incheon-airport --skill arex-timetable --skill kto-tour --skill korea-etiquette --skill korea-emergency --skill korea-tax-refund --skill japan-customs-allowance -g
    ```
 
 2. **キーなしで試す(1分)**: 次のスキルはAPIキーがなくても動きます。エージェントにそのまま聞いてみてください。
@@ -15,6 +15,7 @@ tabi-skill を初めて使う人向けに、旅行の目的別に4つのスキ�
    - `korea-emergency`: 「韓国で救急車を呼ぶ番号と、日本語で相談できる窓口は?」
    - `korea-etiquette`: 「韓国の食事で気をつけるマナーは?」
    - `korea-tax-refund`: 「税金還付はいくらから受けられる?」
+   - `japan-customs-allowance`: 「日本に持って帰るお土産はいくらまで免税?」
 
 3. **サンプルキーで試す(1分)**: ソウル地下鉄とタルンイ(公共自転車)はサンプルキー `sample` で数件だけ実データが返ります。
    - `seoul-subway`: 「弘大入口駅の次の電車は?」
@@ -41,9 +42,10 @@ tabi-skill を初めて使う人向けに、旅行の目的別に4つのスキ�
 | `korea-etiquette` | マナー・習慣 | 不要 |
 | `korea-emergency` | 緊急連絡先 | 不要 |
 | `korea-tax-refund` | 買い物の税金還付 | 不要 |
+| `japan-customs-allowance` | 日本に帰るときの免税範囲 | 不要 |
 
 ```bash
-npx --yes skills add tahodev/tabi-skill --skill krw-jpy-rate --skill korea-weather --skill korea-holidays --skill incheon-airport --skill arex-timetable --skill kto-tour --skill korea-etiquette --skill korea-emergency --skill korea-tax-refund -g
+npx --yes skills add tahodev/tabi-skill --skill krw-jpy-rate --skill korea-weather --skill korea-holidays --skill incheon-airport --skill arex-timetable --skill kto-tour --skill korea-etiquette --skill korea-emergency --skill korea-tax-refund --skill japan-customs-allowance -g
 ```
 
 ### ソウル週末
@@ -92,6 +94,7 @@ npx --yes skills add tahodev/tabi-skill --skill kr-train --skill kr-bus --skill 
 | スキル | 使いどころ | キー |
 | --- | --- | --- |
 | `korea-emergency` | 救急・警察・大使館の連絡先 | 不要 |
+| `korea-emergency-room` | 救急室の空き状況(参考情報。緊急時は119) | 公共データポータル |
 | `korea-disaster-alert` | 発令中の災難文字(緊急メッセージ) | 行政安全部 災害安全データ |
 | `korea-weather-warning` | 注意報・警報 | 公共データポータル |
 | `korea-pharmacy` | 近くの薬局 | 公共データポータル |
@@ -100,7 +103,7 @@ npx --yes skills add tahodev/tabi-skill --skill kr-train --skill kr-bus --skill 
 | `korea-uv-index` | 紫外線指数 | 公共データポータル |
 
 ```bash
-npx --yes skills add tahodev/tabi-skill --skill korea-emergency --skill korea-disaster-alert --skill korea-weather-warning --skill korea-pharmacy --skill korea-hospital --skill korea-air-quality --skill korea-uv-index -g
+npx --yes skills add tahodev/tabi-skill --skill korea-emergency --skill korea-emergency-room --skill korea-disaster-alert --skill korea-weather-warning --skill korea-pharmacy --skill korea-hospital --skill korea-air-quality --skill korea-uv-index -g
 ```
 
 ## APIキー発行ページ
@@ -109,11 +112,11 @@ npx --yes skills add tahodev/tabi-skill --skill korea-emergency --skill korea-di
 
 | 発行元 | 発行ページ | 使うスキル |
 | --- | --- | --- |
-| 公共データポータル(data.go.kr) | https://www.data.go.kr/ (APIごとのページで「활용신청」。例: TourAPI日本語サービス https://www.data.go.kr/data/15101578/openapi.do ) | kto-*、kr-train、kr-bus、kr-intercity-bus、kr-city-bus、kr-metro、korea-weather、korea-weather-midterm、korea-weather-warning、korea-holidays、korea-air-quality、korea-uv-index、korea-pharmacy、korea-hospital、korea-beach、korea-camping、korea-trail、incheon-airport、全国標準データ系(korea-public-toilet、korea-parking、korea-museum、korea-tourist-site、korea-cultural-festival) |
+| 公共データポータル(data.go.kr) | https://www.data.go.kr/ (APIごとのページで「활용신청」。例: TourAPI日本語サービス https://www.data.go.kr/data/15101578/openapi.do ) | kto-*、kr-train、kr-bus、kr-intercity-bus、kr-city-bus、kr-metro、korea-weather、korea-weather-midterm、korea-weather-warning、korea-holidays、korea-air-quality、korea-uv-index、korea-pharmacy、korea-hospital、korea-beach、korea-camping、korea-trail、incheon-airport、korea-emergency-room、全国標準データ系(korea-public-toilet、korea-parking、korea-museum、korea-tourist-site、korea-cultural-festival) |
 | ソウルオープンデータ広場 | https://data.seoul.go.kr/ (動作確認はサンプルキー `sample`) | seoul-subway、seoul-bike、seoul-events、seoul-crowd、seoul-wifi |
 | 行政安全部 災害安全データ共有プラットフォーム | https://www.safetydata.go.kr/disaster-data/view?dataSn=228 | korea-disaster-alert |
 | 韓国銀行 ECOS | https://ecos.bok.or.kr/ (動作確認はサンプルキー `sample`) | krw-jpy-rate |
 | 韓国輸出入銀行 | https://www.data.go.kr/data/3068846/openapi.do (海外IPからは接続が遮断される場合あり) | krw-jpy-rate |
-| 不要 | - | arex-timetable、korea-emergency、korea-etiquette |
+| 不要 | - | arex-timetable、korea-emergency、korea-etiquette、korea-tax-refund、japan-customs-allowance |
 
 各APIの正確な申請名は、それぞれの SKILL.md の「キーの取得」を参照してください。

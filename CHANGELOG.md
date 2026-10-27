@@ -11,6 +11,8 @@
 ## [Unreleased]
 
 ### Added
+- `japan-customs-allowance` - 日本帰国時の税関免税範囲(酒類・たばこ・20万円枠)を収録した静的スキル(税関「海外旅行者の免税範囲」を2026-10-28に照合)
+- `korea-emergency-room` - 国立中央医療院(E-Gen)APIで救急医療機関・救急室リアルタイム空き病床・重症疾患の収容可能情報を照会(4オペレーション。2026-10-28に認証応答で実在確認、実キー未実行)。受け入れ保証ではなく参考情報であることを明記
 - `korea-tax-refund` - 事後免税(タックスリファンド)の条件・即時還付・空港/市内カウンターの手順を収録した静的スキル(韓国観光公社「免税制度と税金還付」最終更新2025-10-21を2026-10-28に照合)
 - 検証ポリシー `docs/verification.md` と検証レジストリ `docs/verification.json`: 全38スキルに `live-data-verified` / `endpoint-confirmed` / `experimental` の等級と検証日を付与
 - `scripts/check-verification.py`: 等級・検証日の形式、鮮度期限(live-data-verified 90日、endpoint-confirmed 180日、個別 `review_days`)、READMEマトリクスとの一致をCIで検査
@@ -18,6 +20,9 @@
 - `scripts/check-fixtures.py`: `examples/` のレスポンス例をパース・成功ステータス・レコード件数・SKILL.mdでの captured/illustrative 表記の一致でスモークテスト
 
 ### Changed
+- `seoul-subway`: 駅名検索(SearchInfoBySubwayNameService)・駅時刻表/終電照会(SearchSTNTimeTableByIDService・ByFRCodeService・SearchLastTrainTimeByIDService)の節を追加し、実データフィクスチャ3件を追加(2026-10-28 サンプルキーで実測)
+- `scripts/check-fixtures.py`: ソウルオープンデータ広場APIの成功ステータス `RESULT.CODE=INFO-000`(検索・時刻表系サービスの応答形)を成功として判定するよう修正。従来は `errorMessage.code` 形のみ成功扱いだった
+- `incheon-airport`: 空港バス情報(getBusInfo、2026-10-28 に認証応答で実在確認)と出国場混雑度(odp.airport.kr、公式詳細ページで確認したが検証環境から接続不可で認証応答は未確認)の節を追加
 - `korea-emergency` を再検証(2026-10-28): 1330の受付時間(07:00〜24:00 KST)、在韓日本国大使館の住所・領事部電話番号を公式ページと再照合。health-check の鮮度切れ(issue #8)を解消
 - `korea-etiquette` に公式出典(韓国観光公社「電圧・通信・郵便」「交通カード:Tmoney&cashbee」)を追記し、`experimental` から `live-data-verified` へ昇格(2026-10-28照合)。ソウルのバスの現金不可の記述を「路線が多い」に修正
 - `scripts/check-verification.py`: 鮮度判定の「今日」をAsia/Seoul基準に変更。UTCのGitHubランナーではKST午前中の検証日が「未来日」と誤判定され、push時のhealth-checkが失敗していた

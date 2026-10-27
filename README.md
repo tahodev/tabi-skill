@@ -32,7 +32,7 @@ Claude Code、Codex、OpenCode など、`npx skills add` に対応したコー�
 | [地方都市](docs/starter.md#地方都市) | 釜山・慶州・全州などへの移動と観光 | kr-train, kr-bus, kr-intercity-bus, kr-city-bus, kr-metro, kto-course, kto-festival, kto-stay-detail, korea-tourist-site |
 | [緊急・安全](docs/starter.md#緊急安全) | 体調不良・災害・天候の急変への備え | korea-emergency, korea-disaster-alert, korea-weather-warning, korea-pharmacy, korea-hospital, korea-air-quality, korea-uv-index |
 
-キーなしで今すぐ試せるのは `arex-timetable` / `korea-emergency` / `korea-etiquette` / `korea-tax-refund`、サンプルキーで数件試せるのは `seoul-subway` / `seoul-bike` / `krw-jpy-rate`(ECOS)です。
+キーなしで今すぐ試せるのは `arex-timetable` / `korea-emergency` / `korea-etiquette` / `korea-tax-refund` / `japan-customs-allowance`、サンプルキーで数件試せるのは `seoul-subway` / `seoul-bike` / `krw-jpy-rate`(ECOS)です。
 
 ## できること
 
@@ -41,7 +41,7 @@ Claude Code、Codex、OpenCode など、`npx skills add` に対応したコー�
 | できること | スキル名 | 説明 | ログイン | ドキュメント |
 | --- | --- | --- | --- | --- |
 | ウォン・円の為替レートを調べる | `krw-jpy-rate` | 韓国輸出入銀行API / 韓国銀行ECOS APIからレート取得。2ソースで冗長化 | APIキー(無料)が必要 | [krw-jpy-rate ガイド](docs/features/krw-jpy-rate.md) |
-| ソウル地下鉄の到着時刻を調べる | `seoul-subway` | ソウルオープンデータ広場APIでリアルタイム到着予測。日本語駅名データつき | APIキー(無料)が必要 | [seoul-subway ガイド](docs/features/seoul-subway.md) |
+| ソウル地下鉄の到着時刻・始発・終電を調べる | `seoul-subway` | ソウルオープンデータ広場APIでリアルタイム到着予測に加え、駅別時刻表・始発(첫차)・終電(막차)も照会。日本語駅名データつき | APIキー(無料)が必要 | [seoul-subway ガイド](docs/features/seoul-subway.md) |
 | KTXの時刻・運賃を調べる | `kr-train` | 国土交通部TAGO列車APIで列車の発着時刻・大人運賃を照会 | APIキー(無料)が必要 | [kr-train ガイド](docs/features/kr-train.md) |
 | 高速バスの時刻・運賃を調べる | `kr-bus` | TAGO高速バスAPIでターミナル間の便を照会 | APIキー(無料)が必要 | [kr-bus ガイド](docs/features/kr-bus.md) |
 | 韓国各地の天気予報を調べる | `korea-weather` | 気象庁(KMA)公共データ短期予報APIで格子座標ごとの予報を取得 | APIキー(無料)が必要 | [korea-weather ガイド](docs/features/korea-weather.md) |
@@ -53,10 +53,12 @@ Claude Code、Codex、OpenCode など、`npx skills add` に対応したコー�
 | 韓国の薬局を探す | `korea-pharmacy` | HIRA公式APIで地域・現在地周辺の薬局を検索 | APIキー(無料)が必要 | [ガイド](docs/features/korea-pharmacy.md) |
 | 韓国の病院を探す | `korea-hospital` | HIRA公式APIで地域・現在地周辺の病院を検索 | APIキー(無料)が必要 | [ガイド](docs/features/korea-hospital.md) |
 | AREX直通列車の時刻を調べる | `arex-timetable` | AREX公式サイトの現行時刻表を参照 | 不要 | [ガイド](docs/features/arex-timetable.md) |
-| 仁川空港の便情報を調べる | `incheon-airport` | 仁川国際空港公社APIで到着・出発便の遅延・ゲートを照会。空港鉄道データつき | APIキー(無料)が必要 | [incheon-airport ガイド](docs/features/incheon-airport.md) |
+| 仁川空港の便情報・空港バス・出国場の混雑を調べる | `incheon-airport` | 仁川国際空港公社APIで到着・出発便の遅延・ゲートに加え、空港バスの路線・始発/終電・運賃と出国場の待機人数を照会。空港鉄道データつき | APIキー(無料)が必要 | [incheon-airport ガイド](docs/features/incheon-airport.md) |
 | 緊急連絡先を調べる | `korea-emergency` | 112/119/1330(日本語可)・在韓日本国大使館などの静的データ。オフラインでも使える | 不要 | [korea-emergency ガイド](docs/features/korea-emergency.md) |
 | 旅の基本を調べる | `korea-etiquette` | コンセント・チップ・T-money・交通マナーのチートシート | 不要 | [korea-etiquette ガイド](docs/features/korea-etiquette.md) |
 | 買い物の税金還付を調べる | `korea-tax-refund` | 事後免税(タックスリファンド)の条件・即時還付・空港/市内カウンターの手順。韓国観光公社の公式案内ベース | 不要 | [ガイド](docs/features/korea-tax-refund.md) |
+| 日本帰国時の免税範囲を調べる | `japan-customs-allowance` | 税関の海外旅行者免税範囲(酒類・たばこ・20万円枠)の静的データ | 不要 | [ガイド](docs/features/japan-customs-allowance.md) |
+| 救急室の空き病床を調べる | `korea-emergency-room` | 国立中央医療院(E-Gen)APIで救急医療機関・救急室のリアルタイム空き病床・重症収容情報を照会(参考情報。緊急時は119) | APIキー(無料)が必要 | [ガイド](docs/features/korea-emergency-room.md) |
 | 韓国の祝日・記念日を調べる | `korea-holidays` | 韓国天文研究院(KASI)の特日情報APIで祝日・国慶日を照会。旧暦の連休(설날・추석)の正確な日付が取れる | APIキー(無料)が必要 | [korea-holidays ガイド](docs/features/korea-holidays.md) |
 | 韓国の空気の状態を調べる | `korea-air-quality` | エアコリア(AirKorea)APIでPM2.5/PM10の等級を照会。「今日ソウルの空気は?」に | APIキー(無料)が必要 | [korea-air-quality ガイド](docs/features/korea-air-quality.md) |
 | ソウルのシェアサイクルを調べる | `seoul-bike` | タルンイ(따릉이)のリアルタイム貸出台数を照会。サンプルキーで即試せる | APIキー(無料)が必要 | [seoul-bike ガイド](docs/features/seoul-bike.md) |
@@ -90,8 +92,8 @@ Claude Code、Codex、OpenCode など、`npx skills add` に対応したコー�
 
 | 状態 | 意味 | スキル |
 | --- | --- | --- |
-| `live-data-verified` | 実際のレスポンス行(静的スキルは公式出典の掲載内容)を確認済み。90日ごとに再確認 | krw-jpy-rate(ECOS, 9/9), seoul-bike / seoul-events / seoul-crowd(9/14), seoul-wifi / arex-timetable(9/19), seoul-subway(列車位置・到着予測APIをサンプルキーで実測, 9/22。本番利用は無料キー推奨), korea-emergency(公式出典と照合, 10/28。電話番号は毎月再確認), korea-etiquette(公式出典と照合, 10/28), korea-tax-refund(公式出典と照合, 10/28) |
-| `endpoint-confirmed` | オペレーションの実在と認証エラー応答のみ確認(実キー未実行)。180日ごとに再確認 | kto-tour / kr-train / kr-bus / korea-weather / incheon-airport(9/9), korea-holidays / korea-air-quality / korea-weather-warning / korea-weather-midterm / kr-intercity-bus / kr-metro(9/14), kto-stay-detail / kto-festival / korea-pharmacy / korea-hospital(9/19), kto-nearby / kto-food / kto-course / korea-trail / korea-camping / kr-city-bus / korea-disaster-alert / korea-beach / korea-uv-index / korea-public-toilet / korea-parking / korea-museum / korea-tourist-site / korea-cultural-festival(9/21) |
+| `live-data-verified` | 実際のレスポンス行(静的スキルは公式出典の掲載内容)を確認済み。90日ごとに再確認 | krw-jpy-rate(ECOS, 9/9), seoul-bike / seoul-events / seoul-crowd(9/14), seoul-wifi / arex-timetable(9/19), seoul-subway(列車位置・到着予測APIをサンプルキーで実測, 9/22。本番利用は無料キー推奨), korea-emergency(公式出典と照合, 10/28。電話番号は毎月再確認), korea-etiquette(公式出典と照合, 10/28), korea-tax-refund(公式出典と照合, 10/28), japan-customs-allowance(税関公式と照合, 10/28) |
+| `endpoint-confirmed` | オペレーションの実在と認証エラー応答のみ確認(実キー未実行)。180日ごとに再確認 | kto-tour / kr-train / kr-bus / korea-weather / incheon-airport(9/9), korea-holidays / korea-air-quality / korea-weather-warning / korea-weather-midterm / kr-intercity-bus / kr-metro(9/14), kto-stay-detail / kto-festival / korea-pharmacy / korea-hospital(9/19), kto-nearby / kto-food / kto-course / korea-trail / korea-camping / kr-city-bus / korea-disaster-alert / korea-beach / korea-uv-index / korea-public-toilet / korea-parking / korea-museum / korea-tourist-site / korea-cultural-festival(9/21), korea-emergency-room(10/28) |
 | `experimental` | 出典や実測が未整備。利用時は内容を要確認 | (なし) |
 
 - 市外バス(시외버스)は `kr-intercity-bus` で照会できます(2026-09-14 にオペレーション実在確認)。SRT(수서발 고속철도)は公開APIがないため対象外です。
@@ -118,14 +120,14 @@ Sibling repos: [kurashi-skill](https://github.com/tahodev/kurashi-skill) (daily 
 
 ### Starter guide
 
-New here? Pick one of four packs - First trip to Korea, Seoul weekend, Regional cities, or Emergency & safety - and install just those skills. The [starter guide](docs/starter.md) (Japanese) has a 5-minute quick start, one install command per pack, and the sign-up page for every free API key. `arex-timetable`, `korea-emergency`, `korea-etiquette`, and `korea-tax-refund` work without a key; `seoul-subway`, `seoul-bike`, and `krw-jpy-rate` (ECOS) return a few live rows with the sample key `sample`.
+New here? Pick one of four packs - First trip to Korea, Seoul weekend, Regional cities, or Emergency & safety - and install just those skills. The [starter guide](docs/starter.md) (Japanese) has a 5-minute quick start, one install command per pack, and the sign-up page for every free API key. `arex-timetable`, `korea-emergency`, `korea-etiquette`, `korea-tax-refund`, and `japan-customs-allowance` work without a key; `seoul-subway`, `seoul-bike`, and `krw-jpy-rate` (ECOS) return a few live rows with the sample key `sample`.
 
 ### What you can do
 
 | What you can do | Skill | Description | Login | Docs |
 | --- | --- | --- | --- | --- |
 | Check KRW/JPY exchange rates | `krw-jpy-rate` | Korea Eximbank API + Bank of Korea ECOS API (two sources) | Free API key required | [krw-jpy-rate guide](docs/features/krw-jpy-rate.md) |
-| Check Seoul subway arrivals | `seoul-subway` | Realtime arrival predictions, with Japanese station-name data | Free API key required | [seoul-subway guide](docs/features/seoul-subway.md) |
+| Check Seoul subway arrivals and first/last trains | `seoul-subway` | Realtime arrival predictions plus per-station timetables and first/last trains, with Japanese station-name data | Free API key required | [seoul-subway guide](docs/features/seoul-subway.md) |
 | Check KTX times and fares | `kr-train` | TAGO train API: schedules and adult fares | Free API key required | [kr-train guide](docs/features/kr-train.md) |
 | Check express bus times | `kr-bus` | TAGO express bus API: terminal-to-terminal schedules | Free API key required | [kr-bus guide](docs/features/kr-bus.md) |
 | Check weather in Korea | `korea-weather` | KMA public-data short-term forecast API | Free API key required | [korea-weather guide](docs/features/korea-weather.md) |
@@ -137,10 +139,12 @@ New here? Pick one of four packs - First trip to Korea, Seoul weekend, Regional 
 | Find pharmacies in Korea | `korea-pharmacy` | Official HIRA pharmacy search | Free API key required | [guide](docs/features/korea-pharmacy.md) |
 | Find hospitals in Korea | `korea-hospital` | Official HIRA hospital search | Free API key required | [guide](docs/features/korea-hospital.md) |
 | Check AREX Express times | `arex-timetable` | Current official AREX timetable | Not required | [guide](docs/features/arex-timetable.md) |
-| Check Incheon Airport flights | `incheon-airport` | Arrival/departure status, delays, gates; airport-railroad data | Free API key required | [incheon-airport guide](docs/features/incheon-airport.md) |
+| Check Incheon Airport flights, buses and departure-hall congestion | `incheon-airport` | Arrival/departure status, delays, gates; airport bus routes/fares and departure-hall waiting counts; airport-railroad data | Free API key required | [incheon-airport guide](docs/features/incheon-airport.md) |
 | Look up emergency contacts | `korea-emergency` | 112/119/1330 (Japanese OK), Embassy of Japan; works offline | Not required | [korea-emergency guide](docs/features/korea-emergency.md) |
 | Look up travel basics | `korea-etiquette` | Plugs, tipping, T-money, transit manners cheat sheet | Not required | [korea-etiquette guide](docs/features/korea-etiquette.md) |
 | Check shopping tax-refund rules | `korea-tax-refund` | Tax Refund eligibility, instant refunds, airport/city counter procedure; based on the official KTO guide | Not required | [guide](docs/features/korea-tax-refund.md) |
+| Check Japan duty-free allowance for the return trip | `japan-customs-allowance` | Japan Customs allowance for returning travelers (alcohol, tobacco, the 200,000-yen rule) | Not required | [guide](docs/features/japan-customs-allowance.md) |
+| Check ER bed availability in Korea | `korea-emergency-room` | Official E-Gen API: emergency facilities, realtime ER beds, severe-condition capability (reference only; call 119 in an emergency) | Free API key required | [guide](docs/features/korea-emergency-room.md) |
 | Check Korean holidays | `korea-holidays` | KASI special-day API: holidays and national days, incl. exact lunar Seollal/Chuseok dates | Free API key required | [korea-holidays guide](docs/features/korea-holidays.md) |
 | Check air quality in Korea | `korea-air-quality` | AirKorea API: PM2.5/PM10 grades by city | Free API key required | [korea-air-quality guide](docs/features/korea-air-quality.md) |
 | Check Seoul bike-share availability | `seoul-bike` | Realtime Ttareungyi dock counts; testable with a public sample key | Free API key required | [seoul-bike guide](docs/features/seoul-bike.md) |

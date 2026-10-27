@@ -22,7 +22,8 @@
           "path": "incheon-airport/examples/getPassengerArrivalsDSOdp.sample.json",
           "origin": "illustrative"
         }
-      ]
+      ],
+      "note": "旅客便2オペレーションを認証エラーで確認(9/9)。2026-10-28 に空港バス getBusInfo も SERVICE_KEY_IS_NULL で確認。出国場混雑度(odp.airport.kr)は公式詳細ページ記載を確認したが検証環境から接続不可で認証応答は未確認"
     },
     "korea-air-quality": {
       "status": "endpoint-confirmed",
@@ -243,11 +244,23 @@
       "status": "live-data-verified",
       "kind": "api",
       "verified_on": "2026-09-22",
-      "note": "realtimePosition / realtimeStationArrival をサンプルキーで実測。本番利用は無料キー推奨",
+      "note": "realtimePosition / realtimeStationArrival をサンプルキーで実測。2026-10-28 に時刻表系3サービス(駅名検索・駅時刻表・終電)もサンプルキーで実データ取得",
       "fixtures": [
         {
           "path": "seoul-subway/examples/realtime-station-arrival.sample.json",
           "origin": "illustrative"
+        },
+        {
+          "path": "seoul-subway/examples/search-info-by-subway-name.sample.json",
+          "origin": "captured"
+        },
+        {
+          "path": "seoul-subway/examples/search-stn-timetable-by-id.sample.json",
+          "origin": "captured"
+        },
+        {
+          "path": "seoul-subway/examples/search-last-train-by-id.sample.json",
+          "origin": "captured"
         }
       ]
     },
@@ -261,6 +274,18 @@
       "kind": "static",
       "verified_on": "2026-10-28",
       "note": "韓国観光公社「免税制度と税金還付」(ページ最終更新2025-10-21)の掲載内容と照合"
+    },
+    "japan-customs-allowance": {
+      "status": "live-data-verified",
+      "kind": "static",
+      "verified_on": "2026-10-28",
+      "note": "税関「海外旅行者の免税範囲」の掲載内容と照合"
+    },
+    "korea-emergency-room": {
+      "status": "endpoint-confirmed",
+      "kind": "api",
+      "verified_on": "2026-10-28",
+      "note": "4オペレーションを SERVICE_KEY_IS_NULL で実在確認。実キー未実行"
     }
   }
 }
