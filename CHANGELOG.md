@@ -10,11 +10,13 @@
 
 ## [Unreleased]
 
+## [0.4.0] - 2026-11-04
+
 ### Added
 - `japan-customs-allowance` - 日本帰国時の税関免税範囲(酒類・たばこ: 紙巻200本/加熱式 個装等10個/葉巻50本/その他250g・その他20万円枠)を収録した静的スキル(税関「海外旅行者の免税範囲」を2026-10-28に照合)
 - `korea-emergency-room` - 国立中央医療院(E-Gen)APIで救急医療機関・救急室リアルタイム空き病床・重症疾患の収容可能情報を照会(4オペレーション。2026-10-28に認証応答で実在確認、実キー未実行)。受け入れ保証ではなく参考情報であることを明記
 - `korea-tax-refund` - 事後免税(タックスリファンド)の条件・即時還付・空港/市内カウンターの手順を収録した静的スキル(韓国観光公社「免税制度と税金還付」最終更新2025-10-21を2026-10-28に照合)
-- 検証ポリシー `docs/verification.md` と検証レジストリ `docs/verification.json`: 全38スキルに `live-data-verified` / `endpoint-confirmed` / `experimental` の等級と検証日を付与
+- 検証ポリシー `docs/verification.md` と検証レジストリ `docs/verification.json`: 当初38スキル(本リリース時点で全41スキル)に `live-data-verified` / `endpoint-confirmed` / `experimental` の等級と検証日を付与
 - `scripts/check-verification.py`: 等級・検証日の形式、鮮度期限(live-data-verified 90日、endpoint-confirmed 180日、個別 `review_days`)、READMEマトリクスとの一致をCIで検査
 - スターターガイド `docs/starter.md`: 初めての韓国 / ソウル週末 / 地方都市 / 緊急・安全の4パック、5分クイックスタート、APIキー発行ページ一覧。READMEに日英の導入セクションを追加
 - `scripts/check-fixtures.py`: `examples/` のレスポンス例をパース・成功ステータス・レコード件数・SKILL.mdでの captured/illustrative 表記の一致でスモークテスト
@@ -26,7 +28,7 @@
 - `korea-emergency` を再検証(2026-10-28): 1330の受付時間(07:00〜24:00 KST)、在韓日本国大使館の住所・領事部電話番号を公式ページと再照合。health-check の鮮度切れ(issue #8)を解消
 - `korea-etiquette` に公式出典(韓国観光公社「電圧・通信・郵便」「交通カード:Tmoney&cashbee」)を追記し、`experimental` から `live-data-verified` へ昇格(2026-10-28照合)。ソウルのバスの現金不可の記述を「路線が多い」に修正
 - `scripts/check-verification.py`: 鮮度判定の「今日」をAsia/Seoul基準に変更。UTCのGitHubランナーではKST午前中の検証日が「未来日」と誤判定され、push時のhealth-checkが失敗していた
-- READMEの検証マトリクスを3等級の表記に統一。`korea-emergency` は公式出典照合済みとして `live-data-verified`(30日で再確認)、`korea-etiquette` は出典未記載のため `experimental` に分類
+- READMEの検証マトリクスを3等級の表記に統一。0.4.0時点の内訳は `live-data-verified` 11 / `endpoint-confirmed` 30 / `experimental` 0(`korea-emergency` は公式出典照合済みとして30日で再確認、`korea-etiquette` は公式出典を追記して `live-data-verified` に昇格)
 - health-check ワークフローに検証等級チェックとfixtureスモークテストを追加。鮮度切れは push/PR では WARN、定期・手動実行では FAIL(issue自動作成)
 - CONTRIBUTING / AGENTS に検証等級の運用ルールを追加
 
@@ -99,7 +101,8 @@
 - `korea-emergency` - 緊急連絡先・在韓日本国大使館・観光案内1330などの静的データ(API不要)
 - `korea-etiquette` - コンセント・チップ・交通マナーなどのチートシート(API不要)
 
-[Unreleased]: https://github.com/tahodev/tabi-skill/compare/v0.3.0...HEAD
+[Unreleased]: https://github.com/tahodev/tabi-skill/compare/v0.4.0...HEAD
+[0.4.0]: https://github.com/tahodev/tabi-skill/compare/v0.3.0...v0.4.0
 [0.3.0]: https://github.com/tahodev/tabi-skill/compare/v0.2.0...v0.3.0
 [0.2.0]: https://github.com/tahodev/tabi-skill/compare/v0.1.0...v0.2.0
 [0.1.0]: https://github.com/tahodev/tabi-skill/releases/tag/v0.1.0
