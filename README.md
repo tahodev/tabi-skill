@@ -98,6 +98,8 @@ Claude Code、Codex、OpenCode など、`npx skills add` に対応したコー�
 
 - 市外バス(시외버스)は `kr-intercity-bus` で照会できます(2026-09-14 にオペレーション実在確認)。SRT(수서발 고속철도)は公開APIがないため対象外です。
 
+収録方針・対象外の一覧は [ロードマップ](docs/roadmap.md)、脆弱性の報告窓口は [SECURITY.md](SECURITY.md) を参照してください。
+
 ## インストール
 
 ```bash
@@ -175,6 +177,7 @@ Scope notes:
 - No scraping of transfer-search apps or booking sites. Official APIs and public data only.
 - Nothing here changes state: no reservations, purchases, or ticketing. Lookups and calculations only.
 - Verification differs by skill: some have real response rows, some only confirmed operation existence via the expected auth error, and Seoul subway returned live train-position and arrival rows with the sample key on 2026-09-22. Each skill carries one grade - `live-data-verified`, `endpoint-confirmed`, or `experimental` - with a verification date and a freshness limit enforced in CI. See the Japanese matrix above and [docs/verification.md](docs/verification.md).
+- See the [roadmap](docs/roadmap.md) for the inclusion policy and out-of-scope list, and [SECURITY.md](SECURITY.md) for vulnerability reporting.
 
 ### Install
 

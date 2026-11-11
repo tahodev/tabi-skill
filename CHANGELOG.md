@@ -10,6 +10,12 @@
 
 ## [Unreleased]
 
+### Added
+- `SECURITY.md`: 脆弱性の非公開報告窓口、APIキーの扱い、対象範囲を明記(kurashi-skill / baodao-skill と同水準)
+- `docs/roadmap.md`: 収録方針・メンテナンス優先順位・対象外(SRT、スクレイピング、状態変更操作)の一覧。README からリンク
+- `.github/PULL_REQUEST_TEMPLATE.md` と `.github/CODEOWNERS`: 姉妹リポジトリと同構成に
+
+
 ## [0.4.0] - 2026-11-04
 
 ### Added
