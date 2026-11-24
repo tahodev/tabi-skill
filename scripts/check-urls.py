@@ -11,14 +11,16 @@ placeholders={'KEY':'INVALID_CI_KEY','SEOUL_KEY':'sample','KEXIM_KEY':'INVALID_C
 items={}
 for path in root.glob('*/SKILL.md'):
     for raw in url_re.findall(path.read_text(encoding='utf-8')):
-        url=raw.rstrip('.,;。,)}')
+        url=raw.rstrip('.,;。,)')
         if re.search(r'/B551011/(?:Jpn|Kor|Eng)Service2$', url): continue  # service root is not an operation
         items.setdefault(url,set()).add(str(path.relative_to(root)))
 
 def materialize(url):
     def sub(m): return placeholders.get(m.group(1),'ci-probe')
-    url=re.sub(r'\{([A-Za-z_][A-Za-z0-9_]*)\}',sub,url)
+    # Match shell-style variables before bare braces, or ${TRAVEL_DATE}
+    # becomes $20260919 and sends an invalid date to the API.
     url=re.sub(r'\$\{([A-Za-z_][A-Za-z0-9_]*)\}',sub,url)
+    url=re.sub(r'\{([A-Za-z_][A-Za-z0-9_]*)\}',sub,url)
     return re.sub(r'\$([A-Za-z_][A-Za-z0-9_]*)',sub,url)
 
 def host(url): return re.match(r'https?://([^/:]+)',url).group(1).lower()
@@ -55,11 +57,15 @@ def check(pair):
         return ('OK',f'{owner}: {code} {original} (endpoint exists; auth/parameters required)')
     return ('FAIL',f'{owner}: {code} {original}')
 
-failed=False
-with ThreadPoolExecutor(max_workers=MAX_WORKERS) as pool:
-    futures=[pool.submit(check,x) for x in items.items()]
-    for f in as_completed(futures):
-        status,msg=f.result(); print(f'{status:5} {msg}')
-        failed |= status=='FAIL'
-print(f'Checked {len(items)} unique URLs with {MAX_WORKERS} workers and {TIMEOUT}s/request cap')
-sys.exit(1 if failed else 0)
+def main():
+    failed=False
+    with ThreadPoolExecutor(max_workers=MAX_WORKERS) as pool:
+        futures=[pool.submit(check,x) for x in items.items()]
+        for f in as_completed(futures):
+            status,msg=f.result(); print(f'{status:5} {msg}')
+            failed |= status=='FAIL'
+    print(f'Checked {len(items)} unique URLs with {MAX_WORKERS} workers and {TIMEOUT}s/request cap')
+    sys.exit(1 if failed else 0)
+
+if __name__ == '__main__':
+    main()
