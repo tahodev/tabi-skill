@@ -10,6 +10,9 @@
 
 ## [Unreleased]
 
+### Fixed
+- URLヘルスチェックで `${TRAVEL_DATE}` などの変数を正しく置換し、URL末尾の `{KEY}` の閉じ括弧を保持する。オフライン回帰テストをCIに追加。
+
 ### Added
 - `SECURITY.md`: 脆弱性の非公開報告窓口、APIキーの扱い、対象範囲を明記(kurashi-skill / baodao-skill と同水準)
 - `docs/roadmap.md`: 収録方針・メンテナンス優先順位・対象外(SRT、スクレイピング、状態変更操作)の一覧。README からリンク
